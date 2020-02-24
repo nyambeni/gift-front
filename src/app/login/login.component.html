@@ -1,0 +1,48 @@
+
+<body>
+<form action="action_page.php"  class="was-validated">
+    <div class="imgcontainer">
+      
+    </div>
+  
+    <div class="container">
+      <!--<label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="Username" [(ngModel)]="loginData.Username"  required>
+      -->
+      <label for="uname"><b>Username</b></label>
+      <input required [(ngModel)]="loginData.Username" minlength="3" maxlength="20" #firstname = "ngModel" type="text" class="form-control form-control-user" id="Username" placeholder="Username" >
+     <!-- <div class="alert alert-danger" *ngIf="Username.touched && !Username.valid">
+       <div *ngIf="Username.errors.required"> User name is required</div>
+        <div *ngIf="Username.errors.minlength">Your User name must have more than 3 characters! </div>
+       </div>
+-->
+      
+
+      <label for="psw"><b>Password</b></label>
+      <input required [(ngModel)]="loginData.password" minlength="8" #password = "ngModel" type="password" class="form-control form-control-user" id="password" placeholder="Password" >
+      <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+      <div *ngIf="password.errors.required"> Password is required</div>
+      <div *ngIf="password.errors.minlength">Your password must have more that 8 characters !</div>
+      </div>
+
+
+    
+
+      <button type="submit" (click)= "loginDetails()" (click)="submitLogin()">Login</button>
+    
+      <label>
+        
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+    <div class="container" style="background-color:#f1f1f1">
+        <a routerLink="/register">clickhere to register</a>
+    </div>
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</body>
+
+

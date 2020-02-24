@@ -1,0 +1,23 @@
+
+/*#crop
+{
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}*/
+
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(61, 6, 189, 0.2);
+    transition: 0.3s;
+    width: 15%;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(201, 7, 159, 0.788);
+  }
+  
+  .container {
+    padding: 3px 16px;
+  }
+  
