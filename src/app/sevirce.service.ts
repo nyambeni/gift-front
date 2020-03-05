@@ -14,10 +14,10 @@ export class SevirceService {
 
   constructor(private http: HttpClient) { }
 
-  placeOrder = 'http://168.172.189.22:5000/insert';
-  orders_url = 'http://168.172.189.22:5000/allOrders';
-  login_url = 'http://168.172.189.22:5000/login';
-  register_url = 'http://168.172.189.22:5000/register';
+  placeOrder = 'http://168.172.188.163:5000/insert';
+  orders_url = 'http://168.172.188.163:5000/allOrders';
+  login_url = 'http://168.172.188.163:5000/login';
+  register_url = 'http://168.172.188.163:5000/register';
 
 updateData(numberOfLikes){
 this.content.next(numberOfLikes);}

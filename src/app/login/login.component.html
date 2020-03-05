@@ -1,4 +1,4 @@
-
+    <!-- 
 <body>
 <form action="action_page.php"  class="was-validated">
     <div class="imgcontainer">
@@ -6,32 +6,20 @@
     </div>
   
     <div class="container">
-      <!--<label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="Username" [(ngModel)]="loginData.Username"  required>
-      -->
       <label for="uname"><b>Username</b></label>
-      <input required [(ngModel)]="loginData.Username" minlength="3" maxlength="20" #firstname = "ngModel" type="text" class="form-control form-control-user" id="Username" placeholder="Username" >
-     <!-- <div class="alert alert-danger" *ngIf="Username.touched && !Username.valid">
-       <div *ngIf="Username.errors.required"> User name is required</div>
-        <div *ngIf="Username.errors.minlength">Your User name must have more than 3 characters! </div>
-       </div>
--->
-      
+      <input  [(ngModel)]="loginData.Username" minlength="3" maxlength="20" #firstname = "ngModel" type="text" class="form-control form-control-user" id="Username" placeholder="Username" required >
 
       <label for="psw"><b>Password</b></label>
-      <input required [(ngModel)]="loginData.password" minlength="8" #password = "ngModel" type="password" class="form-control form-control-user" id="password" placeholder="Password" >
+      <input [(ngModel)]="loginData.password" minlength="8" #password = "ngModel" type="password" class="form-control form-control-user" id="password" placeholder="Password" required>
       <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
       <div *ngIf="password.errors.required"> Password is required</div>
       <div *ngIf="password.errors.minlength">Your password must have more that 8 characters !</div>
       </div>
 
 
-    
-
-      <button type="submit" (click)= "loginDetails()" (click)="submitLogin()">Login</button>
+ <button type="submit" (click)= "loginDetails()" (click)="submitLogin()">Login</button> 
     
       <label>
-        
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
     </div>
@@ -45,4 +33,45 @@
   </form>
 </body>
 
+-->
 
+<form [formGroup]="loginForm"  (ngSubmit)="loginUser()" method="post">
+
+  <div class="container">
+   
+    <div class="form-group">
+    <label for="username"><b>Username</b></label>
+    <input type="text" formControlName="username"  id="username" placeholder="Enter Username" [ngClass]="{'is-invalid':loginForm.get('username').invalid}" mdbInput />
+</div>
+<div class="container">
+<small *ngIf="loginForm.get('username').invalid && loginForm.get('username').touched" class="error" style="color:red;">
+<div *ngIf="loginForm.get('username').errors.required">username number is requireed</div>
+</small>
+</div>
+
+
+
+<div class="form-group">
+    <label for="password"><b>Password</b></label>
+    <input type="password" formControlName="password"  id="password" placeholder="Enter Password" [ngClass]="{'is-invalid':loginForm.get('password').invalid}" mdbInput />
+</div>
+<div>
+  <small *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched" class="error" style="color:red;">
+  <div *ngIf="loginForm.get('password').errors.required">password number is requireed</div>
+  </small>
+  </div>
+
+    <div class="form-group">
+    <button [disabled]="loading || !loginForm.valid" mdbBtn color="success"  type="submit">Login</button>
+    
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" routerLink="/" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</div>
+</form>

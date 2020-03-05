@@ -1,3 +1,7 @@
+
+ /*
+
+
 import { Component, OnInit, Input } from '@angular/core';
 import { SevirceService } from './../sevirce.service';
 import { ActivatedRoute, Router} from '@angular/router';
@@ -13,6 +17,9 @@ import { first } from 'rxjs/operators';
 
 export class LoginComponent implements OnInit {
 
+  registerForm: FormGroup;
+  submitted = false;
+
   @Input() loginData = {
     
     Username:" ",password:" "
@@ -20,11 +27,10 @@ export class LoginComponent implements OnInit {
 
   constructor(private _SevirceService: SevirceService,
               private _activatedRoute:ActivatedRoute,
-               private _router:Router) { }
+               private _router:Router,
+               private _formBuider: FormBuilder) { }
 
-  submitLogin(): void{
-    this._router.navigate(['/order'])
-  }
+  
 
   registerClick():void{
     this._router.navigate(['/register'])
@@ -33,7 +39,21 @@ export class LoginComponent implements OnInit {
   users: any =[];
 
   ngOnInit(): void {
+
+    this.registerForm = this._formBuider.group({
+      Username: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+  });
+
     this.login();
+
+  }
+
+  get f() { return this.registerForm.controls; }
+
+  submitLogin(): void{
+    this._router.navigate(['/placeOrder'])
+    
   }
 
   login()
@@ -55,7 +75,36 @@ loginDetails()
 }
 
 }
-/*
+
+
+ 
+
+  */
+
+
+  
+  import { Component, OnInit, Input, ApplicationInitStatus } from '@angular/core';
+  import { SevirceService } from './../sevirce.service';
+import { ActivatedRoute, Router} from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+
+
+export class LoginComponent implements OnInit {
+
+// @Input()logINUserData={
+//  this.loginForm.value.username,
+//   password: "",
+
+// }
+
 
 loginForm: FormGroup;
     loading = false;
@@ -64,7 +113,7 @@ loginForm: FormGroup;
 
 
   
-  constructor(private userService:UserService,
+  constructor(private _SevirceService: SevirceService,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
               private _activatedRoute: ActivatedRoute,
@@ -89,23 +138,27 @@ loginUser()
   if (this.loginForm.invalid) {
     return;
 }
-  
-  this.userService.AdminLogIn(this.loginForm.value.username, this.loginForm.value.password).subscribe(
+
+
+
+
+  this._SevirceService.login(this.loginForm.value.username).subscribe(
     Response=>{
-    if(Response.code == 200)
+    if(Response.type == 200)
     {
-      this._router.navigate(['/admin-dashboard']);
+      this._router.navigate(['/order']);
     }else{
-      this._router.navigate(['/admin-signin']);
+      this._router.navigate(['/login']);
       this.loading = false;
     }
 
-    console.log(Response.code)},
+    console.log(Response.type)},
     err=>{console.error(err);})
 
-
-    
 }
 
 }
-*/
+
+
+
+

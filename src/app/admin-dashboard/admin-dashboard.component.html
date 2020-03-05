@@ -1,0 +1,209 @@
+<br>
+<br>
+
+<br>
+
+
+
+<p>admin-dashboard works!</p>
+
+<div class="card-wrapper">
+    <div id="card-1" class="card card-rotating text-center">
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Admin Dashboard</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+         <button type="button" class="btn btn-success" routerLink="/admin-dashboard" routerLinkActive="router-link-active">Orders</button>
+        <button type="button" class="btn btn-dark" routerLink="/anonymous-dashbord"  >USERS</button>
+        <button type="button" class="btn btn-success" routerLink="/anonymous-dashbord"  >Report</button>
+        <button type="button" class="btn btn-dark" routerLink="/anonymous-dashbord"  >Products</button>
+
+        
+      </div>
+    </div>
+  </div>
+
+    </div>
+  </main>
+    </div>
+</div>
+
+<table class="table table-strip">
+    <tr class="bg-dark text-white">
+    <td>OrderID</td>
+    <td>fullName</td>
+     <td>email</td>
+     <td>phone</td>
+     <td>address</td>
+     <td>city</td>
+     <td>province</td>
+     <td>code</td>
+     <td>Action</td>
+    </tr>
+
+    <tr>
+        <td>1</td>
+        <td>lethu</td>
+         <td>lethuGmail.com</td>
+         <td>0736370982</td>
+         <td>153 troy street SunnySide</td>
+         <td>Pretoria</td>
+         <td>Gouteng</td>
+         <td>0001</td>
+         <td><a href=""class="btn btn-success">Edit</a> / 
+            <a href="" class="btn btn-danger">Delete</a></td>
+        </tr> 
+</table>
+
+
+<!--
+<div class="card-wrapper">
+  <div id="card-1" class="card card-rotating text-center">
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Admin Dashboard</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+         <button type="button" class="btn btn-success" routerLink="/admin-dashboard" routerLinkActive="router-link-active">Recognized</button>
+        <button type="button" class="btn btn-dark" routerLink="/anonymous-dashbord"  >Anonymous</button>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="card-group">
+    <div class="card text-white bg-primary mb-3" id="cards">
+      <div class="card-header">Compliments</div>
+      <div class="card-body">
+        <h5 class="card-title">COMLIMENTS CARD</h5>
+        
+      </div>
+      <a routerLink="/rec-compliment" (click)="  takeRekCompliment(cat)" class="btn btn-primary">View Compliments</a>
+    </div>
+
+    <div class="card text-white bg-danger mb-3" id="cards">
+      <div class="card-header">Complaints</div>
+      <div class="card-body">
+        <h5 class="card-title">COMPLAINTS CARD</h5>
+        
+      </div>
+      <a routerLink="/rec-complaint" (click)="takeRekcomplaints(cat)" class="btn btn-danger">View Complaints</a>
+    </div>
+    <div class="card text-white bg-warning mb-3" id="cards">
+      <div class="card-header">Suggestions</div>
+      <div class="card-body">
+        <h5 class="card-title">SUGGESTION CARD</h5>
+        
+      </div>
+      <a  routerLink="/rec-suggestion" (click)="takeRekSuggestion(cat)" class="btn btn-warning" style="font:white">View Suggestions</a>
+    </div>
+  </div>
+
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h6 class="my-0 font-weight-normal">Recent Compliments</h6>
+      </div>
+      <div class="card-body">
+        <table class="table">
+
+          <thead>
+            <tr>
+                <th scope="row">Name</th>
+              <th scope="row">Message</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let cat of compliment; let i = index">
+              <td *ngIf="i<5">{{cat.name}}</td> 
+              <td *ngIf="i<5">{{cat.message}}</td>
+            </tr>
+           
+          </tbody>
+        </table>
+        
+      </div>
+<hr>
+      <div class="text-center">
+  <button class="btn btn-primary" style="width:40%;" routerLink="/rec-compliment" (click)=" takeRekCompliment(cat)" >Show all</button>
+    </div>
+    <br>
+  </div>
+    
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h6 class="my-0 font-weight-normal">Recent Complaints</h6>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+                <th scope="row">Name</th>
+              <th scope="row">Message</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cat of  complaints; let i = index">
+              <td *ngIf="i<5">{{cat.name}}</td>
+              <td *ngIf="i<5">{{cat.message}}</td>
+            
+            </tr>
+    
+          </tbody>
+        </table>
+
+      </div>
+      <hr>
+      <div class="text-center">
+      <button class="btn btn-primary "  style="width: 40%;" routerLink="/rec-complaint" (click)="takeRekcomplaints(cat)">Show all</button>
+    </div>
+    <br>
+    </div>
+
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h6 class="my-0 font-weight-normal">Recent Suggestions</h6>
+      </div>
+      <div class="card-body">
+        <table class="table">
+
+          <thead>
+            <tr>
+              <th scope="row">Name</th>
+              <th scope="row">Message</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let cat of  suggestion; let i = index">
+              <td *ngIf="i<5">{{cat.name}}</td>
+              <td *ngIf="i<5">{{cat.message}}</td>
+            </tr>
+          
+          </tbody>
+        </table>
+
+      </div>
+      <hr>
+      <div class="text-center">
+      <button class="btn btn-primary" style="width: 40%;" routerLink="/rec-suggestion" (click)="takeRekSuggestion(cat)">Show all</button>
+  </div>
+  <br>
+  </div>
+</div>
+</main>
+</div>
+</div>
+<div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  </div>
+
+-->

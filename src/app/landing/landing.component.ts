@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LandingComponent implements OnInit {
 
+  
   public count= 1;
 
   public counter() {
@@ -33,6 +34,10 @@ export class LandingComponent implements OnInit {
 
   constructor(private _activatedRoute:ActivatedRoute,
     private _router:Router, private data: SevirceService) { }
+
+    toProduct(){
+      this._router.navigate(['/product'])
+    }
 
   ngOnInit(): void {
   }
