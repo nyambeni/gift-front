@@ -1,0 +1,202 @@
+<div class="container-fluid p-0">
+
+
+    <!--Navbar-->
+    <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg" [containerInside]="false">
+        <div class="container">
+            <!-- Navbar brand -->
+            <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="/assets/logo.png" alt="" width="20%"
+                        height="15%"></a></mdb-navbar-brand>
+
+            <!-- Collapsible content -->
+            <links>
+
+                <!-- Links -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link waves-light" mdbWavesEffect title="Shop Now"
+                            style="text-decoration: underline; color: #dd69f1d8;">
+                            Shop<span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link waves-light" mdbWavesEffect title="Sign Up">Sign Up
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link waves-light" mdbWavesEffect title="Sign In">
+                            Sign In
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-light" mdbWavesEffect title="Cart">
+                            Cart
+                        </a>
+                    </li>
+
+                </ul>
+                <!-- Links -->
+            </links>
+            <!-- Collapsible content -->
+        </div>
+    </mdb-navbar>
+    <!--/.Navbar-->
+
+    <!--Title-->
+    <div class="title">
+        <div class="container">
+            <ul class="nav nav-pills">
+                <li class="nav-item active">
+                    <a routerLink="" class="nav-link waves-light" mdbWavesEffect title="Go to Home Page">Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect title="Shop Now"
+                        style="text-decoration: underline; color: #dd69f1d8;">
+                        Shop<span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="../about" class="nav-link waves-light" mdbWavesEffect title="Go to About">
+                        About Us
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect (click)="bottomFunction()" id="mycont"
+                        title="Go to Contact Info">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <!--Title-->
+
+    <!-- Main -->
+    <header class="h-100">
+
+        <div class="view">
+            <div class="full-bg-img">
+                <div class="mask rgba-black-strong flex-center">
+                    <div class="container">
+                        <div class="white-text text-center wow fadeInUp">
+                            <h2>Gift Box</h2>
+                            <h5>An Online Gift Box Shop</h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.Main -->
+    </header>
+    <!--Main Layout-->
+    <main class="text-center py-5 mt-3">
+
+        <div class="container">
+
+            <div style="float:left">
+
+                <button class="sideBtn">Birthday</button>
+                <br>
+                <button class="sideBtn">Wedding</button>
+                <br>
+                <button class="sideBtn">Baby Showers</button>
+                <br>
+                <button class="sideBtn">Christmas</button>
+                <br>
+                <button class="sideBtn">Valentine</button>
+                <br>
+                <button class="sideBtn">Graduation</button>
+                
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" id = "middlebit">
+
+                    <p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                        in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                        <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <!--Main Layout-->
+
+    <!--Main-->
+
+
+    <footer>
+
+        <h3 align="center">For More Infomation:</h3>
+        <hr style="color: white; border: 1px solid rgb(66, 64, 64); width: 25%;">
+        <br>
+
+
+        <div class="container" style="margin-top: 10px; ">
+            <div class="row align-items-start">
+                <div class="col" style="color: #dda5e7; font-family: cursive;">
+                    Address
+                </div>
+                <div class="col" style="color: #dda5e7; font-family: cursive;">
+                    Phone Number
+                </div>
+                <div class="col" style="color: #dda5e7; font-family: cursive;">
+                    Email Address
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col" style="margin-top: 10px;">
+                    TUT Soshanguve
+                </div>
+                <div class="col" style="margin-top: 10px;">
+                    Phone: +
+                </div>
+                <div class="col" style="margin-top: 10px;">
+                    Email: www.giftbox.ac.za
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col" style="margin-top: 10px;">
+                    Soshanguve Block L
+                </div>
+                <div class="col" style="margin-top: 10px;">
+
+                </div>
+                <div class="col" style="margin-top: 10px;">
+
+                </div>
+            </div>
+
+            <br>
+            <h5 style="font-size: 20px;">Follow Us</h5>
+
+            <ul>
+                <li><a href=""><i class="fab fa-facebook-square"></i></a></li>
+                <li><a href=""><i class="fab fa-twitter-square"></i></a></li>
+                <li><a href=""><i class="fab fa-instagram-square"></i></a></li>
+            </ul>
+        </div>
+        <div class="tAndC">
+            <h4>Terms & Conditions</h4>
+        </div>
+
+        <button (click)="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+    </footer>
+</div>

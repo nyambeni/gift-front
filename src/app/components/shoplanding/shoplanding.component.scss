@@ -1,0 +1,202 @@
+/*::ng-deep .navbar {
+    
+    background-color: white;
+    color: black;
+
+    /*#dda5e7;   
+}
+*/
+
+::ng-deep .navbar {
+    background-color: #f5ecf7ea;
+      padding: 10px;
+      box-shadow: 1px 1px 10px 10px rgba(145, 144, 144, 0.329);
+  }
+  
+  nav{
+      background-color: #f5ecf7ea;
+      padding: 10px;
+      box-shadow: 1px 1px 10px 10px rgba(145, 144, 144, 0.329);
+  
+  }
+  
+  nav a {text-decoration: none;
+      padding-left: 20px;
+  
+  }
+  .current{ color: #dda5e7; 
+      text-decoration: underline;
+      
+  } 
+  .link { color: #464a4e; 
+  } 
+  
+  .link:hover { color: #d00af3; font-size: 150%; }
+  
+  .current:hover { color: #a9f0ec; font-size: 150%;
+   }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: #464a4e;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    
+    color: #d00af3;
+    border-radius: 0.5em;
+  }
+  
+  .card{
+      background-color: #f5ecf7ea;
+      width: 350px;
+      height: 400px;
+      align-items: center;
+      padding: 10p;
+      outline: none;
+      border: none;
+      border-radius: 0%;
+      text-align: center;
+  }
+  .card2{
+    background-color: transparent;
+  
+    align-items: center;
+    padding: 30p;
+    outline: none;
+    border: none;
+    border-radius: 0%;
+    text-align: center;
+  
+    margin-bottom: 20px;
+  }
+  
+  .shopBtn{
+    width: 200px;
+    height: 80px;
+    background-color: #f5ecf7ea;
+    
+      font-size: 20px;
+     text-align: center;
+      padding: 10p;
+      outline: none;
+      border: none;
+      border-radius: 0%;
+      box-shadow: 0px 0px 8px 5px rgba(145, 144, 144, 0.329);
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+  }
+  
+  .shopBtn:hover{
+    color: #d00af3;
+    font-size: 30px;
+  }
+  
+  .whoAreWe{
+    margin-top: 70px;
+    background-color: #f5ecf7;
+  }
+  
+  footer{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #f5ecf7;
+    box-shadow: 0px 0px 8px 5px rgba(145, 144, 144, 0.329);
+    
+  }
+  
+  td{
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .tAndC{
+    text-align: center;
+    background-color: #dd69f1d8;
+    color: white;
+    padding: 10px;
+    box-shadow: 0px 0px 8px 5px rgba(145, 144, 144, 0.329);
+    font-family: cursive;
+  }
+  
+  .title{
+    text-align: center;
+    background-color: #d07edf9d;
+    color: white;
+    padding: 10px;
+    box-shadow: 0px 0px 8px 5px rgba(145, 144, 144, 0.329);
+    
+    margin-top: 80px;
+  }
+  
+  #myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: 1px solid #dd69f1; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #dd69f19d; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10em; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+    width: 60px;
+    height: 60px;
+  }
+  
+  #myBtn:hover {
+    background-color: rgb(112, 3, 54); /* Add a dark-grey background on hover */
+  } 
+
+.follow{
+  align-items: center;
+}
+
+.view {
+  background-image: url("/assets/Slide/Box2.png");
+  background-size: cover;
+  height: 100vh;
+}
+
+.navbar {
+  z-index: 1;
+}
+
+
+#middlebit p {margin: 10px;
+} 
+
+#middlebit h2, main h3 {color: #CC66CC;
+					background-color: #FFFFFF;
+					
+}
+						 
+#middlebit 	{margin: 10px;
+			padding: 1px 10px 10px 10px;
+			background-color: #FFFFFF;
+			color: #006600;
+}
+
+.sideBtn{
+  margin-top: 10px;
+  width: 150px;
+  height: 30px;
+}
