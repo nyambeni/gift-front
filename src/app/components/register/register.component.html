@@ -36,39 +36,73 @@
     </mdb-navbar>
     <!--/.Navbar-->
 
-<form  class="container register-form">
+<form  class="container register-form" [formGroup]="customerForm" (ngSubmit)="onSubmit()" >
     <p class="h2">Create new account</p>
-    <div class="md-form">
+    <!--form firstname-->
+    <div class="md-form mb-0">
         <mdb-icon fas icon="user" class="purple-text prefix"></mdb-icon>
-        <input mdbInput type="text" class="form-control" id="username">
+        <input mdbInput type="text" class="form-control" id="username" formControlName="firstname">
         <label for="username">First Name</label>
     </div>
+    <div *ngIf="firstname?.invalid && (firstname?.dirty || firstname?.touched)" class="text-danger">
+        <small  *ngIf="firstname?.errors?.required"> *Name is required</small>
+        <small  *ngIf="firstname?.errors?.pattern"> *Name  must have letters only</small>
+        <small  *ngIf="firstname?.errors?.minlength"> *Name suppose to be more than 3 letter</small>
+    </div>
+    <!--End of firstname-->
     
-    <div class="md-form">
+    <!--for lastname-->
+    <div class="md-form mb-0">
         <mdb-icon fas icon="user" class="purple-text prefix"></mdb-icon>
-        <input mdbInput type="text" class="form-control" id="username">
+        <input mdbInput type="text" class="form-control" id="username" formControlName="lastname">
         <label for="username">Last Name</label>
     </div>
+    <div *ngIf="lastname?.invalid && (lastname?.dirty || lastname?.touched)" class="text-danger">
+        <small  *ngIf="lastname?.errors?.required"> *Name is required</small>
+        <small  *ngIf="lastname?.errors?.pattern"> Name must have letters only</small>
+        <small  *ngIf="lastname?.errors?.minlength"> *Name suppose to be more than 3 letter</small>
+    </div>
+    <!--End of lastname-->
 
-    <div class="md-form">
+    <!--for email address-->
+    <div class="md-form mb-0">
         <mdb-icon fas icon="envelope" class="purple-text prefix"></mdb-icon>
-        <input mdbInput type="text" id="email" class="form-control">
+        <input mdbInput type="text" id="email" class="form-control" formControlName="emailAddress">
         <label for="email">Email Address</label>
     </div>
+    <div *ngIf="emailAddress?.invalid && (emailAddress?.dirty || emailAddress?.touched)" class="text-danger">
+        <small  *ngIf="emailAddress?.errors?.required"> *Email address is required</small>
+        <small  *ngIf="emailAddress?.errors?.email"> *Invalid email address</small>
+    </div>
+    <!--End of email address-->
 
+    <!--for password-->
     <div class="md-form">
         <mdb-icon fas icon="key" class="purple-text prefix"></mdb-icon>
-        <input mdbInput type="password" id="password" class="form-control">
+        <input mdbInput type="password" id="password" class="form-control" formControlName="password">
         <label for="password">Password</label>
     </div>
+    <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger">
+        <small  *ngIf="password?.errors?.required"> *password is required</small>
+        <small  *ngIf="password?.errors?.pattern"> *Password must be 8 letters and have atleast 1 spacial 
+            character, uppercase, lowercase and a number</small>
+    </div>
+    <!--End of password-->
 
-    <div class="md-form">
+    <!--for Confirm Password-->
+    <div class="md-form mb-0">
         <mdb-icon fas icon="key" class="purple-text prefix"></mdb-icon>
-        <input mdbInput type="password" id="form2" class="form-control">
+        <input mdbInput type="password" id="form2" class="form-control" formControlName="confirmPassword">
         <label for="form2">Confirm Password</label>
     </div>
+    
+    <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)" class="text-danger">
+     <!---Have to fix confirm password-->  <small *ngIf="confirmPassword?.errors?.misMatch"> *Passwords don't match</small>
+    </div>
+    <!--End of confirm password-->
+
     <div class="md-form mb-0">
-        <button mdbBtn type="button" color="purple" class="customBtn">Sign Up</button>
+        <button type="submit" mdbBtn color="purple" class="customBtn">Sign Up</button>
     </div>
 </form>
 </div>

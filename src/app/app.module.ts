@@ -17,6 +17,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WishListComponent } from './components/wish-list/wish-list.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ViewBoxComponent,
     AdminDashboardComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    WishListComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,7 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { WishListComponent } from './components/wish-list/wish-list.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -20,9 +21,10 @@ const routes: Routes = [
   { path: 'about', component: AboutusComponent },
   { path: 'shop', component: ShoplandingComponent },
   { path: 'viewbox', component: ViewBoxComponent },
-  { path: 'admindashboard', component: AdminDashboardComponent},
-  { path: 'login' , component: LoginComponent},
-  { path: 'register', component: RegisterComponent}
+  { path: 'admin', component: AdminDashboardComponent },
+  { path: 'login' , component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'wishlist', component: WishListComponent }
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-gift-box-form',
@@ -8,23 +8,36 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class GiftBoxFormComponent implements OnInit {
 
+  selectedFile = null; 
+
   categories = [ "Birthday", "Wedding", "Graduation", "Baby Shower", "Christmas", "Valentine"];
-  giftBoxForm = new FormGroup({
-    title: new FormControl(''),
-    category: new FormControl(''),
-    size: new FormControl('')
+  giftBoxForm = this.fb.group({
+    title: ['',[Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*')]],
+    category: ['', Validators.required],
+    size: ['', Validators.required],
+    price: ['', [Validators.required, Validators.pattern('[0-9]*')]]
   });
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
+  get title() { return this.giftBoxForm.get('title') }
+
+  get price () { return this.giftBoxForm.get('price') }
+
+  onFileSelected(event: any){
+    this.selectedFile = event.target.files[0];
+   console.log(this.selectedFile);
+    console.log(event);
+  }
+
+  onUpload(){
+
+  }
+
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.log('000000000000');
     console.warn(this.giftBoxForm.value);
   }
-  
-
 }
