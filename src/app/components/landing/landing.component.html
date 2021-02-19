@@ -31,8 +31,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link waves-light" mdbWavesEffect (click)="bottomFunction()" id="mycont"
-                            title="Go to Contact Info">
+                        <a routerLink="../contact" class="nav-link waves-light" mdbWavesEffect
+                            id="mycont" title="Go to Contact Info">
                             Contact
                         </a>
                     </li>
@@ -98,7 +98,7 @@
 
         <br>
         <form action="" align="center">
-            <button class="shopBtn">SHOP NOW</button>
+            <button routerLink="../shop" class="shopBtn">SHOP NOW</button>
         </form>
     </div>
     <!--Products-->
@@ -123,7 +123,7 @@
     <!--Visit-->
     <div class="container">
         <br><br>
-        <h3 align="center">Come Get Your</h3>
+        <h3 align="center">Come Get Your Box</h3>
         <p align="center" style="color: #dda5e7; font-family: cursive;">Visit Our Shop Now</p>
 
         <br><br>
@@ -132,7 +132,7 @@
                 <div class="card2">
 
                     <div class="view overlay">
-                        <a href=""> <img [src]="a.image" class="img-fluid " alt="smaple image">
+                        <a routerLink="../shop"> <img [src]="a.image" class="img-fluid " alt="smaple image">
                             <div class="mask flex-center rgba-purple-light">
                                 <p class="white-text" style="font-size: 28px;"><b> Shop </b></p>
                             </div>
@@ -149,7 +149,7 @@
                 <div class="card2">
 
                     <div class="view overlay">
-                        <a href=""> <img [src]="a.image" class="img-fluid " alt="smaple image">
+                        <a routerLink="../shop"> <img [src]="a.image" class="img-fluid " alt="smaple image">
                             <div class="mask flex-center rgba-purple-slight">
                                 <p class="white-text" style="font-size: 28px;"><b> Shop </b></p>
                             </div>
