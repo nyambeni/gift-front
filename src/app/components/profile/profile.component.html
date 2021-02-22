@@ -1,0 +1,99 @@
+<div class="container-fluid p-0">
+    <!--Navbar-->
+    <mdb-navbar SideClass="navbar  fixed-top navbar-expand-lg" [containerInside]="false">
+      <div class="container">
+    
+       <!-- Navbar brand -->
+       <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="/assets/logo.png" alt="" width="20%"
+          height="15%"></a></mdb-navbar-brand>
+     
+       <!-- Collapsible content -->
+       <links>
+     
+         <ul class="navbar-nav ml-auto nav-flex-icons">
+           <li class="nav-item">
+             <a class="nav-link">
+               <div class="btn-group" mdbDropdown>
+                 <mdb-icon far icon="user" class="purple-text" mdbDropdownToggle></mdb-icon>
+                 <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+                   <a class="dropdown-item" href="#">Profile</a>
+                   <a class="dropdown-item" href="#">Home</a>
+                   <a class="dropdown-item" href="#">Shop</a>
+                   <div class="divider dropdown-divider"></div>
+                   <a class="dropdown-item" href="#">Log-out</a>
+                 </div>
+               </div>
+             </a>
+           </li>
+         </ul>
+       </links>
+       <!-- Collapsible content -->
+      </div>
+     </mdb-navbar>
+     <!--/.Navbar-->
+
+    <!--Container-->
+    <div class="container main-body">
+        <!--Row-->
+        <div class="row">
+            <div class="col-md-3">
+                <p class="h2">{{customer.firstname}} {{customer.lastname}}</p>
+                Track order<br>
+                Wish list<br/>
+                Order history<br/>
+                Payment history<br/>
+
+            </div>
+            
+            <!--Col-md-6-->
+            <div class="col-md-6">
+                <!-- Grid row -->
+
+                <!--Form -->
+              <form [formGroup]="updateForm" (ngSubmit)="updateCustomer()">
+
+                <div class="d-flex justify-content-between">
+                    <p class="h2 mb-5">Edit your profile</p>
+                    <div>
+                        <button (click)="btnCancel()" type="button" mdbBtn class="customBtn" color="purple">Cancel</button>
+                        <button type="submit" mdbBtn class="customBtn" color="purple">Done</button>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <!-- Grid column -->
+                    <div class="col">
+                    <!-- Material input -->
+                    <div class="md-form mt-0">
+                        <input formControlName="firstname" value="{{customer.firstname}}" type="text" id="form6" class="form-control" mdbInput>
+                        <label for="form6">First Name</label>
+                      </div>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col">
+                    <!-- Material input -->
+                    <div class="md-form mt-0">
+                        <input type="text" id="form6" class="form-control" mdbInput formControlName="lastname" value="{{customer.lastname}}">
+                        <label for="form6">Last Name</label>
+                      </div>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            
+                <div class="md-form mt-0">
+                    <input disabled value="{{customer.emailAddress}}" type="text" id="form6" class="form-control" mdbInput>
+                    <label for="form6">Email Address</label>
+                </div>
+
+              </form>
+
+            </div>
+            <!--End of col md-6-->
+        </div>
+        <!--End of row-->
+     </div>
+     <!--End of contaier-->
+    
+</div>
