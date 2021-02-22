@@ -18,6 +18,11 @@ import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WishListComponent } from './components/wish-list/wish-list.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
+import { HttpClientModule } from  '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -31,14 +36,17 @@ import { WishListComponent } from './components/wish-list/wish-list.component';
     AdminDashboardComponent,
     LoginComponent,
     RegisterComponent,
-    WishListComponent
+    WishListComponent,
+    CheckoutComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ], 
   schemas: [
     NO_ERRORS_SCHEMA,

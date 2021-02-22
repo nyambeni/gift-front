@@ -1,0 +1,121 @@
+
+<div class="container">
+  <!-- Horizontal Steppers -->
+  <div class="row">
+    <div class="col-md-12">
+  
+      <!-- Stepers Wrapper -->
+      <ul class="stepper stepper-horizontal">
+  
+        <!-- First Step -->
+        <li>
+          <a href="#!" class="px-0">
+            <span class="circle bg-success">1</span><br/>
+            <span class="label">Order</span>
+          </a>
+        </li>
+  
+        <!-- Second Step -->
+        <li>
+          <a href="#!" class="px-0">
+            <span class="circle">2</span><br/>
+            <span class="label">Delivery</span>
+          </a>
+        </li>
+  
+        <!-- Third Step -->
+        <li>
+          <a href="#!" class="px-0">
+            <span class="circle">3</span><br/>
+            <span class="label">Payment</span>
+          </a>
+        </li>
+  
+      </ul>
+      <!-- /.Stepers Wrapper -->
+  
+    </div>
+  </div>
+  <!-- /.Horizontal Steppers -->
+
+
+  <!--Shipping form-->
+  <form [formGroup]="shippingForm" (ngSubmit)="onSubmit()" class="shipping-form">
+
+    <p class="h2">Shipping Information</p>
+  
+      <p>Free Delivery 3-5 working days</p>
+
+
+      <div class="md-form mt-0">
+        <input type="text" id="name" class="form-control" mdbInput formControlName="name">
+        <label for="name">Name</label>
+      </div>
+
+      <div class="md-form mt-0">
+        <input type="text" id="phonenumber" class="form-control" mdbInput formControlName="phoneNumber">
+        <label for="phonenumber">Phone number</label>
+      </div>
+
+      <div class="md-form mt-0">
+        <input type="text" id="streetaddress" class="form-control" mdbInput formControlName="streetAddress">
+        <label for="streetaddress">Street address</label>
+      </div>
+
+      <div class="md-form mt-0">
+        <input type="text" id="province" class="form-control" mdbInput formControlName="province">
+        <label for="province">Province</label>
+      </div>
+
+      <div class="md-form mt-0">
+        <input type="text" id="city" class="form-control" mdbInput formControlName="citySuburb">
+        <label for="city">City suburb</label>
+      </div>
+
+      <div class="md-form my-0">
+        <input type="text" id="postalcode" class="form-control" mdbInput formControlName="postalCode">
+        <label for="postalcode">Postal code</label>
+      </div>
+
+      <button type="submit" mdbBtn class="customBtn" color="purple">Submit</button>
+
+    </form>
+  <!--End of Shipping-form-->
+
+  <!--Payment form-->
+  <form [formGroup]="billingForm" (ngSubmit)="onFormSubmit()" class="payment-form">
+    <p class="h2">Billing Details</p>
+      <div class="md-form mt-0">
+        <input type="text" id="cardno" class="form-control" mdbInput formControlName="cardNumber">
+        <label for="cardno">Card number</label>
+      </div>
+
+      <div class="md-form mt-0">
+        <input placeholder="MM/YY" type="text" id="expiry" class="form-control short-input" mdbInput formControlName="expiryDate">
+        <label for="expiry">Expiry date</label>
+      </div>
+
+      <div class="md-form mt-0">
+        <input type="text" id="cvv" class="form-control short-input" mdbInput formControlName="cvv">
+        <label for="cvv">CVV</label>
+      </div>
+
+      <div class="md-form mt-0">
+        <input type="text" id="zip" class="form-control" mdbInput formControlName="zip">
+        <label for="zip">ZIP/Postal code</label>
+      </div>
+
+
+      <div class="md-form mt-0">
+        <input type="text" id="cardname" class="form-control" mdbInput formControlName="cardName">
+        <label for="cardname">Card on Name</label>
+      </div>
+
+      <button type="submit" mdbBtn class="customBtn" color="purple">Confirm Payment</button>
+    </form>
+  <!--End of Payment form-->
+
+</div>
+
+
+

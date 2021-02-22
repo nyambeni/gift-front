@@ -14,6 +14,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { WishListComponent } from './components/wish-list/wish-list.component';
 
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'giftboxform', component: GiftBoxFormComponent },
@@ -24,7 +27,9 @@ const routes: Routes = [
   { path: 'admin', component: AdminDashboardComponent },
   { path: 'login' , component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'wishlist', component: WishListComponent }
+  { path: 'wishlist', component: WishListComponent },
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'profile', component: ProfileComponent }
 ];
 
 @NgModule({
