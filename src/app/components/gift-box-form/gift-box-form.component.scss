@@ -1,0 +1,39 @@
+
+.card{
+    width: 28em;
+    margin: 20px auto;
+    background-color: #f5ecf7ea;
+    padding: 10px;
+    outline: none;
+    border: none;
+}
+
+.input-file{
+	border: 0;
+	cursor: pointer;
+    background: #f8ebe5;
+    padding: 2px;
+    border-radius: 2px;
+    max-width: 100%;
+}
+
+.radioRow{
+    margin-top: 12px;
+}
+
+.radio-size{
+    margin-left: 8px;
+}
+
+.upload{
+    background-color: rgb(161, 16, 161);
+    color: white;
+    width: 100%;
+    border-radius: 2px;
+}
+
+.customBtn{
+    border-radius: 20px;
+    padding: 8px;
+}
+

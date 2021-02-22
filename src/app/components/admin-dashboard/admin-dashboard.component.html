@@ -1,0 +1,36 @@
+<!--Main Navigation-->
+<header>
+
+    <!-- Sidebar -->
+    <div class="sidebar-fixed position-fixed">
+
+        <a class="logo-wrapper waves-effect">
+            <img src="../../../assets/logo.png" class="img-fluid" alt="">
+        </a>
+
+        <div class="list-group list-group-flush">
+
+            <a routerLink="../statisticbox" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                <mdb-icon fas icon="chart-pie" class="mr-3"></mdb-icon>Dashboard
+            </a>
+            <a routerLink="../giftboxform" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                <mdb-icon fas icon="cart-plus" class="mr-3"></mdb-icon>Add gift box</a>
+            <a routerLink="../viewbox" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                <mdb-icon fas icon="table" class="mr-3"></mdb-icon>View gift box</a>
+
+        </div>
+
+    </div>
+    <!-- Sidebar -->
+
+    <!--Navbar-->
+    <mdb-navbar [containerInside]="false" SideClass="navbar navbar-expand-lg navbar-light white">
+        <p>User log-out</p>
+
+    </mdb-navbar>
+    <!--/.Navbar-->
+    
+
+</header>
+<!--Main Navigation-->
+<router-outlet></router-outlet>

@@ -1,0 +1,24 @@
+.container-fluid{
+    height: 100vh;
+    background-image: url('../../../assets/login.svg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form{
+    //width: 280px;
+    width: 380px;
+    padding: 20px;
+    margin: auto;
+    //background-color: rgb(247, 244, 244);
+    background-color: #f5ecf7ea;
+    border-radius: 4px;
+}
+
+.customBtn{
+    border-radius: 20px;
+    padding: 8px;
+}
+

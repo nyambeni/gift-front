@@ -1,0 +1,74 @@
+<div class="container-fluid p-0">
+
+
+    <!--Navbar-->
+    <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg" [containerInside]="false">
+        <div class="container">
+            <!-- Navbar brand -->
+            <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="/assets/logo.png" alt="" width="20%"
+                        height="15%"></a></mdb-navbar-brand>
+
+            <!-- Collapsible content -->
+            <links>
+
+                <!-- Links -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a routerLink="" class="nav-link waves-light" mdbWavesEffect title="Go to Home Page">Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="../shop" class="nav-link waves-light" mdbWavesEffect title="Shop Now">
+                            Shop
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="../login" class="nav-link waves-light" mdbWavesEffect title="Log In">
+                            Log In
+                        </a>
+                    </li>
+
+                </ul>
+                <!-- Links -->
+            </links>
+            <!-- Collapsible content -->
+        </div>
+    </mdb-navbar>
+    <!--/.Navbar-->
+
+<form  class="container register-form">
+    <p class="h2">Create new account</p>
+    <div class="md-form">
+        <mdb-icon fas icon="user" class="purple-text prefix"></mdb-icon>
+        <input mdbInput type="text" class="form-control" id="username">
+        <label for="username">First Name</label>
+    </div>
+    
+    <div class="md-form">
+        <mdb-icon fas icon="user" class="purple-text prefix"></mdb-icon>
+        <input mdbInput type="text" class="form-control" id="username">
+        <label for="username">Last Name</label>
+    </div>
+
+    <div class="md-form">
+        <mdb-icon fas icon="envelope" class="purple-text prefix"></mdb-icon>
+        <input mdbInput type="text" id="email" class="form-control">
+        <label for="email">Email Address</label>
+    </div>
+
+    <div class="md-form">
+        <mdb-icon fas icon="key" class="purple-text prefix"></mdb-icon>
+        <input mdbInput type="password" id="password" class="form-control">
+        <label for="password">Password</label>
+    </div>
+
+    <div class="md-form">
+        <mdb-icon fas icon="key" class="purple-text prefix"></mdb-icon>
+        <input mdbInput type="password" id="form2" class="form-control">
+        <label for="form2">Confirm Password</label>
+    </div>
+    <div class="md-form mb-0">
+        <button mdbBtn type="button" color="purple" class="customBtn">Sign Up</button>
+    </div>
+</form>
+</div>

@@ -1,7 +1,185 @@
-<app-navbar></app-navbar>
+<!--<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="example-toolbar" mat-button color="accent">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+  
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    
+    <span mat-small>Administrator</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>expand_more</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" class="profile">
+      <button mat-menu-item>
+        profile
+      </button>
+      <button mat-menu-item>
+      sign out
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <!--<a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>--
+        <a mat-list-item routerLink>Dashboard</a>
+        <a mat-list-item routerLink>Dashboard 1</a>
+        <a mat-list-item routerLink>Dashboard 2</a>
+        <a mat-list-item routerLink>Dashboard 3</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div>
+          <!--Statisitics--
+        <div fxLayout="row" fxLayoutAlign="space-between">
+        
+          <mat-card class="card">
+            <mat-card-title>Boxes</mat-card-title>
+            <mat-card-content>
+              <span>23001</span>
+            </mat-card-content>
+          </mat-card>
+          <mat-card class="card">
+            <mat-card-title>Customers</mat-card-title>
+            <mat-card-content>
+              <span>2005</span>
+            </mat-card-content>
+          </mat-card>
+          <mat-card class="card">
+            <mat-card-title>Orders</mat-card-title>
+            <mat-card-content>
+              <span>120</span>
+            </mat-card-content>
+          </mat-card>
+          <mat-card class="card">
+            <mat-card-title>Deliveries</mat-card-title>
+            <mat-card-content>
+              <span>35</span>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <!--End of statistics--
+
+        <!--Items Table--
+        
+        <mat-card class="card-form">
+          <p>Add a gift box</p>
+          <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <label>Shape</label>
+                <input type="text" matInput>
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width">
+                <label>Category</label>
+                <input type="text" matInput>
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width">
+                <mat-label>price</mat-label>
+                <input type="number" matInput class="example-right-align">
+                <span matPrefix>R&nbsp;</span>
+                <span matSuffix>.00</span>
+              </mat-form-field>
+      
+              <mat-form-field appearance="fill" class="example-full-width">
+                <mat-label>Size</mat-label>
+                <mat-select>
+                  <mat-option>Extra Small</mat-option>
+                  <mat-option>Small</mat-option>
+                  <mat-option>Medium</mat-option>
+                  <mat-option>Large</mat-option>
+                </mat-select>
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width">
+                <mat-label>Quantity</mat-label>
+                <input type="number" matInput>
+              </mat-form-field>
+      
+              <div>
+                <label>Add gift box image</label><br />
+                <input type="file" accept="image/*" class="input-file" style="color:aqua"><br /><br />
+                <button mat-raised-button color="accent">upload</button>
+              </div>
+              
+            </form>
+        </mat-card>
+        <!--End of item table--
+
+    </div> 
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+<!---
+<div class="container">
+  <mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    
+    <span mat-small>Administrator</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>expand_more</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item disabled>
+        profile
+      </button>
+      <button mat-menu-item>
+      sign out
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+  
+  <mat-card class="card-form">
+    <p>Add a gift box</p>
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <label>Shape</label>
+          <input type="text" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <label>Category</label>
+          <input type="text" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>price</mat-label>
+          <input type="number" matInput class="example-right-align">
+          <span matPrefix>R&nbsp;</span>
+          <span matSuffix>.00</span>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="example-full-width">
+          <mat-label>Size</mat-label>
+          <mat-select>
+            <mat-option>Extra Small</mat-option>
+            <mat-option>Small</mat-option>
+            <mat-option>Medium</mat-option>
+            <mat-option>Large</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Quantity</mat-label>
+          <input type="number" matInput>
+        </mat-form-field>
+
+        <div>
+          <label>Add gift box image</label><br />
+          <input type="file" accept="image/*" class="input-file"><br />
+          <button mat-raised-button>upload</button>
+        </div>
+        
+      </form>
+  </mat-card>
+</div>-->
 <router-outlet></router-outlet>
-
-
-
-
-

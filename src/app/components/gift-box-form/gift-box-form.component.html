@@ -1,0 +1,43 @@
+<app-admin-dashboard></app-admin-dashboard>
+<form class="card" [formGroup]="giftBoxForm" (ngSubmit)="onSubmit()">
+  <p class="h2 mb-0 text-center">Add Gift-Box</p>
+
+  <div class="md-form mt-1">
+    <input mdbInput type="text" id="title" class="form-control" formControlName="title" />
+    <label for="title">Title</label>
+  </div>
+  
+  <div class="customeRow">
+    <label>Category</label>
+    <select class="custom-select" formControlName="category">
+      <option *ngFor="let category of categories" [ngValue]="category">
+        {{ category }}
+      </option>
+    </select>
+  </div>
+
+  <div class="radioRow">
+    <label>Size</label><br/>
+    <input type="radio" formControlName="size" class="radio-size" value="small">Small
+    <input type="radio" formControlName="size" class="radio-size" value="medium">Medium
+    <input type="radio" formControlName="size" class="radio-size" value="large">Large
+  </div>
+  
+  <div class="md-form">
+    <input mdbInput type="number" id="price" class="form-control">
+    <label for="price">Price</label>
+  </div>
+
+  <div>
+    <label>Add gift box image</label><br />
+    <input type="file" accept="image/*" class="input-file" class="upload">
+  </div>
+  
+  <div>
+    <button mdbBtn color="purple" class="customBtn mt-1">upload</button>
+  </div>
+
+  <button mdbBtn type="submit" color="purple" class="customBtn mt-3">Save</button>
+
+</form>
+

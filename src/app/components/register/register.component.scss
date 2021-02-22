@@ -1,0 +1,66 @@
+form{
+    max-width: 500px;
+    background-color: #f5ecf7ea;
+    padding: 20px;
+    margin-top: 100px;
+}
+
+.customBtn{
+    border-radius: 20px;
+    padding: 8px;
+}
+
+::ng-deep .navbar {
+    background-color: #f5ecf7ea;
+      padding: 10px;
+      box-shadow: 1px 1px 10px 10px rgba(145, 144, 144, 0.329);
+  }
+  
+  nav{
+      background-color: #f5ecf7ea;
+      padding: 10px;
+      box-shadow: 1px 1px 10px 10px rgba(145, 144, 144, 0.329);
+  
+  }
+  
+  nav a {text-decoration: none;
+      padding-left: 20px;
+  
+  }
+  .current{ color: #dda5e7; 
+      text-decoration: underline;
+      
+  } 
+  .link { color: #464a4e; 
+  } 
+  
+  .link:hover { color: #d00af3; font-size: 150%; }
+  
+  .current:hover { color: #a9f0ec; font-size: 150%;
+   }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: #464a4e;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    
+    color: #d00af3;
+    border-radius: 0.5em;
+  }
