@@ -3,43 +3,43 @@
 
     <!--Navbar-->
     <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg" [containerInside]="false">
-        <div class="container">
-            <!-- Navbar brand -->
-            <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="/assets/logo.png" alt="" width="20%"
-                        height="15%"></a></mdb-navbar-brand>
 
-            <!-- Collapsible content -->
-            <links>
+        <!-- Navbar brand -->
+        <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="/assets/logo.png" alt="" width="100"
+                    height="50"></a></mdb-navbar-brand>
 
-                <!-- Links -->
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link waves-light" mdbWavesEffect title="Shop Now"
-                            style="text-decoration: underline; color: #dd69f1d8;">
-                            Shop<span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link waves-light" mdbWavesEffect title="Sign Up">Sign Up
-                        </a>
-                    </li>
+        <!-- Collapsible content -->
+        <links>
 
-                    <li class="nav-item">
-                        <a class="nav-link waves-light" mdbWavesEffect title="Sign In">
-                            Sign In
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link waves-light" mdbWavesEffect title="Cart">
-                            Cart
-                        </a>
-                    </li>
+            <!-- Links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect title="Shop Now"
+                        style="text-decoration: underline; color: #dd69f1d8;">
+                        Shop<span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a routerLink="../register" class="nav-link waves-light" mdbWavesEffect title="Sign Up">Sign Up
+                    </a>
+                </li>
 
-                </ul>
-                <!-- Links -->
-            </links>
-            <!-- Collapsible content -->
-        </div>
+                <li class="nav-item">
+                    <a routerLink="../login" lass="nav-link waves-light" mdbWavesEffect title="Sign In">
+                        Sign In
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect title="Cart">
+                        Cart
+                    </a>
+                </li>
+
+            </ul>
+            <!-- Links -->
+        </links>
+        <!-- Collapsible content -->
+
     </mdb-navbar>
     <!--/.Navbar-->
 
@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link waves-light" mdbWavesEffect (click)="bottomFunction()" id="mycont"
+                    <a routerLink="../contact" class="nav-link waves-light" mdbWavesEffect id="mycont"
                         title="Go to Contact Info">
                         Contact
                     </a>
@@ -94,46 +94,354 @@
     </header>
     <!--Main Layout-->
     <main class="text-center py-5 mt-3">
+        <!--Side Buttons-->
+        <div style="float:left" class="sideBack">
 
-        <div class="container">
+            <h2 align="cent4">Categories</h2>
+            <button (click)="all()" class="sideBtn">All</button>
+            <br>
+            <button (click)="birthday()" class="sideBtn">Birthday</button>
+            <br>
+            <button (click)="wedding()" class="sideBtn">Wedding</button>
+            <br>
+            <button (click)="babyShower()" class="sideBtn">Baby Showers</button>
+            <br>
+            <button (click)="christmas()" class="sideBtn">Christmas</button>
+            <br>
+            <button (click)="valentine()" class="sideBtn">Valentine</button>
+            <br>
+            <button (click)="gradution()" class="sideBtn">Graduation</button>
 
-            <div style="float:left">
 
-                <button class="sideBtn">Birthday</button>
-                <br>
-                <button class="sideBtn">Wedding</button>
-                <br>
-                <button class="sideBtn">Baby Showers</button>
-                <br>
-                <button class="sideBtn">Christmas</button>
-                <br>
-                <button class="sideBtn">Valentine</button>
-                <br>
-                <button class="sideBtn">Graduation</button>
-                
+        </div>
+        <!--Side Buttons-->
+        <div class="container" >
 
-            </div>
+            <!--All Items-->
+            <div *ngIf="this.num == 0">
+                <h2 align="center">All Categories</h2>
+                <br>
+                <div style="margin-top: 50px;">
+                    <div class="row justify-content-center">
 
-            <div class="row">
-                <div class="col-md-12" id = "middlebit">
+                        <div class="col-sm-4 pb-3" *ngFor="let item of items; index as userID">
+                            <!-- Card -->
+                            <div class="card">
+                                <!-- Card -->
+                                <mdb-card>
 
-                    <p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                        in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <!-- Card img -->
+                                    <img [src]="item.image" alt="Card image cap" width="250" height="250"
+                                        style="padding-top: 30px;">
+                                    <a>
+                                        <div class="mask"></div>
+                                    </a>
 
-                        <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                
+                                    <!--Card content-->
+                                    <mdb-card-body>
+                                        <br>
+                                        <h4>{{item.title}}</h4>
 
+                                        <p style="color: #dda5e7; font-family: cursive;">Category: {{item.category}}
+                                            <br>
+                                            Price: R{{item.price}}
+                                        </p>
+
+                                        <!--
+                                    <button type="button" class="click" (click)="plus(item, userID)"
+                                        style="outline: none;">Add To Cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i></button>
+                                    <button *ngIf="item.numItems > 0" type="button" class="cancel"
+                                    (click)="minus(item, userID)" style="outline: none;">Cancel <i
+                                        class="fa fa-times-circle" aria-hidden="true"></i></button>-->
+                                    </mdb-card-body>
+                                </mdb-card>
+                                <!-- Card -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!--All Items-->
+
+            <!--Birthday-->
+            <div *ngIf="this.num == 1">
+                <h2 align="center">Birthday Gifts Boxes</h2>
+                <br>
+                <div style="margin-top: 50px;">
+                    <div class="row justify-content-center">
+
+                        <div class="col-sm-4 pb-3" *ngFor="let bd of bday; index as userID">
+                            <!-- Card -->
+                            <div class="card">
+                                <!-- Card -->
+                                <mdb-card>
+
+                                    <!-- Card img -->
+                                    <img [src]="bd.image" alt="Card image cap" width="250" height="250"
+                                        style="padding-top: 30px;">
+                                    <a>
+                                        <div class="mask"></div>
+                                    </a>
+
+                                    <!--Card content-->
+                                    <mdb-card-body>
+                                        <br>
+                                        <h4>{{bd.title}}</h4>
+
+                                        <p style="color: #dda5e7; font-family: cursive;">Category: {{bd.category}}
+                                            <br>
+                                            Price: R{{bd.price}}
+                                        </p>
+
+                                        <!--
+                                    <button type="button" class="click" (click)="plus(item, userID)"
+                                        style="outline: none;">Add To Cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i></button>
+                                    <button *ngIf="item.numItems > 0" type="button" class="cancel"
+                                    (click)="minus(item, userID)" style="outline: none;">Cancel <i
+                                        class="fa fa-times-circle" aria-hidden="true"></i></button>-->
+                                    </mdb-card-body>
+                                </mdb-card>
+                                <!-- Card -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Birthday-->
+
+            <!--Wedding-->
+            <div *ngIf="this.num == 2">
+                <h2 align="center">Wedding Gifts Boxes</h2>
+                <br>
+                <div style="margin-top: 50px;">
+                    <div class="row justify-content-center">
+
+                        <div class="col-sm-4 pb-3" *ngFor="let we of wed; index as userID">
+                            <!-- Card -->
+                            <div class="card">
+                                <!-- Card -->
+                                <mdb-card>
+
+                                    <!-- Card img -->
+                                    <img [src]="we.image" alt="Card image cap" width="250" height="250"
+                                        style="padding-top: 30px;">
+                                    <a>
+                                        <div class="mask"></div>
+                                    </a>
+
+                                    <!--Card content-->
+                                    <mdb-card-body>
+                                        <br>
+                                        <h4>{{we.title}}</h4>
+
+                                        <p style="color: #dda5e7; font-family: cursive;">Category: {{we.category}}
+                                            <br>
+                                            Price: R{{we.price}}
+                                        </p>
+
+                                        <!--
+                                    <button type="button" class="click" (click)="plus(item, userID)"
+                                        style="outline: none;">Add To Cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i></button>
+                                    <button *ngIf="item.numItems > 0" type="button" class="cancel"
+                                    (click)="minus(item, userID)" style="outline: none;">Cancel <i
+                                        class="fa fa-times-circle" aria-hidden="true"></i></button>-->
+                                    </mdb-card-body>
+                                </mdb-card>
+                                <!-- Card -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Wedding-->
+
+            <!--Baby Shower-->
+            <div *ngIf="this.num == 3">
+                <h2 align="center">Baby Shower Gifts Boxes</h2>
+                <br>
+                <div style="margin-top: 50px;">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4 pb-3" *ngFor="let bsh of bShower; index as userID">
+                            <!-- Card -->
+                            <div class="card">
+                                <!-- Card -->
+                                <mdb-card>
+
+                                    <!-- Card img -->
+                                    <img [src]="bsh.image" alt="Card image cap" width="250" height="250"
+                                        style="padding-top: 30px;">
+                                    <a>
+                                        <div class="mask"></div>
+                                    </a>
+
+                                    <!--Card content-->
+                                    <mdb-card-body>
+                                        <br>
+                                        <h4>{{bsh.title}}</h4>
+
+                                        <p style="color: #dda5e7; font-family: cursive;">Category: {{bsh.category}}
+                                            <br>
+                                            Price: R{{bsh.price}}
+                                        </p>
+
+                                        <!--
+                                    <button type="button" class="click" (click)="plus(item, userID)"
+                                        style="outline: none;">Add To Cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i></button>
+                                    <button *ngIf="item.numItems > 0" type="button" class="cancel"
+                                    (click)="minus(item, userID)" style="outline: none;">Cancel <i
+                                        class="fa fa-times-circle" aria-hidden="true"></i></button>-->
+                                    </mdb-card-body>
+                                </mdb-card>
+                                <!-- Card -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Baby Shower-->
+
+            <!--Christmas-->
+            <div *ngIf="this.num == 4">
+                <h2 align="center">Christmas Gifts Boxes</h2>
+                <br>
+                <div style="margin-top: 50px;">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4 pb-3" *ngFor="let mas of cMas; index as userID">
+                            <!-- Card -->
+                            <div class="card">
+                                <!-- Card -->
+                                <mdb-card>
+
+                                    <!-- Card img -->
+                                    <img [src]="mas.image" alt="Card image cap" width="250" height="250"
+                                        style="padding-top: 30px;">
+                                    <a>
+                                        <div class="mask"></div>
+                                    </a>
+
+                                    <!--Card content-->
+                                    <mdb-card-body>
+                                        <br>
+                                        <h4>{{mas.title}}</h4>
+
+                                        <p style="color: #dda5e7; font-family: cursive;">Category: {{mas.category}}
+                                            <br>
+                                            Price: R{{mas.price}}
+                                        </p>
+
+                                        <!--
+                                    <button type="button" class="click" (click)="plus(item, userID)"
+                                        style="outline: none;">Add To Cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i></button>
+                                    <button *ngIf="item.numItems > 0" type="button" class="cancel"
+                                    (click)="minus(item, userID)" style="outline: none;">Cancel <i
+                                        class="fa fa-times-circle" aria-hidden="true"></i></button>-->
+                                    </mdb-card-body>
+                                </mdb-card>
+                                <!-- Card -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Christmas-->
+
+            <!--Valentine-->
+            <div *ngIf="this.num == 5">
+                <h2 align="center">Valentine Gifts Boxes</h2>
+                <br>
+                <div style="margin-top: 50px;">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4 pb-3" *ngFor="let val of valen; index as userID">
+                            <!-- Card -->
+                            <div class="card">
+                                <!-- Card -->
+                                <mdb-card>
+
+                                    <!-- Card img -->
+                                    <img [src]="val.image" alt="Card image cap" width="250" height="250"
+                                        style="padding-top: 30px;">
+                                    <a>
+                                        <div class="mask"></div>
+                                    </a>
+
+                                    <!--Card content-->
+                                    <mdb-card-body>
+                                        <br>
+                                        <h4>{{val.title}}</h4>
+
+                                        <p style="color: #dda5e7; font-family: cursive;">Category: {{val.category}}
+                                            <br>
+                                            Price: R{{val.price}}
+                                        </p>
+
+                                        <!--
+                                    <button type="button" class="click" (click)="plus(item, userID)"
+                                        style="outline: none;">Add To Cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i></button>
+                                    <button *ngIf="item.numItems > 0" type="button" class="cancel"
+                                    (click)="minus(item, userID)" style="outline: none;">Cancel <i
+                                        class="fa fa-times-circle" aria-hidden="true"></i></button>-->
+                                    </mdb-card-body>
+                                </mdb-card>
+                                <!-- Card -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Valentine-->
+
+            <!--Graduation-->
+            <div *ngIf="this.num == 6">
+                <h2 align="center">Graduation Gifts Boxes</h2>
+                <br>
+                <div style="margin-top: 50px;">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4 pb-3" *ngFor="let gr of grad; index as userID">
+                            <!-- Card -->
+                            <div class="card">
+                                <!-- Card -->
+                                <mdb-card>
+
+                                    <!-- Card img -->
+                                    <img [src]="gr.image" alt="Card image cap" width="250" height="250"
+                                        style="padding-top: 30px;">
+                                    <a>
+                                        <div class="mask"></div>
+                                    </a>
+
+                                    <!--Card content-->
+                                    <mdb-card-body>
+                                        <br>
+                                        <h4>{{gr.title}}</h4>
+
+                                        <p style="color: #dda5e7; font-family: cursive;">Category: {{gr.category}}
+                                            <br>
+                                            Price: R{{gr.price}}
+                                        </p>
+
+                                        <!--
+                                    <button type="button" class="click" (click)="plus(item, userID)"
+                                        style="outline: none;">Add To Cart <i class="fa fa-shopping-cart"
+                                            aria-hidden="true"></i></button>
+                                    <button *ngIf="item.numItems > 0" type="button" class="cancel"
+                                    (click)="minus(item, userID)" style="outline: none;">Cancel <i
+                                        class="fa fa-times-circle" aria-hidden="true"></i></button>-->
+                                    </mdb-card-body>
+                                </mdb-card>
+                                <!-- Card -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Graduation-->
+
         </div>
 
     </main>
@@ -185,16 +493,17 @@
             </div>
 
             <br>
-            <h5 style="font-size: 20px;">Follow Us</h5>
 
+
+
+        </div>
+        <div class="tAndC">
             <ul>
+                <h5 style="font-size: 20px; padding-left: 20px;">Follow Us</h5>
                 <li><a href=""><i class="fab fa-facebook-square"></i></a></li>
                 <li><a href=""><i class="fab fa-twitter-square"></i></a></li>
                 <li><a href=""><i class="fab fa-instagram-square"></i></a></li>
             </ul>
-        </div>
-        <div class="tAndC">
-            <h4>Terms & Conditions</h4>
         </div>
 
         <button (click)="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>

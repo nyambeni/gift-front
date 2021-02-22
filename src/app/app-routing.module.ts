@@ -5,8 +5,8 @@ import { GiftBoxFormComponent } from './components/gift-box-form/gift-box-form.c
 import { StatisticBoxComponent } from './components/statistic-box/statistic-box.component'
 import { LandingComponent } from './components/landing/landing.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
-
 import { ShoplandingComponent } from './components/shoplanding/shoplanding.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { ViewBoxComponent } from './components/view-box/view-box.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
@@ -23,13 +23,22 @@ const routes: Routes = [
   { path: 'statisticbox', component: StatisticBoxComponent },
   { path: 'about', component: AboutusComponent },
   { path: 'shop', component: ShoplandingComponent },
+  { path: 'contact', component: ContactComponent },
+
   { path: 'viewbox', component: ViewBoxComponent },
+
   { path: 'admin', component: AdminDashboardComponent },
   { path: 'login' , component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'wishlist', component: WishListComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'profile', component: ProfileComponent }
+
+  { path: 'admindashboard', component: AdminDashboardComponent},
+  { path: 'login' , component: LoginComponent},
+  { path: 'register', component: RegisterComponent}
+
+
 ];
 
 @NgModule({

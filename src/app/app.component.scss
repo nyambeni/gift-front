@@ -1,0 +1,75 @@
+  /*
+.container{
+   
+}*/
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.example-full-width{
+    width: 100%;
+}
+
+.card{
+    margin: 20px auto;
+}
+
+.card-form{
+    width: 28em;
+    margin: 20px auto;
+}
+
+.input-file{
+	border: 0;
+	cursor: pointer;
+    background: #216e69;
+    max-width: 100%;
+}
+
+.example-right-align {
+    text-align: right;
+  }
+  
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+input.example-right-align {
+    -moz-appearance: textfield;
+  }
+
+  /**For navbar**/
+  .example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .example-is-mobile .example-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+  }
+  
+  h1.example-app-name {
+    margin-left: 8px;
+  }
+  
+  .example-sidenav-container {
+    flex: 1;
+  }
+  
+  .example-is-mobile .example-sidenav-container {
+    flex: 1 0 auto;
+  }
+
+  /***End of for navbar*/
+
+  .profile{
+    background-color: pink;
+  }

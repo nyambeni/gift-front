@@ -3,43 +3,43 @@
 
     <!--Navbar-->
     <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg" [containerInside]="false">
-        <div class="container">
-            <!-- Navbar brand -->
-            <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="/assets/logo.png" alt="" width="20%"
-                        height="15%"></a></mdb-navbar-brand>
 
-            <!-- Collapsible content -->
-            <links>
+        <!-- Navbar brand -->
+        <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="/assets/logo.png" alt="" width="100"
+            height="50"></a></mdb-navbar-brand>
 
-                <!-- Links -->
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a routerLink="" class="nav-link waves-light" mdbWavesEffect title="Go to Home Page">Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a routerLink="../shop" class="nav-link waves-light" mdbWavesEffect title="Shop Now">
-                            Shop
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link waves-light" mdbWavesEffect
-                            style="text-decoration: underline; color: #dd69f1d8;" title="Go to About">
-                            About Us<span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link waves-light" mdbWavesEffect (click)="bottomFunction()" id="mycont"
-                            title="Go to Contact Info">
-                            Contact
-                        </a>
-                    </li>
+        <!-- Collapsible content -->
+        <links>
 
-                </ul>
-                <!-- Links -->
-            </links>
-            <!-- Collapsible content -->
-        </div>
+            <!-- Links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a routerLink="" class="nav-link waves-light" mdbWavesEffect title="Go to Home Page">Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="../shop" class="nav-link waves-light" mdbWavesEffect title="Shop Now">
+                        Shop
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect style="text-decoration: underline; color: #dd69f1d8;"
+                        title="Go to About">
+                        About Us<span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="../contact" class="nav-link waves-light" mdbWavesEffect id="mycont"
+                        title="Go to Contact Info">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+            <!-- Links -->
+        </links>
+        <!-- Collapsible content -->
+
     </mdb-navbar>
     <!--/.Navbar-->
 
@@ -50,37 +50,52 @@
     </div>
     <!--Title-->
 
-    <!--SlideShow-->
+    <!-- Main -->
+    <header class="h-100">
 
-    <mdb-carousel [animation]="'slide'">
-        <mdb-carousel-item>
-            <img class="d-block w-100" src="/assets/Slide/Box4.png" alt="First slide">
-        </mdb-carousel-item>
-        <mdb-carousel-item>
-            <img class="d-block w-100" src="/assets/Slide/Box3.png" alt="Second slide">
-        </mdb-carousel-item>
-        <mdb-carousel-item>
-            <img class="d-block w-100" src="/assets/Slide/Box5.png" alt="Third slide">
-        </mdb-carousel-item>
-        <mdb-carousel-item>
-            <img class="d-block w-100" src="/assets/Slide/Box7.png" alt="Third slide">
-        </mdb-carousel-item>
-    </mdb-carousel>
-    <!--SlideShow-->
+        <div class="view">
+            <div class="full-bg-img">
+                <div class="mask rgba-black-strong flex-center">
+                    <div class="container">
+                        <div class="white-text text-center wow fadeInUp">
+                            <h2>About Us</h2>
+                            <h5>Who Are We?</h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.Main -->
+    </header>
+    <!--Main Layout-->
+    <!--Features-->
+
+
 
     <!--Features-->
 
     <!--About Us-->
     <div class="container">
         <br><br>
-        <h3 align="center">About Us</h3>
-        <p align="center" style="color: #dda5e7; font-family: cursive;">Get to know us well.</p>
-        <p align="center" style="padding-bottom: 20px;">
-            Gift Box is an online shop which sells gift boxes online. It allows the customer to shop for
-            gift boxes online. It allows the customer to choose from the range of different gift boxes the service
-            provider have. Gift Box also allows the first time buyer to register so that they can get notification
-            about new range of gift boxes and great deals the service provider have.
-        </p>
+        <img src="/assets/Landing/Box2.png" alt="" style="float: right;" width="255" height="255" class="aboutImg">
+
+        <div align="center" style="padding-bottom: 20px; width: 600px;">
+            <h3 align="center">About Us</h3>
+            <p align="center" style="color: #dda5e7; font-family: cursive;">Get to know us well.</p>
+
+
+            <p>
+                Gift Box is an online shop which sells gift boxes online. It allows the customer to shop for
+                gift boxes online. It allows the customer to choose from the range of different gift boxes the service
+                provider have. Gift Box also allows the first time buyer to register so that they can get notification
+                about new range of gift boxes and great deals the service provider have.
+            </p>
+
+            <form action="" align="center">
+                <button routerLink="../shop" class="shopBtn">SHOP NOW</button>
+            </form>
+        </div>
 
     </div>
     <!--About Us-->
@@ -88,18 +103,65 @@
     <!--Objective-->
     <div class="whoAreWe">
         <div class="container">
-            <h3 align="center" style="padding-top: 20px;">Objective</h3>
-            <hr style="color: white; border: 1px solid rgb(66, 64, 64); width: 20%;">
-
-            <p align="center" style="padding-bottom: 20px;">
-                The objective of this system is to save time for customers and also help the customers do their shopping
-                at any time anywhere they are. It will also help the service provider to improve their services on their
-                marketing side and also track the patterns of shopping for their existing customers.
-            </p>
+            <h3 align="center" style="padding-top: 20px;">How We Operate</h3>
+            <p align="center" style="color: #dda5e7; font-family: cursive;">Find Out More.</p>
+            <br><br>
+            <div class="row justify-content-center">
+                <div class="col-sm-4 pb-3">
+                    <!-- Card -->
+                    <!-- Manufacturing -->
+                    <div class="card">
+                        <br>
+                        <img src="/assets/manu.png" alt="" width="55" height="55">
+                        <br>
+                        <h3>Manufacturing</h3>
+                        <br>
+                        <p style="padding: 15px;">We produce a large range of boxes in different sizes, shapes
+                            and appearance for our customer's satisfaction.
+                        </p>
+                    </div>
+                    <!-- Manufacturing -->
+                    <!-- Card -->
+                </div>
+                <div class="col-sm-4 pb-3">
+                    <!-- Card -->
+                    <!-- Distribution -->
+                    <div class="card">
+                        <br>
+                        <img src="/assets/truck.png" alt="" width="55" height="55">
+                        <br>
+                        <h3>Distribution</h3>
+                        <br>
+                        <p style="padding: 15px;">
+                            We also offer delivery to our customers, and to make life simplier we deliver to a
+                            destination that our customer provides, even though it is a single box to a single
+                            destination we still deliver.
+                        </p>
+                    </div>
+                    <!-- Distribution -->
+                    <!-- Card -->
+                </div>
+            </div>
         </div>
     </div>
-    <!--Objective-->
-    <!--Features-->
+
+    <!--Video-->
+    <br><br>
+    <div class="container">
+        <div class="video">
+
+            <h3 align="center">Get a Gift Box</h3>
+            <p align="center" style="color: #dda5e7; font-family: cursive;">Based on a category.</p>
+
+            <video width="400" controls>
+                <source src="/assets/bear.mp4" type="video/mp4">
+            </video>
+            <br>
+            <p>Go on to our <a routerLink="../shop" style="color: #dda5e7; font-family: cursive;">shop</a> today.</p>
+        </div>
+    </div>
+    <!--Video-->
+
     <footer>
 
         <h3 align="center">For More Infomation:</h3>
@@ -135,16 +197,16 @@
                     Soshanguve Block L
                 </div>
                 <div class="col" style="margin-top: 10px;">
-    
+
                 </div>
                 <div class="col" style="margin-top: 10px;">
-    
+
                 </div>
             </div>
 
             <br>
             <h5 style="font-size: 20px;">Follow Us</h5>
-              
+
             <ul>
                 <li><a href=""><i class="fab fa-facebook-square"></i></a></li>
                 <li><a href=""><i class="fab fa-twitter-square"></i></a></li>

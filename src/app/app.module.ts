@@ -10,11 +10,14 @@ import { GiftBoxFormComponent } from './components/gift-box-form/gift-box-form.c
 import { StatisticBoxComponent } from './components/statistic-box/statistic-box.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ShoplandingComponent } from './components/shoplanding/shoplanding.component';
-import { ViewBoxComponent } from './components/view-box/view-box.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
-import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ViewBoxComponent } from './components/view-box/view-box.component';
+import { LoginComponent } from './components/login/login.component';
+
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WishListComponent } from './components/wish-list/wish-list.component';
@@ -22,6 +25,11 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 import { HttpClientModule } from  '@angular/common/http';
+
+
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
+
 
 
 @NgModule({
@@ -32,21 +40,32 @@ import { HttpClientModule } from  '@angular/common/http';
     StatisticBoxComponent,
     AboutusComponent,
     ShoplandingComponent,
-    ViewBoxComponent,
+    ContactComponent,
     AdminDashboardComponent,
+
     LoginComponent,
     RegisterComponent,
     WishListComponent,
     CheckoutComponent,
     ProfileComponent
+
+    RegisterComponent,
+    ViewBoxComponent,
+    LoginComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+
     MDBBootstrapModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
+
+    FormsModule, ReactiveFormsModule,
+    MDBBootstrapModule.forRoot()
+
   ], 
   schemas: [
     NO_ERRORS_SCHEMA,

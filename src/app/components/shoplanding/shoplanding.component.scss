@@ -9,7 +9,8 @@
 
 ::ng-deep .navbar {
     background-color: #f5ecf7ea;
-      padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
       box-shadow: 1px 1px 10px 10px rgba(145, 144, 144, 0.329);
   }
   
@@ -64,7 +65,7 @@
   
   .card{
       background-color: #f5ecf7ea;
-      width: 350px;
+      width: 320px;
       height: 400px;
       align-items: center;
       padding: 10p;
@@ -126,7 +127,7 @@
   }
   
   .tAndC{
-    text-align: center;
+   
     background-color: #dd69f1d8;
     color: white;
     padding: 10px;
@@ -192,11 +193,61 @@
 #middlebit 	{margin: 10px;
 			padding: 1px 10px 10px 10px;
 			background-color: #FFFFFF;
-			color: #006600;
+	
 }
 
 .sideBtn{
   margin-top: 10px;
   width: 150px;
-  height: 30px;
+  height: 50px;
+
+  outline: none;
+  border: none;
+  background-color: #d07edf9d;
+  color: #f5ecf7ea;
+
+  border-radius: 0.2em;
+  box-shadow: 0px 0px 8px 5px rgba(145, 144, 144, 0.329);
 }
+
+.sideBack{
+  background-color: #f5ecf7ea;
+  width: 200px;
+padding: 20px;
+
+}
+
+
+
+.click {
+  cursor: pointer;
+  border-radius: 0.05em;
+  color: #fff;
+  background-color: #037cc2;
+  border: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  
+  font-size: 14px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.cancel {
+  cursor: pointer;
+  border-radius: 0.05em;
+  color: #fff;
+  background-color:rgba(189, 5, 5, 0.932);
+  border: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  margin-left: 10px;
+  font-size: 14px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+

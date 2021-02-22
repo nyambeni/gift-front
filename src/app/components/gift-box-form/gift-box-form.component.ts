@@ -38,6 +38,12 @@ export class GiftBoxFormComponent implements OnInit {
   }
 
   onSubmit() {
+
+
+    // TODO: Use EventEmitter with form value
+    console.log('000000000000');
+    console.log(this.giftBoxForm.value);
+
     console.warn(this.giftBoxForm.value);
   }
 }
