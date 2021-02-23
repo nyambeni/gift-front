@@ -19,7 +19,6 @@ import { LoginComponent } from './components/login/login.component';
 import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WishListComponent } from './components/wish-list/wish-list.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -44,6 +43,10 @@ import { HttpClientModule } from  '@angular/common/http';
     WishListComponent,
     CheckoutComponent,
     ProfileComponent,
+
+
+
+
     RegisterComponent,
     ViewBoxComponent,
     LoginComponent
@@ -56,6 +59,11 @@ import { HttpClientModule } from  '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+
+
+
+    FormsModule, ReactiveFormsModule,
+
     MDBBootstrapModule.forRoot()
 
   ], 

@@ -12,10 +12,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { WishListComponent } from './components/wish-list/wish-list.component';
 
-import { CheckoutComponent } from './components/checkout/checkout.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -27,6 +25,7 @@ const routes: Routes = [
 
   { path: 'viewbox', component: ViewBoxComponent },
 
+
   { path: 'admin', component: AdminDashboardComponent },
   { path: 'login' , component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -34,10 +33,12 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'profile', component: ProfileComponent },
 
+
   { path: 'admindashboard', component: AdminDashboardComponent},
   { path: 'login' , component: LoginComponent},
-  { path: 'register', component: RegisterComponent}
-
+  { path: 'register', component: RegisterComponent},
+  { path: 'wish', component: WishlistComponent}
+  
 
 ];
 
