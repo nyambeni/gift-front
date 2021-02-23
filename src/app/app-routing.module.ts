@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'wishlist', component: WishListComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
 
   { path: 'admindashboard', component: AdminDashboardComponent},
   { path: 'login' , component: LoginComponent},

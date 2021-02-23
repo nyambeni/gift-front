@@ -27,10 +27,6 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { HttpClientModule } from  '@angular/common/http';
 
 
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule} from '@angular/forms';
-
-
 
 @NgModule({
   declarations: [
@@ -47,8 +43,7 @@ import { ReactiveFormsModule} from '@angular/forms';
     RegisterComponent,
     WishListComponent,
     CheckoutComponent,
-    ProfileComponent
-
+    ProfileComponent,
     RegisterComponent,
     ViewBoxComponent,
     LoginComponent
@@ -57,13 +52,10 @@ import { ReactiveFormsModule} from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-
     MDBBootstrapModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-
-    FormsModule, ReactiveFormsModule,
+    HttpClientModule,
     MDBBootstrapModule.forRoot()
 
   ], 
