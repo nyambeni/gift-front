@@ -66,7 +66,7 @@
   .card{
       background-color: #f5ecf7ea;
       width: 320px;
-      height: 500px;
+      height: 510px;
       align-items: center;
       padding: 10p;
       outline: none;
@@ -232,9 +232,9 @@ padding: 20px;
   border: none;
   color: white; 
   border-radius: 10em; 
-  font-size: 18px;
-  width: 40px;
-  height: 40px;
+  font-size: 19px;
+  width: 50px;
+  height: 50px;
   text-align: center;
   margin-left: 10px;
 }
@@ -243,25 +243,30 @@ padding: 20px;
   cursor: pointer;
   border-radius: 0.05em;
 
-  background-color:rgba(189, 5, 5, 0.932);
+  background-color:white;
 
   font-family: Georgia, "Times New Roman", serif;
   margin-left: 10px;
+  margin-top: 5px;
 
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 
   outline: none; /* Remove outline */
-  border: none;
-  color: white; /* Text color */
+  border: 2px solid rgba(214, 13, 13, 0.815);
+  color: rgba(214, 13, 13, 0.815); /* Text color */
 
-  border-radius: 10em; 
+  border-radius: 0.2em; 
   font-size: 18px; /* Increase font size */
-  width: 40px;
-  height: 40px;
+  width: 150px;
+  height: 50px;
   text-align: center;
 
 }
 
+.cancel:hover{
+  color: white;
+  background-color:rgba(214, 13, 13, 0.815);
+}
 
 span{
 
