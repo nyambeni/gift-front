@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, Validators } from '@angular/forms';
+import { CustomerService } from 'src/app/services/customer.service';
 import { passwordMatchValidator } from '../../validation/passwordMatchValidator';
 
 @Component({
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
   },
   {validator: passwordMatchValidator}) 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private cs: CustomerService) { }
 
   get firstname() { return this.customerForm.get('firstname')}
 
@@ -36,7 +37,8 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.customerForm.value);
+    this.cs.addCustomer(this.customerForm.value)
+    .subscribe(response => console.log("submit has been ...."));
   }
 
 }

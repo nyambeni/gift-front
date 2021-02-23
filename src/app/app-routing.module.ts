@@ -24,6 +24,16 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
 
   { path: 'viewbox', component: ViewBoxComponent },
+
+
+  { path: 'admin', component: AdminDashboardComponent },
+  { path: 'login' , component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'wishlist', component: WishListComponent },
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'profile', component: ProfileComponent },
+
+
   { path: 'admindashboard', component: AdminDashboardComponent},
   { path: 'login' , component: LoginComponent},
   { path: 'register', component: RegisterComponent},

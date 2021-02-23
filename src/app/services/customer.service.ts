@@ -6,17 +6,13 @@ import { HttpClient, HttpErrorResponse} from  '@angular/common/http';
 })
 export class CustomerService {
 
-  url = "http://localhost:3000";
+  url = "http://10.100.14.52:3000";
 
   constructor(private http: HttpClient) { }
 
   //register a user 
   addCustomer(customerData: any ){
-    console.log(`Customer Post API
-    ${customerData}
-    ----------------------
-    `)
-    return this.http.post(this.url, customerData);
+    return this.http.post(`${this.url}/register/register`, customerData);
   }
 
   getCustomer(id: number){
@@ -45,4 +41,7 @@ export class CustomerService {
     return Number(localStorage.getItem('id'));
   }
 
+  logIn(userData: any){
+    return this.http.post(`${this.url}/login/customer`, userData);
+  }
 }
