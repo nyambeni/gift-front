@@ -1,12 +1,12 @@
-import { HostListener } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { HostListener } from '@angular/core';
 
 @Component({
-  selector: 'app-landing',
-  templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss']
+  selector: 'app-order',
+  templateUrl: './order.component.html',
+  styleUrls: ['./order.component.scss']
 })
-export class LandingComponent implements OnInit {
+export class OrderComponent implements OnInit {
   items: Array<{ image: string, title: string, category: string, price: number, itmSelect: number }> = [
     { image: "assets/Landing/Box3.png", title: "Merry Merry", category: "Christmas", price: 50, itmSelect: 2 },
     { image: "assets/Landing/Box2.png", title: "Pink Happiness", category: "Baby Shower", price: 100, itmSelect: 3 },
@@ -30,8 +30,16 @@ export class LandingComponent implements OnInit {
   }
 
 
-
+tPrice:number=0;
+amt:number=0;
   ngOnInit(): void {
+
+    for(let i of this.items){
+      this.amt=i.price*i.itmSelect;
+      this.tPrice+=this.amt;
+    }
+
+    console.log(this.tPrice);
     
   }
 
@@ -54,15 +62,10 @@ export class LandingComponent implements OnInit {
     // document.body.scrollTop = 0; // For Safari
     // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
-
-  bottomFunction() {
-    document.body.scrollTop = 10000; // For Safari
-    document.documentElement.scrollTop = 10000; // For Chrome, Firefox, IE and Opera
-  }
-
   homeFunction(){
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
+
 
 }

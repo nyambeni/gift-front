@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, Validators } from '@angular/forms';
-import { CustomerService } from 'src/app/services/customer.service';
 import { passwordMatchValidator } from '../../validation/passwordMatchValidator';
 
 @Component({
@@ -18,10 +17,9 @@ export class RegisterComponent implements OnInit {
     emailAddress: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&].{8,}')]],
     confirmPassword: ['',  Validators.required]
-  },
-  {validator: passwordMatchValidator}) 
+  }) 
 
-  constructor(private fb: FormBuilder, private cs: CustomerService) { }
+  constructor(private fb: FormBuilder) { }
 
   get firstname() { return this.customerForm.get('firstname')}
 
@@ -37,8 +35,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(){
-    this.cs.addCustomer(this.customerForm.value)
-    .subscribe(response => console.log("submit has been ...."));
+    console.log(this.customerForm.value);
   }
 
 }

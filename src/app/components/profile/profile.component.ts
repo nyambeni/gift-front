@@ -39,4 +39,8 @@ export class ProfileComponent implements OnInit {
     this.customer.firstname = this.customer.firstname;
     this.customer.lastname;
   }
+
+  logOut(){
+    console.log("log user out");
+  }
 }

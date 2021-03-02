@@ -1,13 +1,116 @@
+::ng-deep .navbar {
+    background-color: #f5ecf7ea;
+    padding: 10px;
+    box-shadow: 1px 1px 10px 10px rgba(145, 144, 144, 0.329);
+}
+  
+.nav{
+    background-color: #f5ecf7ea;
+    padding: 10px;
+    box-shadow: 1px 1px 10px 10px rgba(145, 144, 144, 0.329);
+}
+  
+.nav a {text-decoration: none;
+      padding-left: 20px;
+}
+
 .short-input{
     max-width: 75px;
 }
 
 .customBtn{
     border-radius: 20px;
-    padding: 8px;
+    padding: 4px;
     margin-left: 0px;
 }
 
 .payment-form, .shipping-form{
     max-width: 400px;
+    margin-bottom: 30px;
+}
+
+  
+table, th, td {
+  padding: 10px;
+  
+  font-size: 16px;
+  
+  color: #3d3d38;
+  font-family: cursive;
+
+  text-align: center;
+  }
+  td{
+  width: 20%;
+  height: 20%;
+  }
+  
+  td {
+    background-color:  #bea1bc31;
+    border: 3px solid white;
+  }
+  th{
+    
+  font-size: 20px;
+  text-decoration: none;
+  font-family: cursive;
+  
+  background: transparent;
+  }
+
+  .click {
+    cursor: pointer;
+    border-radius: 0.05em;
+    color: #fff;
+    background-color: rgba(247, 8, 8, 0.856);
+    border: 0;
+    width: 90px;
+    height: 50px;
+    font-family: Georgia, "Times New Roman", serif;
+    
+    font-size: 14px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.199);
+  }
+
+  .clicked {
+    cursor: pointer;
+    border-radius: 0.05em;
+    color: #fff;
+    background-color: rgba(247, 8, 8, 0.856);
+    border: 0;
+    width: 120px;
+    height: 50px;
+    font-family: Georgia, "Times New Roman", serif;
+    
+    font-size: 14px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.199);
+  }
+
+
+  #quantity{
+      width: 100px;
+      height: 40px;
+      text-align: center;
+      border: none;
+      outline: none;
+      box-shadow: 1px 1px 10px 1px rgba(85, 84, 84, 0.548);
+      border-radius: 0.1em;
+  }
+
+.addQ{
+  background-color: rgba(9, 216, 9, 0.884);
+  color: white;
+  border: none;
+  outline: none;
+  box-shadow: 1px 1px 10px 1px rgba(85, 84, 84, 0.548);
+
+}
+
+.subQ{
+  background-color: rgba(247, 8, 8, 0.856);
+  color: white;
+  border: none;
+  outline: none;
+  box-shadow: 1px 1px 10px 1px rgba(85, 84, 84, 0.548);
+
 }

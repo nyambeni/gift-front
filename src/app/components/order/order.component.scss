@@ -9,9 +9,10 @@
 
 ::ng-deep .navbar {
     background-color: #f5ecf7ea;
-    padding-left: 50px;
-    padding-right: 50px;
+      padding-left: 50px;
+      padding-right: 50px;
       box-shadow: 1px 1px 10px 10px rgba(145, 144, 144, 0.329);
+  
   }
   
   nav{
@@ -65,19 +66,15 @@
   
   .card{
       background-color: #f5ecf7ea;
-      width: 320px;
-      height: 510px;
+      width: 350px;
+      height: 400px;
       align-items: center;
       padding: 10p;
       outline: none;
       border: none;
       border-radius: 0%;
       text-align: center;
-
-      align-items: center;
   }
-
-  
   .card2{
     background-color: transparent;
   
@@ -131,7 +128,7 @@
   }
   
   .tAndC{
-   
+    text-align: center;
     background-color: #dd69f1d8;
     color: white;
     padding: 10px;
@@ -141,12 +138,12 @@
   
   .title{
     text-align: center;
-    background-color: #d07edf9d;
+    background-color: #dd69f19d;
     color: white;
     padding: 10px;
     box-shadow: 0px 0px 8px 5px rgba(145, 144, 144, 0.329);
-    
-    margin-top: 80px;
+    font-family: cursive;
+    margin-top: 76px;
   }
   
   #myBtn {
@@ -155,7 +152,7 @@
     bottom: 20px; /* Place the button at the bottom of the page */
     right: 30px; /* Place the button 30px from the right */
     z-index: 99; /* Make sure it does not overlap */
-    border: 1px solid #dd69f1; 
+    border: 1px solid #dd69f1; /* Remove borders */
     outline: none; /* Remove outline */
     background-color: #dd69f19d; /* Set a background color */
     color: white; /* Text color */
@@ -170,146 +167,3 @@
   #myBtn:hover {
     background-color: rgb(112, 3, 54); /* Add a dark-grey background on hover */
   } 
-
-.follow{
-  align-items: center;
-}
-
-.view {
-  background-image: url("/assets/Slide/Box2.png");
-  background-size: cover;
-  height: 100vh;
-}
-
-.navbar {
-  z-index: 1;
-}
-
-
-#middlebit p {margin: 10px;
-} 
-
-#middlebit h2, main h3 {color: #CC66CC;
-					background-color: #FFFFFF;
-					
-}
-						 
-#middlebit 	{margin: 10px;
-			padding: 1px 10px 10px 10px;
-			background-color: #FFFFFF;
-	
-}
-
-.sideBtn{
-  margin-top: 10px;
-  width: 150px;
-  height: 50px;
-
-  outline: none;
-  border: none;
-  background-color: #d07edf9d;
-  color: #f5ecf7ea;
-
-  border-radius: 0.2em;
-  box-shadow: 0px 0px 8px 5px rgba(145, 144, 144, 0.329);
-}
-
-.sideBack{
-  background-color: #f5ecf7ea;
-  width: 200px;
-padding: 20px;
-
-}
-
-
-
-.click {
-  cursor: pointer;
-  background-color: #d07edf9d;
-  font-family: Georgia, "Times New Roman", serif;
-
-  outline: none;
-  border: none;
-  color: white; 
-  border-radius: 10em; 
-  font-size: 19px;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  margin-left: 10px;
-}
-
-.cancel {
-  cursor: pointer;
-  border-radius: 0.05em;
-
-  background-color:white;
-
-  font-family: Georgia, "Times New Roman", serif;
-  margin-left: 10px;
-  margin-top: 5px;
-
-  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-
-  outline: none; /* Remove outline */
-  border: 2px solid rgba(214, 13, 13, 0.815);
-  color: rgba(214, 13, 13, 0.815); /* Text color */
-
-  border-radius:10em; 
-  font-size: 18px; /* Increase font size */
-  width: 50px;
-  height: 50px;
-  text-align: center;
-
-}
-
-.cancel:hover{
-  color: white;
-  background-color:rgba(214, 13, 13, 0.815);
-}
-
-span{
-
-  padding-left: 2px;
-  padding-top: 2px;
-  font-size: 14px;
-  font-weight: 900;
-  position: absolute;
-  
-  height: 35px;
-  width: 305x;
-  
-  color: #FFFFFF;
-  top: 8px;
-  right: 16px;
-  margin-bottom: 50px;
-  border: solid #d07edf9d;
-  border-radius: 100px;
-  height: 30px;
-  width: 30px;
-  background: #d17edfd0;
-  }
-
-  
-.spanWish{
-
-  padding-left: 3px;
-  padding-top: 3px;
-  font-size: 14px;
-  font-weight: 900;
-  position: absolute;
-  
-  height: 35px;
-  width: 305x;
-  
-  color: #FFFFFF;
-  top: 8px;
-  right: 90px;
-  margin-bottom: 50px;
-  border: solid #d07edf9d;
-  border-radius: 100px;
-  height: 30px;
-  width: 30px;
-  background: #d17edfd0;
-  }
-  

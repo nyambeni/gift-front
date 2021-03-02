@@ -68,8 +68,9 @@ export class ContactComponent implements OnInit {
 
   // When the user clicks on the button, scroll to the top of the document
   topFunction() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    document.getElementById('top')?.scrollIntoView({behavior: 'smooth'})
+    // document.body.scrollTop = 0; // For Safari
+    // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
   myVideo: any = document.getElementById("video1");

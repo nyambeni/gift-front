@@ -1,121 +1,251 @@
+<!--Navbar-->
+<mdb-navbar class="mb-5" SideClass="navbar  fixed-top navbar-expand-lg" [containerInside]="false">
+  <div class="container">
 
-<div class="container">
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="/assets/logo.png" alt="" width="20%" height="15%"></a>
+    </mdb-navbar-brand>
+
+    <!-- Collapsible content -->
+    <links>
+
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item">
+          <a class="nav-link">
+            <div class="btn-group" mdbDropdown>
+              <mdb-icon far icon="user" class="purple-text" mdbDropdownToggle></mdb-icon>
+              <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="#">Home</a>
+                <a class="dropdown-item" href="#">Shop</a>
+                <div class="divider dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Log-out</a>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </links>
+    <!-- Collapsible content -->
+  </div>
+</mdb-navbar>
+<!--/.Navbar-->
+
+<div class="container mt-5">
   <!-- Horizontal Steppers -->
   <div class="row">
     <div class="col-md-12">
-  
+
       <!-- Stepers Wrapper -->
       <ul class="stepper stepper-horizontal">
-  
+
         <!-- First Step -->
         <li>
-          <a href="#!" class="px-0">
-            <span class="circle bg-success">1</span><br/>
+          <a [routerLink]="" (click)="stepOne()" class="px-0">
+            <span class="circle bg-success">1</span><br />
             <span class="label">Order</span>
           </a>
         </li>
-  
+
         <!-- Second Step -->
         <li>
-          <a href="#!" class="px-0">
-            <span class="circle">2</span><br/>
+          <a [routerLink]="" (click)="stepTwo()" class="px-0">
+            <span class="circle" id="cirle2">2</span><br />
             <span class="label">Delivery</span>
           </a>
         </li>
-  
+
         <!-- Third Step -->
         <li>
-          <a href="#!" class="px-0">
-            <span class="circle">3</span><br/>
+          <a [routerLink]="" (click)="stepThree()" class="px-0">
+            <span class="circle" id="cirle3">3</span><br />
             <span class="label">Payment</span>
           </a>
         </li>
-  
+
       </ul>
       <!-- /.Stepers Wrapper -->
-  
+
     </div>
   </div>
   <!-- /.Horizontal Steppers -->
+  <!-- Items -->
+  <h3>Selected Items</h3>
+  <br><br>
+  <table align="center">
+    <thead>
 
+      <th>Item</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Remove Item</th>
+
+
+    </thead>
+    <tbody *ngFor="let item of items; index as userno">
+      <tr>
+
+        <td>
+          <img [src]="item.image" alt="Card image cap" width="250" height="250" style="padding-top: 30px;"
+            align="center">
+          <br><br>
+          <h4>{{item.title}}</h4>
+
+          <p style="color: #dda5e7; font-family: cursive;">
+
+            Category: {{item.category}}
+            <br>
+            Price: R{{item.price}}
+          </p>
+
+        </td>
+        <td align="center">{{item.desc}}</td>
+        <td align="center">
+          <form action="/action_page.php">
+           
+            <button class="addQ" (click)="addQ(item)" title="Add">+</button> {{item.numItems}} <button class="subQ" (click)="subQ(item)"
+              *ngIf="item.numItems>1" title="Subtract">-</button>
+          </form>
+        </td>
+
+
+        <td align="center"><button type="button" class="click" (click)="onDelete(userno, item.price, item.title)"><i
+              class="fa fa-ban" aria-hidden="true"></i> Delete
+          </button>
+          
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+  <br><br>
+  <button routerLink="../shop" type="button" class="clicked" (click)="cancelOrder()"><i class="fa fa-ban"
+      aria-hidden="true"></i> Cancel Order
+  </button>
+
+  <br><br>
+
+  <h3>Total Price: R{{price}}</h3>
+
+  <br><br>
+
+  <!-- /.Items -->
 
   <!--Shipping form-->
-  <form [formGroup]="shippingForm" (ngSubmit)="onSubmit()" class="shipping-form">
+  <form [formGroup]="shippingForm" (ngSubmit)="onSubmit()" class="shipping-form" *ngIf="step2">
 
-    <p class="h2">Shipping Information</p>
-  
-      <p>Free Delivery 3-5 working days</p>
+    <p class="h4">Shipping Information</p>
+
+    <p>Free Delivery 3-5 working days</p>
 
 
-      <div class="md-form mt-0">
-        <input type="text" id="name" class="form-control" mdbInput formControlName="name">
-        <label for="name">Name</label>
+    <div class="md-form mt-0">
+      <input type="text" id="name" class="form-control" mdbInput formControlName="name">
+      <label for="name">Name</label>
+      <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="text-danger">
+        <small *ngIf="name?.errors?.required"> *Name is required</small>
+        <small *ngIf="name?.errors?.minlength"> *Name suppose to be more than 3 letter</small>
       </div>
+    </div>
 
-      <div class="md-form mt-0">
-        <input type="text" id="phonenumber" class="form-control" mdbInput formControlName="phoneNumber">
-        <label for="phonenumber">Phone number</label>
+    <div class="md-form mt-0">
+      <input type="text" id="phonenumber" class="form-control" mdbInput formControlName="phoneNumber">
+      <label for="phonenumber">Phone number</label>
+      <div *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)" class="text-danger">
+        <small *ngIf="phoneNumber?.errors?.required"> *Phone Number is required</small>
       </div>
+    </div>
 
-      <div class="md-form mt-0">
-        <input type="text" id="streetaddress" class="form-control" mdbInput formControlName="streetAddress">
-        <label for="streetaddress">Street address</label>
+    <div class="md-form mt-0">
+      <input type="text" id="streetaddress" class="form-control" mdbInput formControlName="streetAddress">
+      <label for="streetaddress">Street address</label>
+      <div *ngIf="streetAddress?.invalid && (streetAddress?.dirty || streetAddress?.touched)" class="text-danger">
+        <small *ngIf="streetAddress?.errors?.required"> *Street Address is required</small>
+        <small *ngIf="streetAddress?.errors?.minlength"> *Address is too short</small>
       </div>
+    </div>
 
-      <div class="md-form mt-0">
-        <input type="text" id="province" class="form-control" mdbInput formControlName="province">
-        <label for="province">Province</label>
+    <div class="md-form mt-0">
+      <input type="text" id="province" class="form-control" mdbInput formControlName="province">
+      <label for="province">Province</label>
+      <div *ngIf="province?.invalid && (province?.dirty || province?.touched)" class="text-danger">
+        <small *ngIf="province?.errors?.required"> *Province is required</small>
+        <small *ngIf="province?.errors?.minlength"> *Province suppose to be more than 3 letter</small>
       </div>
+    </div>
 
-      <div class="md-form mt-0">
-        <input type="text" id="city" class="form-control" mdbInput formControlName="citySuburb">
-        <label for="city">City suburb</label>
+    <div class="md-form mt-0">
+      <input type="text" id="city" class="form-control" mdbInput formControlName="citySuburb">
+      <label for="city">City suburb</label>
+      <div *ngIf="citySuburb?.invalid && (citySuburb?.dirty || citySuburb?.touched)" class="text-danger">
+        <small *ngIf="citySuburb?.errors?.required"> *City Suburb is required</small>
       </div>
+    </div>
 
-      <div class="md-form my-0">
-        <input type="text" id="postalcode" class="form-control" mdbInput formControlName="postalCode">
-        <label for="postalcode">Postal code</label>
+    <div class="md-form mt-0">
+      <input type="text" id="postalcode" class="form-control" mdbInput formControlName="postalCode">
+      <label for="postalcode">Postal code</label>
+      <div *ngIf="postalCode?.invalid && (postalCode?.dirty || postalCode?.touched)" class="text-danger">
+        <small *ngIf="postalCode?.errors?.required"> *Postal Code is required</small>
       </div>
+    </div>
 
-      <button type="submit" mdbBtn class="customBtn" color="purple">Submit</button>
+    <button type="submit" mdbBtn class="customBtn" color="purple">Submit</button>
 
-    </form>
+  </form>
   <!--End of Shipping-form-->
 
   <!--Payment form-->
-  <form [formGroup]="billingForm" (ngSubmit)="onFormSubmit()" class="payment-form">
-    <p class="h2">Billing Details</p>
-      <div class="md-form mt-0">
-        <input type="text" id="cardno" class="form-control" mdbInput formControlName="cardNumber">
-        <label for="cardno">Card number</label>
+  <form [formGroup]="billingForm" (ngSubmit)="onFormSubmit()" class="payment-form" *ngIf="step3">
+    <p class="h4">Billing Details</p>
+    <div class="md-form mt-0">
+      <input type="text" id="cardno" class="form-control" mdbInput formControlName="cardNumber">
+      <label for="cardno">Card number</label>
+      <div *ngIf="cardNumber?.invalid && (cardNumber?.dirty || cardNumber?.touched)" class="text-danger">
+        <small *ngIf="cardNumber?.errors?.required"> *Card number is required</small>
       </div>
+    </div>
 
-      <div class="md-form mt-0">
-        <input placeholder="MM/YY" type="text" id="expiry" class="form-control short-input" mdbInput formControlName="expiryDate">
-        <label for="expiry">Expiry date</label>
+    <div class="md-form mt-0">
+      <input placeholder="MM/YY" type="text" id="expiry" class="form-control short-input" mdbInput
+        formControlName="expiryDate">
+      <label for="expiry">Expiry date</label>
+      <div *ngIf="expiryDate?.invalid && (expiryDate?.dirty || expiryDate?.touched)" class="text-danger">
+        <small *ngIf="expiryDate?.errors?.required"> *Expiry date is required</small>
       </div>
+    </div>
 
-      <div class="md-form mt-0">
-        <input type="text" id="cvv" class="form-control short-input" mdbInput formControlName="cvv">
-        <label for="cvv">CVV</label>
+    <div class="md-form mt-0">
+      <input type="text" id="cvv" class="form-control short-input" mdbInput formControlName="cvv">
+      <label for="cvv">CVV</label>
+      <div *ngIf="cvv?.invalid && (cvv?.dirty || cvv?.touched)" class="text-danger">
+        <small *ngIf="cvv?.errors?.required"> *CVV is required</small>
       </div>
+    </div>
 
-      <div class="md-form mt-0">
-        <input type="text" id="zip" class="form-control" mdbInput formControlName="zip">
-        <label for="zip">ZIP/Postal code</label>
+    <div class="md-form mt-0">
+      <input type="text" id="zip" class="form-control" mdbInput formControlName="zip">
+      <label for="zip">ZIP/Postal code</label>
+      <div *ngIf="zip?.invalid && (zip?.dirty || zip?.touched)" class="text-danger">
+        <small *ngIf="zip?.errors?.required"> *Zip is required</small>
+        <small *ngIf="zip?.errors?.minlength"> *Zip suppose to have more than 3 letter</small>
       </div>
+    </div>
 
 
-      <div class="md-form mt-0">
-        <input type="text" id="cardname" class="form-control" mdbInput formControlName="cardName">
-        <label for="cardname">Card on Name</label>
+    <div class="md-form mt-0">
+      <input type="text" id="cardname" class="form-control" mdbInput formControlName="cardName">
+      <label for="cardname">Card on Name</label>
+      <div *ngIf="cardName?.invalid && (cardName?.dirty || cardName?.touched)" class="text-danger">
+        <small *ngIf="cardName?.errors?.required"> *Card name is required</small>
       </div>
+    </div>
 
-      <button type="submit" mdbBtn class="customBtn" color="purple">Confirm Payment</button>
-    </form>
+    <button type="submit" mdbBtn class="customBtn" color="purple">Confirm Payment</button>
+  </form>
   <!--End of Payment form-->
 
 </div>
-
-
-

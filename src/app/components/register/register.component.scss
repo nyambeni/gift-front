@@ -8,6 +8,7 @@ form{
 .customBtn{
     border-radius: 20px;
     padding: 8px;
+    background-color: #8a71c7!important;
 }
 
 ::ng-deep .navbar {
@@ -63,4 +64,8 @@ form{
     
     color: #d00af3;
     border-radius: 0.5em;
+  }
+
+  .prefix{
+    color: #8a71c7!important;
   }

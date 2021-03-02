@@ -1,6 +1,6 @@
 <div class="container-fluid p-0">
     <!--Navbar-->
-    <mdb-navbar SideClass="navbar  fixed-top navbar-expand-lg" [containerInside]="false">
+    <mdb-navbar class="mb-5" SideClass="navbar fixed-top navbar-expand-lg" [containerInside]="false">
       <div class="container">
     
        <!-- Navbar brand -->
@@ -14,13 +14,15 @@
            <li class="nav-item">
              <a class="nav-link">
                <div class="btn-group" mdbDropdown>
-                 <mdb-icon far icon="user" class="purple-text" mdbDropdownToggle></mdb-icon>
+                 <div mdbDropdownToggle>
+                    <i class="fas fa-chevron-down icon"></i>
+                 </div>
+                 
                  <div class="dropdown-menu dropdown-menu-right dropdown-primary">
-                   <a class="dropdown-item" href="#">Profile</a>
-                   <a class="dropdown-item" href="#">Home</a>
-                   <a class="dropdown-item" href="#">Shop</a>
+                   <a routerLink="" class="dropdown-item" href="#">Profile</a>
+                   <a routerLink="" class="dropdown-item" href="#">Shop</a>
                    <div class="divider dropdown-divider"></div>
-                   <a class="dropdown-item" href="#">Log-out</a>
+                   <button class="dropdown-item btn-logOut" (click)="logOut()">Log-out</button>
                  </div>
                </div>
              </a>
@@ -36,13 +38,12 @@
     <div class="container main-body">
         <!--Row-->
         <div class="row">
-            <div class="col-md-3">
-                <p class="h2">{{customer.firstname}} {{customer.lastname}}</p>
-                Track order<br>
-                Wish list<br/>
-                Order history<br/>
-                Payment history<br/>
-
+            <div class="col-md-3 profile-menu">
+                <p class="h5">{{customer.firstname}} {{customer.lastname}}</p>
+                <a routerLink="" class="nav-link" mdbWavesEffect >Cart</a>
+                <a routerLink="" class="nav-link" mdbWavesEffect >Wish list</a>
+                <a routerLink="" class="nav-link" mdbWavesEffect >Order history</a>
+                <a routerLink="" class="nav-link" mdbWavesEffect >Payment history</a>
             </div>
             
             <!--Col-md-6-->
@@ -50,10 +51,10 @@
                 <!-- Grid row -->
 
                 <!--Form -->
-              <form [formGroup]="updateForm" (ngSubmit)="updateCustomer()">
+              <form [formGroup]="updateForm" (ngSubmit)="updateCustomer()" class="form">
 
                 <div class="d-flex justify-content-between">
-                    <p class="h2 mb-5">Edit your profile</p>
+                    <p class="h5 mb-1">Edit your profile</p>
                     <div>
                         <button (click)="btnCancel()" type="button" mdbBtn class="customBtn" color="purple">Cancel</button>
                         <button type="submit" mdbBtn class="customBtn" color="purple">Done</button>

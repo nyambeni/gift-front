@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-login',
@@ -14,16 +13,12 @@ export class LoginComponent implements OnInit {
     password: [''],
   })
 
-  constructor(private fb: FormBuilder, private cs: CustomerService) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
-    this.cs.logIn(this.loginForm.value)
-    .subscribe((response:any) => console.log(response.user),
-    error => console.log("error"));
+    console.log(this.loginForm.value);
   }
-
 }
-HTTPS://AWS.AMAZON.COM/EDUCATION/AWSEDUCATE/CONTACT-US

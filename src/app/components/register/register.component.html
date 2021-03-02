@@ -40,7 +40,7 @@
     <p class="h2">Create new account</p>
     <!--form firstname-->
     <div class="md-form mb-0">
-        <mdb-icon fas icon="user" class="purple-text prefix"></mdb-icon>
+        <mdb-icon fas icon="user" class="prefix"></mdb-icon>
         <input mdbInput type="text" class="form-control" id="username" formControlName="firstname">
         <label for="username">First Name</label>
     </div>
@@ -53,7 +53,7 @@
     
     <!--for lastname-->
     <div class="md-form mb-0">
-        <mdb-icon fas icon="user" class="purple-text prefix"></mdb-icon>
+        <mdb-icon fas icon="user" class="prefix"></mdb-icon>
         <input mdbInput type="text" class="form-control" id="username" formControlName="lastname">
         <label for="username">Last Name</label>
     </div>
@@ -66,7 +66,7 @@
 
     <!--for email address-->
     <div class="md-form mb-0">
-        <mdb-icon fas icon="envelope" class="purple-text prefix"></mdb-icon>
+        <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
         <input mdbInput type="text" id="email" class="form-control" formControlName="emailAddress">
         <label for="email">Email Address</label>
     </div>
@@ -78,7 +78,7 @@
 
     <!--for password-->
     <div class="md-form">
-        <mdb-icon fas icon="key" class="purple-text prefix"></mdb-icon>
+        <mdb-icon fas icon="key" class="prefix"></mdb-icon>
         <input mdbInput type="password" id="password" class="form-control" formControlName="password">
         <label for="password">Password</label>
     </div>
@@ -91,18 +91,19 @@
 
     <!--for Confirm Password-->
     <div class="md-form mb-0">
-        <mdb-icon fas icon="key" class="purple-text prefix"></mdb-icon>
+        <mdb-icon fas icon="key" class="prefix"></mdb-icon>
         <input mdbInput type="password" id="form2" class="form-control" formControlName="confirmPassword">
         <label for="form2">Confirm Password</label>
     </div>
     
+    <!--
     <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)" class="text-danger">
-     <!---Have to fix confirm password-->  <small *ngIf="confirmPassword?.errors?.misMatch"> *Passwords don't match</small>
-    </div>
+     Have to fix confirm password  <small *ngIf="confirmPassword?.errors?.misMatch"> *Passwords don't match</small>
+    </div>-->
     <!--End of confirm password-->
 
     <div class="md-form mb-0">
-        <button type="submit" mdbBtn color="purple" class="customBtn">Sign Up</button>
+        <button type="submit" [disabled]='!customerForm.valid' mdbBtn class="customBtn">Sign Up</button>
     </div>
 </form>
 </div>

@@ -1,4 +1,6 @@
-<div class="container-fluid p-0">
+<div id="top"></div>
+
+<div class="container-fluid p-0" >
 
 
     <!--Navbar-->
@@ -36,15 +38,15 @@
                 </li>-->
 
                 <li class="nav-item">
-                    <a class="nav-link waves-light" mdbWavesEffect title="Cart">
-                        <!--routerLink="../checkout"    {{itm}} -->
+                    <a routerLink="../checkout"  class="nav-link waves-light" mdbWavesEffect title="Cart">
+
                         <img src="assets/cart.png" alt="Cart" width="40" height="40" style="float: right;  position: absolute;
                             top: 20px; right: 32px;" class="line"><span>{{itm}} </span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a routerLink="../wish"  class="nav-link waves-light" mdbWavesEffect title="Wish List">
-                        <!--   {{itm}} -->
+        \
                         <img src="assets/wish.png" alt="Cart" width="40" height="40" style="float: right;  position: absolute;
                             top: 20px; right: 100px;" class="line"><span class="spanWish">{{wish}}</span>
                     </a>
@@ -75,6 +77,12 @@
                     <a routerLink="../wish" class="nav-link waves-light" mdbWavesEffect id="mycont"
                         title="Go to Contact Info">
                         Wish List
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="../order" class="nav-link waves-light" mdbWavesEffect id="mycont"
+                        title="View Your Order">
+                        View Order
                     </a>
                 </li>
                 <li class="nav-item">
@@ -194,6 +202,65 @@
                 </div>
             </div>
             <!--All Items-->
+
+            <!--All Items--
+            <div *ngIf="this.num == 0">
+                <h2 align="center">All Available Item</h2>
+                <h4 align="center" style="color: #dda5e7; font-family: cursive;">Select a Categories To Select an Item
+                </h4>
+
+                <br>
+                <div style="margin-top: 50px;">
+                    <div class="row justify-content-center">
+
+                        <div class="col-sm-4 pb-3" *ngFor="let itm of item; index as userID">
+                            <!-- Card --
+                            <div class="card">
+                                <!-- Card --
+                                <mdb-card>
+
+                                    <!-- Card img --
+                                    <img [src]="item.image" alt="Card image cap" width="250" height="250"
+                                        style="padding-top: 30px;">
+                                    <a>
+                                        <div class="mask"></div>
+                                    </a>
+
+                                    <!--Card content--
+                                    <mdb-card-body>
+                                        <br>
+                                        <h4>{{itm.title}}</h4>
+
+                                        <p style="color: #dda5e7; font-family: cursive;">
+
+                                            Category: {{itm.category}}
+                                            <br>
+                                            Price: R{{itm.item_price}}
+                                        </p>
+
+
+                                        <!-- <button type="button" class="click" style="outline: none;" title="Add To Cart"
+                                            (click)="addToCart(item, userID)">
+                                            <mdb-icon fas icon="cart-arrow-down"></mdb-icon>
+                                            
+                                        </button>
+
+
+                                        <button type="button" class="click" style="outline: none;"
+                                            title="Add To Wishlist"><i class="fas fa-heart">
+                                                <!--(click)="plus(item, userID)"
+                                            </i></button>--
+
+                                    </mdb-card-body>
+                                </mdb-card>
+                                <!-- Card --
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--All Items-->
+
 
             <!--Birthday-->
             <div *ngIf="this.num == 1">

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
+//import { CustomerService } from 'src/app/services/customer.service';
+
 
 @Component({
   selector: 'app-shoplanding',
@@ -11,42 +13,53 @@ import { Router } from '@angular/router';
 export class ShoplandingComponent implements OnInit {
 
 
-  items: Array<{ image: string, title: string, category: string, price: number, numItems: number, wish: number, availItems: number }> = [
-    { image: "assets/GiftBoxes/box1.png", title: "Cloth Work", category: "Birthday", price: 250, numItems: 0, wish:0, availItems: 5 },
-    { image: "assets/GiftBoxes/box2.png", title: "Super Green", category: "Graduation", price: 300, numItems: 0, wish:0, availItems: 10 },//can also be for birthday
-    { image: "assets/GiftBoxes/box3.png", title: "Lightin' Pink", category: "Birthday", price: 500, numItems: 0, wish:0, availItems: 5 },//can also be for birthday and valentin
-    { image: "assets/GiftBoxes/box4.png", title: "Silver Scotch", category: "Christmas", price: 250, numItems: 0, wish:0, availItems: 20 },
-    { image: "assets/GiftBoxes/box5.png", title: "Brownie", category: "Christmas", price: 300, numItems: 0, wish:0, availItems: 10 },
-    { image: "assets/GiftBoxes/box6.png", title: "Green Bow", category: "Christmas", price: 500, numItems: 0, wish:0, availItems: 10 },
-    { image: "assets/GiftBoxes/box7.png", title: "Red Rosey", category: "Valentine", price: 250, numItems: 0, wish:0, availItems: 20 },//can also be for christmas
-    { image: "assets/GiftBoxes/box8.png", title: "Merry Merry", category: "Christmas", price: 300, numItems: 0, wish:0, availItems: 11 },
-    { image: "assets/GiftBoxes/box9.png", title: "Boxey White", category: "Christmas", price: 500, numItems: 0, wish:0, availItems: 12 },
-    { image: "assets/GiftBoxes/box10.png", title: "Star", category: "Birthday", price: 250, numItems: 0, wish:0, availItems: 10 },
-    { image: "assets/GiftBoxes/box11.png", title: "Purple House", category: "Wedding", price: 300, numItems: 0, wish:0, availItems: 1 },//can aslo be used for birthday
-    { image: "assets/GiftBoxes/box12.png", title: "Pinkie", category: "Wedding", price: 500, numItems: 0, wish:0, availItems: 20 },//can aslo be used for valentine/birthday/
-    { image: "assets/GiftBoxes/box13.png", title: "Proud Merry", category: "Christmas", price: 250, numItems: 0, wish:0, availItems: 0 },
-    { image: "assets/GiftBoxes/box14.png", title: "Yellow Bow", category: "Birthday", price: 300, numItems: 0, wish:0, availItems: 0 },//can aslo be used for christmas
-    { image: "assets/GiftBoxes/box15.png", title: "Summer Loving", category: "Valentine", price: 500, numItems: 0, wish:0, availItems: 10 },//can aslo be used for birthday/wedding
-    { image: "assets/GiftBoxes/box16.png", title: "Brown Merry", category: "Christmas", price: 250, numItems: 0, wish:0, availItems: 8 },//can aslo be used for valentine
-    { image: "assets/GiftBoxes/box17.png", title: "Bronie and Red", category: "Wedding", price: 300, numItems: 0, wish:0, availItems: 30 },//can aslo be used for valentine/ christmas
-    { image: "assets/GiftBoxes/box18.png", title: "Pink Happiness", category: "Baby Shower", price: 500, numItems: 0, wish:0, availItems: 20 },//can aslo be used for valentine/birthday
-    { image: "assets/GiftBoxes/box19.png", title: "Red", category: "Christmas", price: 250, numItems: 0, wish:0, availItems: 30 },//can aslo be used for valentine/ christmas
-    { image: "assets/GiftBoxes/box20.png", title: "Blue, Purple & Pink", category: "Baby Shower", numItems: 0, wish:0, price: 300, availItems: 15 },
-    { image: "assets/GiftBoxes/box21.png", title: "Red Cross & Bow", category: "Valentine", price: 500, numItems: 0, wish:0, availItems: 11 },//can aslo be used for Birthday/ christmas
-    { image: "assets/GiftBoxes/box22.png", title: "The Reddies", category: "Christmas", price: 250, numItems: 0, wish:0, availItems: 10 },//can aslo be used for valentine/ birthday
-    { image: "assets/GiftBoxes/box23.png", title: "Blue Monday", category: "Graduation", price: 300, numItems: 0, wish:0, availItems: 9 },//can aslo be used for birthday
-    { image: "assets/GiftBoxes/box24.png", title: "Blackie", category: "Graduation", price: 500, numItems: 0, wish:0, availItems: 8 },//can aslo be used for valentine/ birthday
-    { image: "assets/GiftBoxes/box25.png", title: "Divine", category: "Christmas", price: 250, numItems: 0, wish:0, availItems: 8 },//can aslo be used for valentine
+  items: Array<{ image: string, title: string, category: string, price: number, numItems: number, wish: number, availItems: number, desc:string, selectI: number }> = [
+    { image: "assets/GiftBoxes/box1.png", title: "Cloth Work", category: "Birthday", price: 150, numItems: 0, wish:0, availItems: 5, desc: "Medium Size Box.", selectI: 0 },
+    { image: "assets/GiftBoxes/box2.png", title: "Super Green", category: "Graduation", price: 120, numItems: 0, wish:0, availItems: 10, desc: "Medium/Large Size Box, comes in camo green.", selectI: 0 },//can also be for birthday
+    { image: "assets/GiftBoxes/box3.png", title: "Lightin' Pink", category: "Birthday", price: 100, numItems: 0, wish:0, availItems: 5, desc: "Medium Size Box, with a pink color and light pink stripes.", selectI: 0 },//can also be for birthday and valentin
+    { image: "assets/GiftBoxes/box4.png", title: "Silver Scotch", category: "Christmas", price: 150, numItems: 0, wish:0, availItems: 20, desc: "Medium Size Box, with silver scotch pattern.", selectI: 0 },
+    { image: "assets/GiftBoxes/box5.png", title: "Brownie", category: "Christmas", price: 80, numItems: 0, wish:0, availItems: 10, desc: "Small Size Box, covered with brown color.", selectI: 0 },
+    { image: "assets/GiftBoxes/box6.png", title: "Green Bow", category: "Christmas", price: 100, numItems: 0, wish:0, availItems: 10, desc: "Medium Size Box, simple box.", selectI: 0 },
+    { image: "assets/GiftBoxes/box7.png", title: "Red Rosey", category: "Valentine", price: 50, numItems: 0, wish:0, availItems: 20, desc: "XS Size Boxes, they come as a set.", selectI: 0 },//can also be for christmas
+    { image: "assets/GiftBoxes/box8.png", title: "Merry Merry", category: "Christmas", price: 50, numItems: 0, wish:0, availItems: 11, desc: "XS Size Box, only comes in white and with a green and white string.", selectI: 0 },
+    { image: "assets/GiftBoxes/box9.png", title: "Boxey White", category: "Christmas", price: 70, numItems: 0, wish:0, availItems: 12, desc: "Small Size Box, with some christmas gold glitter.", selectI: 0 },
+    { image: "assets/GiftBoxes/box10.png", title: "Star", category: "Birthday", price: 80, numItems: 0, wish:0, availItems: 10, desc: "Small Size Box.", selectI: 0 },
+    { image: "assets/GiftBoxes/box11.png", title: "Purple House", category: "Wedding", price: 50, numItems: 0, wish:0, availItems: 1, desc: "XS Size Box, built to look like a house.", selectI: 0 },//can aslo be used for birthday
+    { image: "assets/GiftBoxes/box12.png", title: "Pinkie", category: "Wedding", price: 120, numItems: 0, wish:0, availItems: 20, desc: "Small Size Box, pink and white stripe box.", selectI: 0 },//can aslo be used for valentine/birthday/
+    { image: "assets/GiftBoxes/box13.png", title: "Proud Merry", category: "Christmas", price: 150, numItems: 0, wish:0, availItems: 0, desc: "Large Size Box, comes wrapped in a brown cover with a red string.", selectI: 0 },
+    { image: "assets/GiftBoxes/box14.png", title: "Yellow Bow", category: "Birthday", price: 150, numItems: 0, wish:0, availItems: 0, desc: "Medium Size Box, Comes with a one of a kind yellow bow.", selectI: 0 },//can aslo be used for christmas
+    { image: "assets/GiftBoxes/box15.png", title: "Summer Loving", category: "Valentine", price: 130, numItems: 0, wish:0, availItems: 10, desc: "Medium Size Box, Comes in a heart shaped box.", selectI: 0 },//can aslo be used for birthday/wedding
+    { image: "assets/GiftBoxes/box16.png", title: "Brown Merry", category: "Christmas", price: 200, numItems: 0, wish:0, availItems: 8, desc: "Large Size Box, brown box with a red bow.", selectI: 0 },//can aslo be used for valentine
+    { image: "assets/GiftBoxes/box17.png", title: "Bronie and Red", category: "Wedding", price: 80, numItems: 0, wish:0, availItems: 30, desc: "Small Size Box.", selectI: 0 },//can aslo be used for valentine/ christmas
+    { image: "assets/GiftBoxes/box18.png", title: "Pink Happiness", category: "Baby Shower", price: 100, numItems: 0, wish:0, availItems: 20, desc: "Small Size Box, Comes an octagon shape.", selectI: 0 },//can aslo be used for valentine/birthday
+    { image: "assets/GiftBoxes/box19.png", title: "Red", category: "Christmas", price: 50, numItems: 0, wish:0, availItems: 30, desc: "XS Size Box, comes in red color.", selectI: 0 },//can aslo be used for valentine/ christmas
+    { image: "assets/GiftBoxes/box20.png", title: "Blue, Purple & Pink", category: "Baby Shower", numItems: 0, wish:0, price: 100, availItems: 15, desc: "XS Size Boxes, they come as a set.", selectI: 0 },
+    { image: "assets/GiftBoxes/box21.png", title: "Red Cross & Bow", category: "Valentine", price: 80, numItems: 0, wish:0, availItems: 11, desc: "XS Size Box, comes in brown and a red bow.", selectI: 0 },//can aslo be used for Birthday/ christmas
+    { image: "assets/GiftBoxes/box22.png", title: "The Reddies", category: "Christmas", price: 100, numItems: 0, wish:0, availItems: 10, desc: "XXS Size Box, comes in a set.", selectI: 0 },//can aslo be used for valentine/ birthday
+    { image: "assets/GiftBoxes/box23.png", title: "Blue Monday", category: "Graduation", price: 120, numItems: 0, wish:0, availItems: 9, desc: "XS Size Box.", selectI: 0 },//can aslo be used for birthday
+    { image: "assets/GiftBoxes/box24.png", title: "Blackie", category: "Graduation", price: 80, numItems: 0, wish:0, availItems: 8, desc: "XS Size Box.", selectI: 0 },//can aslo be used for valentine/ birthday
+    { image: "assets/GiftBoxes/box25.png", title: "Divine", category: "Christmas", price: 80, numItems: 0, wish:0, availItems: 8, desc: "Medium Size Box, has some pattern and comes in red.", selectI: 0 },//can aslo be used for valentine
 
   ]
 
-  add: Array<{ image: string, title: string, category: string, price: number, numItems: number, wish: number, availItems: number }> = [];
-  wishL: Array<{ image: string, title: string, category: string, price: number, numItems: number,wish: number, availItems: number }> = [];
+  add: Array<{ image: string, title: string, category: string, price: number, numItems: number, wish: number, availItems: number, desc:string, selectI: number }> = [];
+  wishL: Array<{ image: string, title: string, category: string, price: number, numItems: number,wish: number, availItems: number, desc:string, selectI: number }> = [];
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, /*private cs: CustomerService*/) { }
+
+  /*item: any = [];
+
+  boxes: any = [];*/
 
   ngOnInit(): void {
+    /*this.cs.getAllItems().subscribe(item => {
+      this.item = item;
+      console.log(this.item);
+    });
+
+    this.boxes.push(this.item);*/
+
   }
 
 
@@ -64,8 +77,9 @@ export class ShoplandingComponent implements OnInit {
 
   // When the user clicks on the button, scroll to the top of the document
   topFunction() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    document.getElementById('top')?.scrollIntoView({behavior: 'smooth'})
+    // document.body.scrollTop = 0; // For Safari
+    // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
   bottomFunction() {
@@ -80,12 +94,12 @@ export class ShoplandingComponent implements OnInit {
 
   // items in the card
 
-  bday: Array<{ image: string, title: string, category: string, price: number, numItems: number, availItems: number }> = [];
-  wed: Array<{ image: string, title: string, category: string, price: number, numItems: number, availItems: number }> = [];
-  bShower: Array<{ image: string, title: string, category: string, price: number, numItems: number, availItems: number }> = [];
-  cMas: Array<{ image: string, title: string, category: string, price: number, numItems: number, availItems: number }> = [];
-  valen: Array<{ image: string, title: string, category: string, price: number, numItems: number, availItems: number }> = [];
-  grad: Array<{ image: string, title: string, category: string, price: number, numItems: number, availItems: number }> = [];
+  bday: Array<{ image: string, title: string, category: string, price: number, numItems: number, availItems: number, desc:string, selectI: number }> = [];
+  wed: Array<{ image: string, title: string, category: string, price: number, numItems: number, availItems: number, desc:string, selectI: number }> = [];
+  bShower: Array<{ image: string, title: string, category: string, price: number, numItems: number, availItems: number, desc:string, selectI: number }> = [];
+  cMas: Array<{ image: string, title: string, category: string, price: number, numItems: number, availItems: number, desc:string, selectI: number }> = [];
+  valen: Array<{ image: string, title: string, category: string, price: number, numItems: number, availItems: number, desc:string, selectI: number }> = [];
+  grad: Array<{ image: string, title: string, category: string, price: number, numItems: number, availItems: number, desc:string, selectI: number }> = [];
   num: number = 0;
   times: number = 1;
 
@@ -204,15 +218,20 @@ export class ShoplandingComponent implements OnInit {
 
   //items in the card
   incNum: number =0;
+  price: number = 0;
   addToCart(item: any, idItm: any) {
    
-    if (item.numItems == 0) {
+    if (item.selectI == 0) {
       this.i += 1;
       this.itm = this.i.toString();
       this.add.push(item);
       this.incNum=1;
-      item.numItems = 1;
+      item.selectI = 1;
     }
+
+    this.price += item.price;
+
+    localStorage.setItem('price', JSON.stringify(this.price));
 
     localStorage.setItem('items', JSON.stringify(this.add));
     console.log(this.add);
