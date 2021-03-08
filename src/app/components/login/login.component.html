@@ -2,10 +2,13 @@
     
     <div>
         <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <div>
+            <div class="md-form">
                 <img src="/assets/logo.png" class="mx-auto d-block" width="200px" >
             </div>
-            <div class="md-form">
+            <small *ngIf="isLoginError" class="text-danger md-form">
+                *Incorrect username or password
+            </small>
+            <div class="md-form mt-2">
                 <mdb-icon fas icon="user" class="prefix"></mdb-icon>
                 <input mdbInput type="text" class="form-control" id="username" formControlName="emailAddress">
                 <label for="username">Username</label>

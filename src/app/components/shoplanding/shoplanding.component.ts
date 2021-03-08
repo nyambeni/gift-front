@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
-//import { CustomerService } from 'src/app/services/customer.service';
+import { CustomerService } from 'src/app/services/customer.service';
 
 
 @Component({
@@ -46,7 +46,7 @@ export class ShoplandingComponent implements OnInit {
   wishL: Array<{ image: string, title: string, category: string, price: number, numItems: number,wish: number, availItems: number, desc:string, selectI: number }> = [];
 
 
-  constructor(private router: Router, /*private cs: CustomerService*/) { }
+  constructor(private router: Router, private cs: CustomerService) { }
 
   /*item: any = [];
 
@@ -236,10 +236,13 @@ export class ShoplandingComponent implements OnInit {
     localStorage.setItem('items', JSON.stringify(this.add));
     console.log(this.add);
   }
-  
-//Add to wish list
+  //Add to wish list
   addToWish(item: any, idItm: any) {
-   
+    
+    const wishItem = {image: item.image, title: item.title, category: item.category, price: item.price, desc: item.desc}
+
+    console.log(wishItem);
+
     if (item.wish == 0) {
       this.w += 1;
       this.wish = this.w.toString();
@@ -248,10 +251,15 @@ export class ShoplandingComponent implements OnInit {
       item.wish=1;     
     }
 
-
+    this.cs.addwishlist(wishItem).subscribe((data) => console.log(data));
+    
     localStorage.setItem('wish', JSON.stringify(this.wishL));
     
     console.log(this.wishL);
+  }
+
+  logOut(){
+    alert("Hello");
   }
 }
 

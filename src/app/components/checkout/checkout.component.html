@@ -69,73 +69,73 @@
     </div>
   </div>
   <!-- /.Horizontal Steppers -->
+
   <!-- Items -->
-  <h3>Selected Items</h3>
-  <br><br>
-  <table align="center">
-    <thead>
+  <div class="items" *ngIf="step1">
 
-      <th>Item</th>
-      <th>Description</th>
-      <th>Quantity</th>
-      <th>Remove Item</th>
+    <h3>Selected Items</h3>
+    <br><br>
+    <table align="center">
+      <thead>
+        <th>Item</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Remove Item</th>
+      </thead>
 
+      <tbody *ngFor="let item of items; index as userno">
+        <tr>
+          <td>
+            <img [src]="item.image" alt="Card image cap" width="250" height="250" style="padding-top: 30px;"
+              align="center">
+            <br><br>
+            <h4>{{item.title}}</h4>
 
-    </thead>
-    <tbody *ngFor="let item of items; index as userno">
-      <tr>
+            <p style="color: #dda5e7; font-family: cursive;">
 
-        <td>
-          <img [src]="item.image" alt="Card image cap" width="250" height="250" style="padding-top: 30px;"
-            align="center">
-          <br><br>
-          <h4>{{item.title}}</h4>
+              Category: {{item.category}}  
+              <br>
+              Price: R{{item.price}}
+            </p>
 
-          <p style="color: #dda5e7; font-family: cursive;">
+          </td>
+          <td align="center">{{item.desc}}</td>
+          <td align="center">
+            <form action="/action_page.php">
+            
+              <button class="addQ" (click)="addQ(item)" title="Add">+</button> {{item.numItems}} <button class="subQ" (click)="subQ(item)"
+                *ngIf="item.numItems>1" title="Subtract">-</button>
+            </form>
+          </td>
 
-            Category: {{item.category}}
-            <br>
-            Price: R{{item.price}}
-          </p>
+          <td align="center">
+            <button type="button" class="click" (click)="onDelete(userno, item.price, item.title)"><i
+                class="fa fa-ban" aria-hidden="true"></i> Delete
+            </button>
+          </td>
+        </tr>
 
-        </td>
-        <td align="center">{{item.desc}}</td>
-        <td align="center">
-          <form action="/action_page.php">
-           
-            <button class="addQ" (click)="addQ(item)" title="Add">+</button> {{item.numItems}} <button class="subQ" (click)="subQ(item)"
-              *ngIf="item.numItems>1" title="Subtract">-</button>
-          </form>
-        </td>
+      </tbody>
 
+    </table>
 
-        <td align="center"><button type="button" class="click" (click)="onDelete(userno, item.price, item.title)"><i
-              class="fa fa-ban" aria-hidden="true"></i> Delete
-          </button>
-          
-        </td>
+    <br><br>
+    <button routerLink="../shop" type="button" class="clicked" (click)="cancelOrder()">
+      <i class="fa fa-ban" aria-hidden="true"></i> Cancel Order
+    </button>
 
-      </tr>
+    <br><br>
 
-    </tbody>
+    <h3>Total Price: R{{price}}</h3>
 
-  </table>
-
-  <br><br>
-  <button routerLink="../shop" type="button" class="clicked" (click)="cancelOrder()"><i class="fa fa-ban"
-      aria-hidden="true"></i> Cancel Order
-  </button>
-
-  <br><br>
-
-  <h3>Total Price: R{{price}}</h3>
-
-  <br><br>
-
+    <br><br>
+  </div>
   <!-- /.Items -->
 
+
+  <p class="text-center" *ngIf="step2 || step3">Total price for your order: R{{price}} </p>
   <!--Shipping form-->
-  <form [formGroup]="shippingForm" (ngSubmit)="onSubmit()" class="shipping-form" *ngIf="step2">
+  <form [formGroup]="shippingForm" (ngSubmit)="onShippingFormSubmit()" class="shipping-form" *ngIf="step2">
 
     <p class="h4">Shipping Information</p>
 
@@ -199,7 +199,7 @@
   <!--End of Shipping-form-->
 
   <!--Payment form-->
-  <form [formGroup]="billingForm" (ngSubmit)="onFormSubmit()" class="payment-form" *ngIf="step3">
+  <form [formGroup]="billingForm" (ngSubmit)="onBillingFormSubmit()" class="payment-form" *ngIf="step3">
     <p class="h4">Billing Details</p>
     <div class="md-form mt-0">
       <input type="text" id="cardno" class="form-control" mdbInput formControlName="cardNumber">

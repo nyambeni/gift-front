@@ -35,9 +35,12 @@ export class ProfileComponent implements OnInit {
   }
 
   btnCancel(){
+    //have to refress page here
     console.log("Cancel has been pressed");
-    this.customer.firstname = this.customer.firstname;
-    this.customer.lastname;
+  }
+
+  deleteAccount(){
+    this.customerService.deleteUser(12);
   }
 
   logOut(){

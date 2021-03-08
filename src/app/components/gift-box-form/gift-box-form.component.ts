@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-gift-box-form',
@@ -9,21 +10,21 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class GiftBoxFormComponent implements OnInit {
 
   categories = [ "Birthday", "Wedding", "Graduation", "Baby Shower", "Christmas", "Valentine"];
-  giftBoxForm = new FormGroup({
-    title: new FormControl(''),
-    category: new FormControl(''),
-    size: new FormControl('')
+  giftBoxForm = this.fb.group({
+    title: [''],
+    category: [''],
+    size: [''],
+    price: [''],
+    quantity: ['']
   });
 
-  constructor() { }
+  constructor(private fb: FormBuilder,) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    console.log('000000000000');
-    console.log(this.giftBoxForm.value);
     console.warn(this.giftBoxForm.value);
   }
   

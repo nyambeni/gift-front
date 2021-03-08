@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -8,17 +9,16 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class CheckoutComponent implements OnInit {
 
-  //Items
   items: any = [];
   num: number = 0;
   incNum: number = 0;
   price: any;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private os: OrderService) { }
 
-  step1 = false;
-  step2 = false;
-  step3 = false;
+  step1: boolean = true;
+  step2: boolean = false;
+  step3: boolean = false;
 
   ngOnInit(): void {
     const itemJson = localStorage.getItem('items');
@@ -49,8 +49,6 @@ export class CheckoutComponent implements OnInit {
         console.log(item);
       }
     }
-
-
 
     console.log(this.items.length);
     console.log(this.items);
@@ -103,32 +101,58 @@ export class CheckoutComponent implements OnInit {
 
   get cardName() { return this.billingForm.get('cardName') }
 
-  onSubmit() {
+  onShippingFormSubmit() {
     console.log("***** Shiping Information *****");
     console.log(this.shippingForm.value);
     document.getElementById("cirle2")!.style.backgroundColor = "rgb(40, 207, 40)";
-    this.step2 = false;
-    this.step3 = true;
+    this.stepThree();
+    //call api to send info
   }
 
-  onFormSubmit() {
+
+  onBillingFormSubmit() {
     console.log("**** Billing Form");
     console.log(this.billingForm.value);
     document.getElementById("cirle3")!.style.backgroundColor = "rgb(40, 207, 40)";
+
+    for (let item of this.items) {
+
+
+      const order = {
+        image: item.image, title: item.title, category: item.category, price: item.price,
+        desc: item.desc, phoneNumber: this.shippingForm.value.phoneNumber, name: this.shippingForm.value.name
+      }
+      console.log(order)
+
+      this.os.sendOrder(order).subscribe((data) => console.log(data));
+    }
+
+    console.log(this.shippingForm.value);
+    //call API
+    //const order = {}
+    //this.os.sendOrder
   }
 
+  //Make step1 visible and hidde others
   stepOne() {
     console.log("One has been pressed");
+    this.step1 = true;
+    this.step2 = false;
+    this.step3 = false;
   }
 
+  //Make step2 visible and hidde others
   stepTwo() {
     console.log("Two has been pressed");
-    this.step3 = false;
+    this.step1 = false;
     this.step2 = true;
+    this.step3 = false;
   }
 
+  //Make step3 visible and hidde others
   stepThree() {
     console.log("Three has been pressed");
+    this.step1 = false;
     this.step2 = false;
     this.step3 = true;
   }
@@ -155,23 +179,20 @@ export class CheckoutComponent implements OnInit {
       item.numItems++;
       this.price += item.price;
     }
-    
+
     if (item.numItems == item.availItems) {
       alert("No more items left of " + item.title);
     }
-    
+
   }
 
   subQ(item: any) {
     item.numItems--;
     if (item.numItems <= 0) {
       item.numItems = 1;
-
-
     }
 
     if (item.numItems >= 1) {
-
       this.price -= item.price;
     }
 

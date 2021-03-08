@@ -17,7 +17,9 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { OrderComponent } from "./components/order/order.component";
+import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 
+import { PaymentComponent } from "./components/payment/payment.component";
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'giftboxform', component: GiftBoxFormComponent },
@@ -36,6 +38,9 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   
 {path: 'order', component: OrderComponent},
+{path: 'payment', component: PaymentComponent},
+{ path: '**', component: PageNotFoundComponent},
+
 ];
 
 @NgModule({

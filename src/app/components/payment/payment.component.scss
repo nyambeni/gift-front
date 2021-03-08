@@ -1,0 +1,9 @@
+.card{
+    max-width: 60em;
+    margin: 20px auto;
+    left: 10%;
+}
+
+tr:nth-child(even) {
+    background-color: #f5ecf7ea;
+}

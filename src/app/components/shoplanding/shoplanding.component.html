@@ -1,6 +1,6 @@
 <div id="top"></div>
 
-<div class="container-fluid p-0" >
+<div class="container-fluid p-0">
 
 
     <!--Navbar-->
@@ -36,21 +36,43 @@
                         Cart
                     </a>
                 </li>-->
-
+           
                 <li class="nav-item">
-                    <a routerLink="../checkout"  class="nav-link waves-light" mdbWavesEffect title="Cart">
+                   
+
+                        <div style="float: right;  position: absolute;
+                            top: 10px; right: 155px;" class="line">
+                            <a class="nav-link">
+                                <div class="btn-group" mdbDropdown>
+                                  <div mdbDropdownToggle>
+                                   Loy<i class="fas fa-chevron-down icon"></i>
+                                  </div>
+                                  
+                                  <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+                                    <a routerLink="" class="dropdown-item" href="#">Profile</a>
+                                    <a routerLink="" class="dropdown-item" href="#">Shop</a>
+                                    <div class="divider dropdown-divider"></div>
+                                    <button class="dropdown-item btn-logOut" (click)="logOut()">Log-out</button>
+                                  </div>
+                                </div>
+                              </a></div>
+                    
+                </li>
+                <li class="nav-item">
+                    <a routerLink="../checkout" class="nav-link waves-light" mdbWavesEffect title="Cart">
 
                         <img src="assets/cart.png" alt="Cart" width="40" height="40" style="float: right;  position: absolute;
                             top: 20px; right: 32px;" class="line"><span>{{itm}} </span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a routerLink="../wish"  class="nav-link waves-light" mdbWavesEffect title="Wish List">
-        \
+                    <a routerLink="../wish" class="nav-link waves-light" mdbWavesEffect title="Wish List">
+
                         <img src="assets/wish.png" alt="Cart" width="40" height="40" style="float: right;  position: absolute;
                             top: 20px; right: 100px;" class="line"><span class="spanWish">{{wish}}</span>
                     </a>
                 </li>
+
             </ul>
             <!-- Links -->
         </links>
@@ -152,7 +174,7 @@
                 </h4>
 
                 <br>
-                <div style="margin-top: 50px;">
+                <div style="margin-top: 30px;">
                     <div class="row justify-content-center">
 
                         <div class="col-sm-4 pb-3" *ngFor="let item of items; index as userID">
@@ -560,18 +582,18 @@
                                             Price: R{{gr.price}}
                                         </p>
 
-                                          <!--Buttons-->
-                                          <button type="button" class="click" style="outline: none;" title="Add To Cart"
-                                          (click)="addToCart(gr, userID)">
-                                          <mdb-icon fas icon="cart-arrow-down"></mdb-icon>
+                                        <!--Buttons-->
+                                        <button type="button" class="click" style="outline: none;" title="Add To Cart"
+                                            (click)="addToCart(gr, userID)">
+                                            <mdb-icon fas icon="cart-arrow-down"></mdb-icon>
 
-                                      </button>
+                                        </button>
 
-                                      <button type="button" class="click" style="outline: none;"
-                                          title="Add To Wishlist" (click)="addToWish(gr, userID)"><i
-                                              class="fas fa-heart">
-                                          </i></button>
-                                      <!--Buttons-->
+                                        <button type="button" class="click" style="outline: none;"
+                                            title="Add To Wishlist" (click)="addToWish(gr, userID)"><i
+                                                class="fas fa-heart">
+                                            </i></button>
+                                        <!--Buttons-->
                                     </mdb-card-body>
                                 </mdb-card>
                                 <!-- Card -->
@@ -614,7 +636,7 @@
                     TUT Soshanguve
                 </div>
                 <div class="col" style="margin-top: 10px;">
-                    Phone: +
+                    Phone: +011 000 0992
                 </div>
                 <div class="col" style="margin-top: 10px;">
                     Email: www.giftbox.ac.za

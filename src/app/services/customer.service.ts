@@ -6,33 +6,20 @@ import { HttpClient, HttpErrorResponse} from  '@angular/common/http';
 })
 export class CustomerService {
 
-  url = "http://localhost:3000";
+  url = "http://localhost:3000/";
 
   constructor(private http: HttpClient) { }
 
-  //register a user 
   addCustomer(customerData: any ){
-    console.log(`Customer Post API
-    ${customerData}
-    ----------------------
-    `)
-    return this.http.post(this.url, customerData);
+    return this.http.post(this.url+"register/register", customerData);
   }
 
   getCustomer(id: number){
-    console.log(`Customer get API
-    ${id}
-    ----------------------
-    `)
     return {firstname: "Isaac", lastname: "Malebana", emailAddress: "isaac@gmail.com"};
   } 
 
   updateCustomer(customerData: any){
-    const id = 1; // this.userId();
-    console.log( 
-    customerData
-    )
-
+    const id = this.userId();
     return this.http.put(`${this.url}/${id}`, customerData);
   }
 
@@ -40,15 +27,17 @@ export class CustomerService {
     return this.http.delete(`${this.url}/${id}`)
   }
 
-  //have to set this on register and login and remove it on log-out
+  logIn(customerData: any){
+    return this.http.post(this.url+"login/customer", customerData);
+  }
+
   userId(){
     return Number(localStorage.getItem('id'));
   }
 
-  //Get all the Boxes
-/*
-  getAllItems(){
-    return this.http.get<any>(`${this.url}`);
+  addwishlist(customerData: any ){
+    return this.http.post(this.url+"customer/addwishlist", customerData);
   }
-*/
+
+  
 }

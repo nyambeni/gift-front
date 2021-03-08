@@ -23,9 +23,14 @@
     <input type="radio" formControlName="size" class="radio-size" value="large">Large
   </div>
   
-  <div class="md-form">
-    <input mdbInput type="number" id="price" class="form-control">
+  <div class="md-form mb-1">
+    <input mdbInput type="number" id="price" class="form-control" formControlName="price">
     <label for="price">Price</label>
+  </div>
+
+  <div class="md-form mt-1">
+    <input mdbInput type="number" id="quantity" class="form-control" formControlName="quantity">
+    <label for="quantity">Quantity</label>
   </div>
 
   <div>
@@ -34,9 +39,9 @@
   </div>
   
   <div>
-    <button mdbBtn color="purple" class="customBtn mt-1">upload</button>
+    <button mdbBtn class="customBtn mt-1">upload</button>
   </div>
 
-  <button mdbBtn type="submit" color="purple" class="customBtn mt-3">Save</button>
+  <button mdbBtn type="submit" class="customBtn mt-3">Save</button>
 
 </form>
