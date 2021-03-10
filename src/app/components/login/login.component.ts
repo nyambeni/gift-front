@@ -26,10 +26,16 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     console.log(this.loginForm.value);
-    const cust = this.customerService.logIn(this.loginForm.value)
-    .subscribe((data) => console.log(data));
+    this.customerService.logIn(this.loginForm.value)
+    .subscribe((user:any) => {
+      console.log(user.user);
+      console.log(user.user.cust_id.toString());
+      
+      localStorage.setItem('id', user.user.cust_id.toString());
+    });
+    //console.log(data)
    // localStorage.setItem('userToken', cust.token.toString());
-    //localStorage.setItem('id', cust.customerId.toString());
+    
     this.router.navigate(['/shop']);
 
     //this.isLoginError = true; //when getting http error

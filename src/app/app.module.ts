@@ -30,6 +30,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { RouterModule } from '@angular/router';
+import { ViewcustomerComponent } from './components/viewcustomer/viewcustomer.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { RouterModule } from '@angular/router';
     OrderComponent,
     PaymentComponent,
     PageNotFoundComponent,
+    ViewcustomerComponent,
     
   ],
   imports: [

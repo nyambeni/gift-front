@@ -1,5 +1,7 @@
 <app-admin-dashboard></app-admin-dashboard>
 <div class="card">
+  <!--View Boxes by Text-->
+  <div *ngIf="this.table==1">
     <table mdbTable>
         <thead>
           <tr>
@@ -11,7 +13,7 @@
             <th scope="row">{{el.id}}</th>
             <td>{{el.first}}</td>
             <td>{{el.last}}</td>
-            <td>{{el.handle}}</td>
+            <td>R{{el.handle}}.00</td>
             <td>
               <mdb-icon fas icon="trash" class="mr-3"></mdb-icon>
               <mdb-icon fas icon="edit" class="mr-3"></mdb-icon>
@@ -19,4 +21,33 @@
           </tr>
         </tbody>
       </table>
+    </div>
+      <!--View Boxes by Text-->
+
+      <!--View Boxes by with Image-->
+      <div *ngIf="this.table==2">
+      <button (click)="viewAll()" class="btn">View All</button>
+      <table mdbTable>
+        <thead>
+          <tr>
+            <th *ngFor="let head of headI" scope="col">{{head}} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let el of searchL">
+            <th scope="row"><img [src]="el.image" alt="" width="250" height="250"></th>
+            <td>{{el.title}}</td>
+            <td>{{el.category}}</td>
+            <td>R{{el.price}}.00</td>
+           
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      <!--View Boxes by with Image-->
+      
+</div>
+<div *ngIf="this.table==1" style=" margin-left: 50%;">
+  <input class="search" type="text" #search placeholder="Search By Title"> <button (click)="onSearch(search.value)"
+    class="btn">Search</button>
 </div>

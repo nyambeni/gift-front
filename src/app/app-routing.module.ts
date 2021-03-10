@@ -20,6 +20,8 @@ import { OrderComponent } from "./components/order/order.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 
 import { PaymentComponent } from "./components/payment/payment.component";
+import { ViewcustomerComponent } from './components/viewcustomer/viewcustomer.component';
+
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'giftboxform', component: GiftBoxFormComponent },
@@ -29,17 +31,18 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
 
   { path: 'viewbox', component: ViewBoxComponent },
-  { path: 'admindashboard', component: AdminDashboardComponent},
-  { path: 'login' , component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
-  { path: 'wish', component: WishlistComponent},
+  { path: 'admindashboard', component: AdminDashboardComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'wish', component: WishlistComponent },
 
   { path: 'checkout', component: CheckoutComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'customer', component: ViewcustomerComponent },
+  { path: 'order', component: OrderComponent },
+  { path: 'payment', component: PaymentComponent },
+  { path: '**', component: PageNotFoundComponent },
   
-{path: 'order', component: OrderComponent},
-{path: 'payment', component: PaymentComponent},
-{ path: '**', component: PageNotFoundComponent},
 
 ];
 

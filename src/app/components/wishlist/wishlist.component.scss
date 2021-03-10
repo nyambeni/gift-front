@@ -132,7 +132,7 @@
   
   .tAndC{
    
-    background-color: #dd69f1d8;
+    background-color: #d07edf9d;
     color: white;
     padding: 10px;
     box-shadow: 0px 0px 8px 5px rgba(145, 144, 144, 0.329);
@@ -155,9 +155,9 @@
     bottom: 20px; /* Place the button at the bottom of the page */
     right: 30px; /* Place the button 30px from the right */
     z-index: 99; /* Make sure it does not overlap */
-    border: 1px solid #dd69f1; 
+    border: 1px solid #c156d4; /* Remove borders */
     outline: none; /* Remove outline */
-    background-color: #dd69f19d; /* Set a background color */
+    background-color: #d07edf9d; /* Set a background color */
     color: white; /* Text color */
     cursor: pointer; /* Add a mouse pointer on hover */
     padding: 15px; /* Some padding */
@@ -313,3 +313,7 @@ span{
   background: #d17edfd0;
   }
   
+  .mainTitle{
+    font-size: 80px;
+    
+  }

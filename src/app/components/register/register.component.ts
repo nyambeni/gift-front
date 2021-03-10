@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
     this.customerService.addCustomer(this.customerForm.value).
     subscribe(data => console.log(data));
 
-    this.router.navigate(['/shop']);
+    this.router.navigate(['/login']);
 
   }
 

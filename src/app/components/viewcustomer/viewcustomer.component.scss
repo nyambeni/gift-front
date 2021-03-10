@@ -2,11 +2,13 @@
     max-width: 60em;
     margin: 20px auto;
     left: 10%;
+    box-shadow: 1px 1px 10px 1px rgba(161, 161, 161, 0.658);
 }
 
-tr:nth-child(even) {
+td:nth-child(even) {
     background-color: #f5ecf7ea;
 }
+
 
 .search{
     margin: 10px;
@@ -17,7 +19,8 @@ tr:nth-child(even) {
     border-radius: 0.2em;
     height: 50px;
     margin-left: 25%;
-    
+    box-shadow: 1px 1px 10px 1px rgba(161, 161, 161, 0.658);
+    width: 300px;
 }
 
 .btn{
@@ -30,6 +33,7 @@ tr:nth-child(even) {
     color: gray;
     width: 90px;
     height: 50px;
+    box-shadow: 1px 1px 10px 1px rgba(161, 161, 161, 0.658);
 }
 
 .btn:hover{

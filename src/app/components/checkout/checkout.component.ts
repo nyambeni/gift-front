@@ -38,9 +38,12 @@ export class CheckoutComponent implements OnInit {
     console.log(this.items);
   }
 
-  onDelete(deletItm: any, itmPrice: any, titl: any) {
+  priceToDelete: number = 0;
+  onDelete(deletItm: any, itmPrice: number, titl: any, numItems: any) {
     this.items.splice(deletItm, 1);
-    this.price -= itmPrice;
+    this.priceToDelete = itmPrice * numItems;
+    console.log(this.priceToDelete);
+    this.price -= this.priceToDelete;
     console.log(this.price);
 
     for (let item of this.items) {
@@ -119,15 +122,18 @@ export class CheckoutComponent implements OnInit {
 
 
       const order = {
-        image: item.image, title: item.title, category: item.category, price: item.price,
-        desc: item.desc, phoneNumber: this.shippingForm.value.phoneNumber, name: this.shippingForm.value.name
+        cust_id: localStorage.getItem('id'), item_title: item.title, quantity: item.numItems, totalPrice: item.price
+       , phoneNumber: this.shippingForm.value.phoneNumber, name: this.shippingForm.value.name,
+        citySuburb: this.shippingForm.value.citySuburb, postalCode: this.shippingForm.value.postalCode,
+        province: this.shippingForm.value.province, streetAddress: this.shippingForm.value.streetAddress
       }
-      console.log(order)
+      console.log(this.shippingForm.value.streetAddress);
+      console.log("call api")
 
-      this.os.sendOrder(order).subscribe((data) => console.log(data));
+      this.os.sendOrder(order).subscribe((data) => console.log(data), ERR => console.log(ERR));
     }
 
-    console.log(this.shippingForm.value);
+    
     //call API
     //const order = {}
     //this.os.sendOrder
@@ -177,6 +183,7 @@ export class CheckoutComponent implements OnInit {
   addQ(item: any) {
     if (item.numItems < item.availItems) {
       item.numItems++;
+      console.log(item.numItems);
       this.price += item.price;
     }
 
