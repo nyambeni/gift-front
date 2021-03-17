@@ -15,26 +15,27 @@ export class PaymentComponent implements OnInit {
   ]
 
 
-  headElements = ['Name', 'Email Address', 'Phone Number', 'Address', 'Items', 'Quantity',];
-  totalPrice: number = 0;
+  headElements = ['Name', 'Last Name', 'Phone Number', 'Address', 'Items', 'Quantity', "Order Date"];
+  totalprice: number = 0;
 
   constructor(private as: AdminService) { }
 
-  order:any=[];
+  order: any = [];
+  orders: any = [];
   ngOnInit(): void {
 
-    this.as.getOrder().subscribe(data =>{
+    this.as.getOrder().subscribe(data => {
       console.log(data);
-      
-      this.order = data;      
+
+      this.order = data;
+
+      for (let o of this.order) {
+        o.order_date=o.order_date.split("T");
+        this.orders.push(o);
+      }
     });
 
-
-    for (let e of this.elements) {
-      this.totalPrice += e.tAmount;
-    }
-
-    console.log(this.totalPrice);
+    console.log(this.orders);
   }
 
   searchL: any = [];
@@ -46,15 +47,15 @@ export class PaymentComponent implements OnInit {
   onSearch(search: any) {
     this.name = search.toLowerCase();
 
-    if(search == ""){
+    if (search == "") {
       alert("The is no name entered");
     }
 
-    for (let e of this.elements) {
-      this.searchName = e.name.toLowerCase();
+    for (let e of this.orders) {
+      this.searchName = e.firstname.toLowerCase();
       if (this.searchName == this.name) {
         this.searchL.push(e);
-        this.amount += e.tAmount;
+        this.amount += e.totalPrice;
       }
     }
 
@@ -76,5 +77,14 @@ export class PaymentComponent implements OnInit {
     this.table = 1;
     this.searchL = [];
     this.amount = 0;
+  }
+
+  tP: number = 1;
+  totalPrice() {
+    this.tP = 2;
+    for (let e of this.orders) {
+      this.totalprice = this.totalprice + e.totalPrice;
+      
+    }
   }
 }

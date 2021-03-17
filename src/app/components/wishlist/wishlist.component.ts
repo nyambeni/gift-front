@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -8,26 +9,58 @@ import { Router } from '@angular/router';
   styleUrls: ['./wishlist.component.scss']
 })
 export class WishlistComponent implements OnInit {
-  items: any;
+  //items: any;
 
   i: number = 0;
   itm: string = "";
 
   add: Array<{ image: string, title: string, category: string, price: number, numItems: number, wish: number, availItems: number }> = [];
 
-  constructor() { }
+  constructor(private cs: CustomerService, private router: Router) { }
 
   num: number = 0;
+
+  item: any = [];
+
+  items: any = [];
+
+  custId: any;
   ngOnInit(): void {
-    const itemJson = localStorage.getItem('wish');
-    this.items = itemJson !== null ? JSON.parse(itemJson) : null;
 
-    if (this.items == null) {
-      this.num = 1;
+
+    const custIdJson = localStorage.getItem('id');
+    this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
+
+
+    //this.custId = "112";
+    console.log(this.custId);
+
+    if (this.custId == null) {
+      this.router.navigate(['/login']);
+    } else {
+      this.cs.viewWishList(this.custId).subscribe((data:any) => {
+        console.log(data);
+
+        this.item = data.data;
+        console.log(this.item);
+
+        for (let i of this.item) {
+          this.items.push(i);
+        }
+      });
+
+      console.log(this.items);
+
+
+
+
+      if (this.items == null) {
+        this.num = 1;
+      }
+
+
+      console.log(this.items);
     }
-    
-
-    console.log(this.items);
   }
 
 
@@ -45,7 +78,7 @@ export class WishlistComponent implements OnInit {
 
   // When the user clicks on the button, scroll to the top of the document
   topFunction() {
-    document.getElementById('top')?.scrollIntoView({behavior: 'smooth'})
+    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' })
     // document.body.scrollTop = 0; // For Safari
     // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
@@ -59,20 +92,22 @@ export class WishlistComponent implements OnInit {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
-  
+
   //items in the card
-  incNum: number =0;
+  incNum: number = 0;
   price: number = 0;
   addToCart(item: any, idItm: any) {
-   
-    if (item.numItems == 0) {
-      this.i += 1;
-      this.itm = this.i.toString();
-      this.add.push(item);
-      this.incNum=1;
-      item.numItems = 1;
-    }
 
+    /* if (item.numItems == 0) {
+       
+       
+      
+       this.incNum=1;
+       item.numItems = 1;
+     }*/
+    this.i += 1;
+    this.itm = this.i.toString();
+    this.add.push(item);
     this.price += item.price;
 
     localStorage.setItem('price', JSON.stringify(this.price));
@@ -82,8 +117,9 @@ export class WishlistComponent implements OnInit {
   }
 
 
-  removeFromList(deletItm: any,) {
-    this.items.splice(deletItm, 1);
+  removeFromList(deletItm: any, id: any) {
+    this.items.splice(id, 1);
+    this.cs.deleteWish(deletItm).subscribe();
   }
 
 }

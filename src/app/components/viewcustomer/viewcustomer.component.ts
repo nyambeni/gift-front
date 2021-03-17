@@ -9,32 +9,38 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class ViewcustomerComponent implements OnInit {
   elements: any = [
-    { name: "Loy",lname:"Netshiozwi", email: "netsh@gmail.com", },
-    { name: "Loy",lname:"Netshiozwi", email: "netsh@gmail.com", },
-    { name: "Monica", lname: "Geller",email: "geller@Yahoo.com", },
-    { name: "Chantelle", lname: "Miller", email: "mabena@gmail.com",},
-    { name: "Sam", lname: "Willows", email: "willows@gmail.com",},
-    { name: "Jack", lname: "Sparrow", email: "sparrow@gmail.com",},
-    { name: "Sarah", lname: "Mahlangu", email: "sarah@gmail.com",},
-    { name: "Sipho", lname: "Zulu", email: "zulu@gmail.com",},
+    { name: "Loy", lname: "Netshiozwi", email: "netsh@gmail.com", },
+    { name: "Loy", lname: "Netshiozwi", email: "netsh@gmail.com", },
+    { name: "Monica", lname: "Geller", email: "geller@Yahoo.com", },
+    { name: "Chantelle", lname: "Miller", email: "mabena@gmail.com", },
+    { name: "Sam", lname: "Willows", email: "willows@gmail.com", },
+    { name: "Jack", lname: "Sparrow", email: "sparrow@gmail.com", },
+    { name: "Sarah", lname: "Mahlangu", email: "sarah@gmail.com", },
+    { name: "Sipho", lname: "Zulu", email: "zulu@gmail.com", },
   ]
 
 
-  headElements = ['First Name','Last Name', 'Email Address'];
+  headElements = ['First Name', 'Last Name', 'Email Address'];
   totalPrice: number = 0;
   constructor(private as: AdminService) { }
 
-  customer:any=[];
+  customer: any = [];
+
+  customers: any = [];
 
   ngOnInit(): void {
-  
-    this.as.viewCustomer().subscribe(data =>{
+
+    this.as.viewCustomer().subscribe(data => {
       console.log(data);
-      
-      this.customer = data;      
+
+      this.customer = data;
+
+      for (let c of this.customer) {
+        this.customers.push(c);
+      }
     });
 
-    console.log(this.customer);
+    console.log(this.customers);
 
 
   }
@@ -49,15 +55,18 @@ export class ViewcustomerComponent implements OnInit {
     //Search for by name
     this.name = search.toLowerCase();
 
-    if(search == ""){
+    if (search == "") {
       alert("The is no name entered");
     }
+    console.log(this.name);
 
-    for (let e of this.elements) {
-      this.searchName = e.name.toLowerCase();
+    for (let e of this.customers) {
+    
+    this.searchName = (e.firstname?e.firstname:'').toLowerCase();
+    
       if (this.searchName == this.name) {
         this.searchL.push(e);
-        
+        this.amount += e.totalPrice;
       }
     }
 
@@ -67,9 +76,8 @@ export class ViewcustomerComponent implements OnInit {
     }
     this.name.join(" ");
 
-    if (this.searchL == "") {
 
-      
+    if (this.searchL == "") {
       this.table = 1;
     } else {
       this.table = 2;
@@ -82,8 +90,8 @@ export class ViewcustomerComponent implements OnInit {
       alert("The is no name entered");
     }
 
-    for (let e of this.elements) {
-      this.searchName = e.lname.toLowerCase();
+    for (let e of this.customers) {
+      this.searchName = (e.lastname?e.lastname:'').toLowerCase();
       if (this.searchName == this.name) {
         this.searchL.push(e);
         
@@ -102,7 +110,7 @@ export class ViewcustomerComponent implements OnInit {
       this.table = 1;
     } else {
       this.table = 2;
-    }//end of surname
+    }//end of surname*/
   }
   viewAll() {
     this.table = 1;
@@ -122,7 +130,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
-  
+
 }
 
 */

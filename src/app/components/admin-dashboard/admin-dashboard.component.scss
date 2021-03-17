@@ -29,6 +29,7 @@
     background-color: #f5ecf7ea;
       padding: 10px;
       box-shadow: 1px 1px 10px 10px rgba(145, 144, 144, 0.329);
+      height: 80px !important;
 }
   
  .nav{
@@ -52,3 +53,22 @@
     } 
 }
   
+
+.btn{
+    margin-left: 20px;
+   
+    background-color: rgb(204, 7, 7);
+    color: white;
+
+    margin: 10px;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 0.2em;
+    
+    width: 100px;
+    height: 50px;
+    
+    padding: 15px;
+    box-shadow: 1px 1px 10px 1px rgba(161, 161, 161, 0.658);
+}

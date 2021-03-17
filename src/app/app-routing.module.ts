@@ -21,6 +21,7 @@ import { PageNotFoundComponent } from "./components/page-not-found/page-not-foun
 
 import { PaymentComponent } from "./components/payment/payment.component";
 import { ViewcustomerComponent } from './components/viewcustomer/viewcustomer.component';
+import { AdminloginComponent } from "./components/adminlogin/adminlogin.component";
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -41,6 +42,8 @@ const routes: Routes = [
   { path: 'customer', component: ViewcustomerComponent },
   { path: 'order', component: OrderComponent },
   { path: 'payment', component: PaymentComponent },
+  {path: 'adminlogin', component: AdminloginComponent},
+  
   { path: '**', component: PageNotFoundComponent },
   
 

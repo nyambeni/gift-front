@@ -2,6 +2,7 @@
     max-width: 60em;
     margin: 20px auto;
     left: 10%;
+    box-shadow: 1px 1px 10px 1px rgba(161, 161, 161, 0.658);
 }
 
 tr:nth-child(even) {
@@ -17,6 +18,7 @@ tr:nth-child(even) {
     border-radius: 0.2em;
     height: 50px;
     margin-left: 25%;
+    box-shadow: 1px 1px 10px 1px rgba(161, 161, 161, 0.658);
     
 }
 
@@ -30,6 +32,7 @@ tr:nth-child(even) {
     color: gray;
     width: 90px;
     height: 50px;
+    box-shadow: 1px 1px 10px 1px rgba(161, 161, 161, 0.658);
 }
 
 .btn:hover{
@@ -45,4 +48,26 @@ tr:nth-child(even) {
     margin-left: 25%; 
     margin-top: 10px;
     padding: 15px;
+    
 }
+
+.btn2{
+    margin: 10px;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 0.2em;
+    background-color: #f4c5ffea;
+    color: gray;
+    width: 120px;
+    height: 70px;
+    margin-left: 25%; 
+    margin-top: 10px;
+    padding: 15px;
+    box-shadow: 1px 1px 10px 1px rgba(161, 161, 161, 0.658);
+}
+
+.btn2:hover{
+    background-color: #f7ddfd;
+}
+

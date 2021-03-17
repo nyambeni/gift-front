@@ -1,4 +1,6 @@
 <app-admin-dashboard></app-admin-dashboard>
+<h3 style="margin-top: 20px; margin-left: 25%;">Boxes</h3>
+<p style="color: #dda5e7; font-family: cursive; margin-left: 25%;">Available Boxes.</p>
 <div class="card">
   <!--View Boxes by Text-->
   <div *ngIf="this.table==1">
@@ -9,13 +11,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr mdbTableCol *ngFor="let el of elements">
-            <th scope="row">{{el.id}}</th>
-            <td>{{el.first}}</td>
-            <td>{{el.last}}</td>
-            <td>R{{el.handle}}.00</td>
+          <tr mdbTableCol *ngFor="let el of gitfBoxes; index as boxID">
+            
+            <td>{{el.title}}</td>
+            <td>{{el.category}}</td>
+            <td>{{el.size}}</td>
+            <td>R{{el.item_price}}.00</td>
             <td>
-              <mdb-icon fas icon="trash" class="mr-3"></mdb-icon>
+              <mdb-icon fas icon="trash" class="mr-3" (click)="deleteBox(boxID, el.item_id)"></mdb-icon>
               <mdb-icon fas icon="edit" class="mr-3"></mdb-icon>
             </td>
           </tr>
@@ -38,7 +41,8 @@
             <th scope="row"><img [src]="el.image" alt="" width="250" height="250"></th>
             <td>{{el.title}}</td>
             <td>{{el.category}}</td>
-            <td>R{{el.price}}.00</td>
+            <td>{{el.size}}</td>
+            <td>R{{el.item_price}}.00</td>
            
           </tr>
         </tbody>
@@ -48,6 +52,6 @@
       
 </div>
 <div *ngIf="this.table==1" style=" margin-left: 50%;">
-  <input class="search" type="text" #search placeholder="Search By Title"> <button (click)="onSearch(search.value)"
+  <input class="search" type="text" #search placeholder="Search By Title / Category"> <button (click)="onSearch(search.value)"
     class="btn">Search</button>
 </div>

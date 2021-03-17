@@ -38,7 +38,12 @@ export class CustomerService {
   addwishlist(customerData: any ){
     return this.http.post(this.url+"customer/addwishlist", customerData);
   }
+  
+  viewWishList(id: any){
+    return this.http.get(this.url+"customer/viewWishlist/"+id)
+  }
 
-  
-  
+  deleteWish(title: any){
+    return this.http.delete(this.url+"customer/deletewishlist/"+title)
+  }
 }

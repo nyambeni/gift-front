@@ -36,27 +36,28 @@
                         Cart
                     </a>
                 </li>-->
-           
-                <li class="nav-item">
-                   
 
-                        <div style="float: right;  position: absolute;
+                <li class="nav-item">
+
+
+                    <div style="float: right;  position: absolute;
                             top: 10px; right: 155px;" class="line">
-                            <a class="nav-link">
-                                <div class="btn-group" mdbDropdown>
-                                  <div mdbDropdownToggle>
-                                   Loy<i class="fas fa-chevron-down icon"></i>
-                                  </div>
-                                  
-                                  <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+                        <a class="nav-link">
+                            <div class="btn-group" mdbDropdown>
+                                <div mdbDropdownToggle>
+                                    Loy<i class="fas fa-chevron-down icon"></i>
+                                </div>
+
+                                <div class="dropdown-menu dropdown-menu-right dropdown-primary">
                                     <a routerLink="" class="dropdown-item" href="#">Profile</a>
                                     <a routerLink="" class="dropdown-item" href="#">Shop</a>
                                     <div class="divider dropdown-divider"></div>
                                     <button class="dropdown-item btn-logOut" (click)="logOut()">Log-out</button>
-                                  </div>
                                 </div>
-                              </a></div>
-                    
+                            </div>
+                        </a>
+                    </div>
+
                 </li>
                 <li class="nav-item">
                     <a routerLink="../checkout" class="nav-link waves-light" mdbWavesEffect title="Cart">
@@ -186,7 +187,7 @@
                 <div style="margin-top: 30px;">
                     <div class="row justify-content-center">
 
-                        <div class="col-sm-4 pb-3" *ngFor="let item of items; index as userID">
+                        <div class="col-sm-4 pb-3" *ngFor="let item of gitfBoxes, index as userID">
                             <!-- Card -->
                             <div class="card">
                                 <!-- Card -->
@@ -208,7 +209,7 @@
 
                                             Category: {{item.category}}
                                             <br>
-                                            Price: R{{item.price}}
+                                            Price: R{{item.item_price}}.00
                                         </p>
 
 
@@ -322,7 +323,7 @@
 
                                             Category: {{bd.category}}
                                             <br>
-                                            Price: R{{bd.price}}
+                                            Price: R{{bd.item_price}}.00
                                         </p>
 
                                         <!--Buttons-->
@@ -376,7 +377,7 @@
 
                                             Category: {{we.category}}
                                             <br>
-                                            Price: R{{we.price}}
+                                            Price: R{{we.item_price}}.00
                                         </p>
 
                                         <!--Buttons-->
@@ -429,7 +430,7 @@
 
                                             Category: {{bsh.category}}
                                             <br>
-                                            Price: R{{bsh.price}}
+                                            Price: R{{bsh.item_price}}.00
                                         </p>
 
                                         <!--Buttons-->
@@ -482,7 +483,7 @@
 
                                             Category: {{mas.category}}
                                             <br>
-                                            Price: R{{mas.price}}
+                                            Price: R{{mas.item_price}}.00
                                         </p>
 
                                         <!--Buttons-->
@@ -535,7 +536,7 @@
 
                                             Category: {{val.category}}
                                             <br>
-                                            Price: R{{val.price}}
+                                            Price: R{{val.item_price}}.00
                                         </p>
 
                                         <!--Buttons-->
@@ -588,7 +589,7 @@
 
                                             Category: {{gr.category}}
                                             <br>
-                                            Price: R{{gr.price}}
+                                            Price: R{{gr.item_price}}.00
                                         </p>
 
                                         <!--Buttons-->

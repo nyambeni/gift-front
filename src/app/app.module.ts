@@ -31,6 +31,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { RouterModule } from '@angular/router';
 import { ViewcustomerComponent } from './components/viewcustomer/viewcustomer.component';
+import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { ViewcustomerComponent } from './components/viewcustomer/viewcustomer.co
     PaymentComponent,
     PageNotFoundComponent,
     ViewcustomerComponent,
+    AdminloginComponent,
     
   ],
   imports: [

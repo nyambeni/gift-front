@@ -1,5 +1,5 @@
 <app-admin-dashboard></app-admin-dashboard>
-<h3 style="margin-top: 20px; margin-left: 30%;">Orders</h3>
+<h3 style="margin-top: 20px; margin-left: 25%;">Orders</h3>
 <p style="color: #dda5e7; font-family: cursive; margin-left: 25%;">Orders that have been made.</p>
 <div class="card">
   <div *ngIf="this.table==1">
@@ -9,7 +9,7 @@
           <th *ngFor="let head of headElements" scope="col">{{head}} </th>
         </tr>
       </thead>
-      <tbody *ngFor="let el of order">
+      <tbody *ngFor="let el of orders">
         <tr mdbTableCol>
           <th scope="row">{{el.firstname}}</th>
           <td>{{el.lastname}}</td>
@@ -17,6 +17,7 @@
           <td>{{el.streetAddress}}</td>
           <td>{{el.item_title}}</td>
           <td>{{el.quantity}}</td>
+          <td>{{el.order_date[0]}}</td>
 
 
         </tr>
@@ -39,23 +40,24 @@
       </thead>
       <tbody *ngFor="let el of searchL">
         <tr mdbTableCol>
-          <th scope="row">{{el.name}}</th>
-          <td>{{el.email}}</td>
-          <td>{{el.number}}</td>
-          <td>{{el.address}}</td>
-          <td>{{el.id}}</td>
+          <th scope="row">{{el.firstname}}</th>
+          <td>{{el.lastname}}</td>
+          <td>{{el.phoneNumber}}</td>
+          <td>{{el.streetAddress}}</td>
+          <td>{{el.item_title}}</td>
           <td>{{el.quantity}}</td>
+          <td>{{el.order_date[0]}}</td>
 
 
         </tr>
         <tr>
-          <td>Total Amount Paid: R{{el.tAmount}}.00</td>
+          <td>Total Amount Paid: R{{el.totalPrice}}.00</td>
         </tr>
       </tbody>
     </table>
     <div style="background-color: #f5ecf7ea;">
-    <p class="amt" style="margin-left: 300px;">{{this.name}} Paid a Total Amount Of:
-      R{{this.amount}}.00</p>
+      <p class="amt" style="margin-left: 300px;">{{this.name}} Paid a Total Amount Of:
+        R{{this.amount}}.00</p>
     </div>
   </div>
 
@@ -67,5 +69,9 @@
 </div>
 
 <div *ngIf="this.table==1" style="background-color: #f5ecf7ea;">
-  <p class="amt">Total Amount: R{{this.totalPrice}}.00</p>
+  <div *ngIf="this.tP==2">
+    <p class="amt">Total Amount: R{{this.totalprice}}.00</p>
+  </div>
+  <button *ngIf="this.tP==1" (click)="totalPrice()"  class="btn2">Generate Total Price</button>
+  
 </div>

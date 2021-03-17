@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HostListener } from '@angular/core';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-order',
@@ -25,22 +26,77 @@ export class OrderComponent implements OnInit {
     { image: "assets/ForAdd/5.jpg" },
     { image: "assets/ForAdd/6.jpg" },
   ]
-  constructor() { 
-    localStorage.clear();
+  constructor(private as: AdminService) {
+
   }
 
 
-tPrice:number=0;
-amt:number=0;
+  tPrice: number = 0;
+  amt: number = 0;
+  order: any = [];
+  orders: any = [];
+  custId: any;
+  gifts: any = [];
+
+  gitfBoxes: any = [];
+  image: string = '';
+
   ngOnInit(): void {
+//View Order
 
-    for(let i of this.items){
-      this.amt=i.price*i.itmSelect;
-      this.tPrice+=this.amt;
-    }
-
-    console.log(this.tPrice);
+const custIdJson = localStorage.getItem('id');
+this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
     
+    console.log(this.custId);
+    //this.custId = "112";
+    this.as.getOrder().subscribe(data => {
+      console.log(data);
+
+      this.order = data;
+
+      for (let o of this.order) {
+        o.order_date = o.order_date.split("T");
+        if (o.cust_id == this.custId) {
+          this.orders.push(o);
+        }
+
+      }
+      for (let i of this.orders) {
+        this.tPrice += i.totalPrice;
+      }
+    });
+//End of order
+
+//View Boxes
+this.as.viewItems().subscribe(data => {
+  console.log(data);
+
+  this.gifts = data;
+
+  for (let c of this.gifts) {
+    this.image = "assets/GiftBoxes/" + c.image + ".png";
+    c.image = this.image;
+
+    for(let o of this.orders){
+      if(o.item_title == c.title){
+        const gB = {
+          item_id: c.item_id, category: c.category, image: c.image, item_descri: c.item_descri, item_price: c.item_price, size: c.size, title: c.title, quantity: o.quantity, totalPrice: o.totalPrice
+        }
+    
+        this.gitfBoxes.push(gB);
+      }
+    }
+   
+  }
+
+});
+
+//End of Boxes
+
+
+
+    console.log(this.orders);
+    console.log(this.gitfBoxes);
   }
 
 
@@ -58,11 +114,11 @@ amt:number=0;
 
   // When the user clicks on the button, scroll to the top of the document
   topFunction() {
-    document.getElementById('top')?.scrollIntoView({behavior: 'smooth'})
+    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' })
     // document.body.scrollTop = 0; // For Safari
     // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
-  homeFunction(){
+  homeFunction() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }

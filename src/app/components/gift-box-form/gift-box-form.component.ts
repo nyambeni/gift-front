@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-gift-box-form',
@@ -18,14 +19,16 @@ export class GiftBoxFormComponent implements OnInit {
     quantity: ['']
   });
 
-  constructor(private fb: FormBuilder,) { }
+  constructor(private fb: FormBuilder,private as: AdminService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    console.warn(this.giftBoxForm.value);
+
+    this.as.sendGiftBox(this.giftBoxForm.value)
+    .subscribe(data => console.log(data), error => console.log(error));
   }
   
 

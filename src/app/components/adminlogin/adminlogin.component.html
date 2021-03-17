@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    
+    <div>
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="md-form">
+                <img src="/assets/logo.png" class="mx-auto d-block" width="200px" >
+            </div>
+            <small *ngIf="isLoginError" class="text-danger md-form">
+                *Incorrect username or password
+            </small>
+            <div class="md-form mt-2">
+                <mdb-icon fas icon="user" class="prefix"></mdb-icon>
+                <input mdbInput type="text" class="form-control" id="username" formControlName="emailAddress">
+                <label for="username">Username</label>
+            </div>
+        
+            <div class="md-form">
+                <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
+                <input mdbInput type="password" class="form-control" id="password" formControlName="password">
+                <label for="password"> Password </label>
+            </div>
+            <p class="prefix"><small>Forgot Password? </small></p>
+            <div class="md-form mb-2">
+                <button mdbBtn type="submit" color="purple" class="customBtn form-control ">Login</button>
+            </div>
+            <p class="text-center"><i>Need an account? </i><a routerLink="../register" class="" mdbWavesEffect>sign up</a>
+            </p>
+        </form>
+    </div>
+</div>

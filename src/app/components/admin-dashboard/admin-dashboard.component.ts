@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -11,7 +12,7 @@ export class AdminDashboardComponent implements OnInit {
 
   clicked: boolean = false;
 
-  constructor() {
+  constructor( private router: Router) {
     this.clicked = this.clicked === undefined ? false : true;
   }
 
@@ -22,4 +23,7 @@ export class AdminDashboardComponent implements OnInit {
     this.clicked = val;
   }
 
+  signOut(){
+    this.router.navigate(['/adminlogin']);
+  }
 }

@@ -123,7 +123,7 @@ export class CheckoutComponent implements OnInit {
 
       const order = {
         cust_id: localStorage.getItem('id'), item_title: item.title, quantity: item.numItems, totalPrice: item.price
-       , phoneNumber: this.shippingForm.value.phoneNumber, name: this.shippingForm.value.name,
+        , phoneNumber: this.shippingForm.value.phoneNumber, name: this.shippingForm.value.name,
         citySuburb: this.shippingForm.value.citySuburb, postalCode: this.shippingForm.value.postalCode,
         province: this.shippingForm.value.province, streetAddress: this.shippingForm.value.streetAddress
       }
@@ -132,8 +132,8 @@ export class CheckoutComponent implements OnInit {
 
       this.os.sendOrder(order).subscribe((data) => console.log(data), ERR => console.log(ERR));
     }
+    alert("Order Has Been Made");
 
-    
     //call API
     //const order = {}
     //this.os.sendOrder

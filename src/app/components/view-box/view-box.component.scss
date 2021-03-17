@@ -46,3 +46,7 @@ tr:nth-child(even) {
 img{
     box-shadow: 1px 1px 10px 1px rgba(161, 161, 161, 0.658);
 }
+
+::ng-deep .mr-3{
+    cursor: pointer !important;
+}

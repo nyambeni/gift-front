@@ -41,7 +41,24 @@
         <div class="container"></div>
         <links>
             <div>
-                Isaac(|)
+                <div style="float: right;  position: absolute;
+                            top: 10px; right: 155px;" class="line">
+                        <a class="nav-link">
+                            <div class="btn-group" mdbDropdown>
+                                <div mdbDropdownToggle>
+                                    Loy<i class="fas fa-chevron-down icon"></i>
+                                </div>
+
+                                <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+                                    <a routerLink="" class="dropdown-item" href="#">Profile</a>
+                                    <a routerLink="" class="dropdown-item" href="#">Shop</a>
+                                    <div class="divider dropdown-divider"></div>
+                                    <button class="dropdown-item btn-logOut"  (click)="signOut()">Log-out</button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
             </div>
         </links>
 
