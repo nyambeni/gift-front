@@ -13,6 +13,8 @@ import { passwordMatchValidator } from '../../validation/passwordMatchValidator'
 })
 export class RegisterComponent implements OnInit {
 
+  isEmailError = false;
+
   // don't forget to look for this struck through
   customerForm = this.fb.group({ 
     firstname: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*')]],
@@ -41,10 +43,14 @@ export class RegisterComponent implements OnInit {
   onSubmit(){
     console.log(this.customerForm.value); 
     this.customerService.addCustomer(this.customerForm.value).
-    subscribe(data => console.log(data));
-
-    this.router.navigate(['/login']);
-
-  }
-
+    subscribe(
+      (data) => {
+        console.log(data);
+        this.router.navigate(['/shop']);
+      }
+      ,(error) => {
+        console.log(error);
+        this.isEmailError = true;
+      });
+    }
 }
