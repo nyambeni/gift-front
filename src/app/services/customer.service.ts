@@ -6,7 +6,7 @@ import { HttpClient, HttpErrorResponse} from  '@angular/common/http';
 })
 export class CustomerService {
 
-  url = "http://10.100.14.16:3000/";
+  url = "http://10.100.14.17:3000/";
 
   constructor(private http: HttpClient) { }
 

@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'giftboxform', component: GiftBoxFormComponent },
   { path: 'statisticbox', component: StatisticBoxComponent },
   { path: 'about', component: AboutusComponent },
-  { path: 'shop', component: ShoplandingComponent, canActivate: [CanActivateCustomerGuard] },
+  { path: 'shop', component: ShoplandingComponent },
   { path: 'contact', component: ContactComponent },
 
   { path: 'viewbox', component: ViewBoxComponent },

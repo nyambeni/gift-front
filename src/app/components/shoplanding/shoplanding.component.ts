@@ -269,7 +269,8 @@ export class ShoplandingComponent implements OnInit {
   }
 
   logOut() {
-    alert("Hello");
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 }
 

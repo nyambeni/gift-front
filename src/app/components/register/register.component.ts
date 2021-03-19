@@ -43,14 +43,29 @@ export class RegisterComponent implements OnInit {
   onSubmit(){
     console.log(this.customerForm.value); 
     this.customerService.addCustomer(this.customerForm.value).
-    subscribe(
-      (data) => {
+    subscribe((data) => {
         console.log(data);
-        this.router.navigate(['/shop']);
-      }
-      ,(error) => {
+
+        const user = {
+          password: this.customerForm.value.password,
+          emailAddress: this.customerForm.value.emailAddress
+        }
+       
+        this.customerService.logIn(user)
+        .subscribe((user:any) => {
+            console.log(user.user);
+            console.log(user.user.cust_id.toString());
+
+            localStorage.setItem('id', user.user.cust_id.toString());
+            this.router.navigate(['/shop']);
+        });
+
+      },(error) => {
         console.log(error);
         this.isEmailError = true;
       });
+
+      ///
+
     }
 }
