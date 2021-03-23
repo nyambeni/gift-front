@@ -14,14 +14,17 @@ export class CustomerService {
     return this.http.post(this.url+"register/register", customerData);
   }
 
-  getCustomer(id: number){
-    return {firstname: "Isaac", lastname: "Malebana", emailAddress: "isaac@gmail.com"};
+  getCustomer(id: any){
+   // return {firstname: "Isaac", lastname: "Malebana", emailAddress: "isaac@gmail.com"};
+    return this.http.get(this.url+"customer/profile/"+id);
   } 
 
   updateCustomer(customerData: any){
     const id = this.userId();
-    return this.http.put(`${this.url}/${id}`, customerData);
+    return this.http.put(this.url+"customer/profile/update/"+id, customerData);
   }
+
+  ///profile/update/
 
   deleteUser(id: number){
     return this.http.delete(`${this.url}/${id}`)
@@ -43,7 +46,12 @@ export class CustomerService {
     return this.http.get(this.url+"customer/viewWishlist/"+id)
   }
 
-  deleteWish(title: any){
-    return this.http.delete(this.url+"customer/deletewishlist/"+title)
+  deleteWish(id: any){
+    return this.http.delete(this.url+"customer/deletewishlist/"+id)
   }
+
+  getItemsByCate(category: any){
+    return this.http.get(this.url+"customer/viewWishlist/"+category)
+  }
+  
 }

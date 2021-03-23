@@ -74,6 +74,9 @@
         <small  *ngIf="emailAddress?.errors?.required"> *Email address is required</small>
         <small  *ngIf="emailAddress?.errors?.email"> *Invalid email address</small>
     </div>
+    <small *ngIf="isEmailError" class="text-danger md-form">
+        *Email is taken
+    </small>
     <!--End of email address-->
 
     <!--for password-->

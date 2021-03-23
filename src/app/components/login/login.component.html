@@ -3,7 +3,7 @@
     <div>
         <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="md-form">
-                <img src="/assets/logo.png" class="mx-auto d-block" width="200px" >
+                <img routerLink="" src="/assets/logo.png" class="mx-auto d-block" width="200px" >
             </div>
             <small *ngIf="isLoginError" class="text-danger md-form">
                 *Incorrect username or password

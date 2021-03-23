@@ -12,7 +12,7 @@ export class CheckoutComponent implements OnInit {
   items: any = [];
   num: number = 0;
   incNum: number = 0;
-  price: any;
+  price: number=0;
 
   constructor(private fb: FormBuilder, private os: OrderService) { }
 
@@ -21,6 +21,7 @@ export class CheckoutComponent implements OnInit {
   step3: boolean = false;
 
   ngOnInit(): void {
+    //Get Items From LocalStorage
     const itemJson = localStorage.getItem('items');
     this.items = itemJson !== null ? JSON.parse(itemJson) : null;
 
@@ -30,14 +31,17 @@ export class CheckoutComponent implements OnInit {
 
     for (let i of this.items) {
       i.numItems = 1;
+      this.price += parseInt(i.item_price);
+      console.log(this.price);
     }
 
-    const priceJson = localStorage.getItem('price');
-    this.price = priceJson !== null ? JSON.parse(priceJson) : null;
+    /*const priceJson = localStorage.getItem('price');
+    this.price = priceJson !== null ? JSON.parse(priceJson) : null;*/
 
     console.log(this.items);
   }
 
+  //Remove Item from the selected items
   priceToDelete: number = 0;
   onDelete(deletItm: any, itmPrice: number, titl: any, numItems: any) {
     this.items.splice(deletItm, 1);
@@ -57,13 +61,14 @@ export class CheckoutComponent implements OnInit {
     console.log(this.items);
   }
 
+  //Cancel Order
   cancelOrder() {
     this.items = [];
     console.log(this.items);
     this.price = 0;
   }
 
-
+//Shipping form
   shippingForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     phoneNumber: ['', [Validators.required, Validators.minLength(3)]],
@@ -85,6 +90,7 @@ export class CheckoutComponent implements OnInit {
 
   get postalCode() { return this.shippingForm.get('postalCode') }
 
+  //Billing form
   billingForm = this.fb.group({
     cardNumber: ['', [Validators.required, Validators.minLength(3)]],
     expiryDate: ['', Validators.required],
@@ -104,6 +110,7 @@ export class CheckoutComponent implements OnInit {
 
   get cardName() { return this.billingForm.get('cardName') }
 
+
   onShippingFormSubmit() {
     console.log("***** Shiping Information *****");
     console.log(this.shippingForm.value);
@@ -122,7 +129,7 @@ export class CheckoutComponent implements OnInit {
 
 
       const order = {
-        cust_id: localStorage.getItem('id'), item_title: item.title, quantity: item.numItems, totalPrice: item.price
+        cust_id: localStorage.getItem('id'), item_title: item. item_title, quantity: item.numItems, totalPrice: item.item_price
         , phoneNumber: this.shippingForm.value.phoneNumber, name: this.shippingForm.value.name,
         citySuburb: this.shippingForm.value.citySuburb, postalCode: this.shippingForm.value.postalCode,
         province: this.shippingForm.value.province, streetAddress: this.shippingForm.value.streetAddress
@@ -179,12 +186,12 @@ export class CheckoutComponent implements OnInit {
 
   }
 
-
+//Add Quantity
   addQ(item: any) {
     if (item.numItems < item.availItems) {
       item.numItems++;
       console.log(item.numItems);
-      this.price += item.price;
+      this.price += parseInt(item.item_price);
     }
 
     if (item.numItems == item.availItems) {
@@ -193,6 +200,7 @@ export class CheckoutComponent implements OnInit {
 
   }
 
+  //Subtract quantity
   subQ(item: any) {
     item.numItems--;
     if (item.numItems <= 0) {
@@ -200,7 +208,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     if (item.numItems >= 1) {
-      this.price -= item.price;
+      this.price -= parseInt(item.item_price);
     }
 
   }

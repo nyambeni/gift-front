@@ -45,7 +45,7 @@
                         <a class="nav-link">
                             <div class="btn-group" mdbDropdown>
                                 <div mdbDropdownToggle>
-                                    Loy<i class="fas fa-chevron-down icon"></i>
+                                    {{custName}}<i class="fas fa-chevron-down icon"></i>
                                 </div>
 
                                 <div class="dropdown-menu dropdown-menu-right dropdown-primary">
@@ -212,80 +212,9 @@
                                             Price: R{{item.item_price}}.00
                                         </p>
 
-
-                                        <!-- <button type="button" class="click" style="outline: none;" title="Add To Cart"
-                                            (click)="addToCart(item, userID)">
-                                            <mdb-icon fas icon="cart-arrow-down"></mdb-icon>
-                                            
-                                        </button>
-
-
-                                        <button type="button" class="click" style="outline: none;"
-                                            title="Add To Wishlist"><i class="fas fa-heart">
-                                                <!--(click)="plus(item, userID)"
-                                            </i></button>-->
-
                                     </mdb-card-body>
                                 </mdb-card>
                                 <!-- Card -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--All Items-->
-
-            <!--All Items--
-            <div *ngIf="this.num == 0">
-                <h2 align="center">All Available Item</h2>
-                <h4 align="center" style="color: #dda5e7; font-family: cursive;">Select a Categories To Select an Item
-                </h4>
-
-                <br>
-                <div style="margin-top: 50px;">
-                    <div class="row justify-content-center">
-
-                        <div class="col-sm-4 pb-3" *ngFor="let itm of item; index as userID">
-                            <!-- Card --
-                            <div class="card">
-                                <!-- Card --
-                                <mdb-card>
-
-                                    <!-- Card img --
-                                    <img [src]="item.image" alt="Card image cap" width="250" height="250"
-                                        style="padding-top: 30px;">
-                                    <a>
-                                        <div class="mask"></div>
-                                    </a>
-
-                                    <!--Card content--
-                                    <mdb-card-body>
-                                        <br>
-                                        <h4>{{itm.title}}</h4>
-
-                                        <p style="color: #dda5e7; font-family: cursive;">
-
-                                            Category: {{itm.category}}
-                                            <br>
-                                            Price: R{{itm.item_price}}
-                                        </p>
-
-
-                                        <!-- <button type="button" class="click" style="outline: none;" title="Add To Cart"
-                                            (click)="addToCart(item, userID)">
-                                            <mdb-icon fas icon="cart-arrow-down"></mdb-icon>
-                                            
-                                        </button>
-
-
-                                        <button type="button" class="click" style="outline: none;"
-                                            title="Add To Wishlist"><i class="fas fa-heart">
-                                                <!--(click)="plus(item, userID)"
-                                            </i></button>--
-
-                                    </mdb-card-body>
-                                </mdb-card>
-                                <!-- Card --
                             </div>
                         </div>
                     </div>

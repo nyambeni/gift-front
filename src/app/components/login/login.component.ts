@@ -11,7 +11,7 @@ import { CustomerService } from '../../services/customer.service';
 })
 export class LoginComponent implements OnInit {
 
-  isLoginError: boolean = false;
+  isLoginError = false;
 
   loginForm = this.fb.group({
     emailAddress: [''],
@@ -27,17 +27,17 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     console.log(this.loginForm.value);
     this.customerService.logIn(this.loginForm.value)
-    .subscribe((user:any) => {
-      console.log(user.user);
-      console.log(user.user.cust_id.toString());
-      
-      localStorage.setItem('id', user.user.cust_id.toString());
-    });
-    //console.log(data)
-   // localStorage.setItem('userToken', cust.token.toString());
-    
-    this.router.navigate(['/shop']);
-
-    //this.isLoginError = true; //when getting http error
-  }
+    .subscribe(
+      (user:any) => {
+        console.log(user.user);
+        console.log(user.user.cust_id.toString());
+        
+        localStorage.setItem('id', user.user.cust_id.toString());
+        localStorage.setItem('custName', user.user.firstname.toString());
+        this.router.navigate(['/shop']);
+      }
+      ,(error: any) => {
+        console.log(error);
+        this.isLoginError = true});
+      }
 }

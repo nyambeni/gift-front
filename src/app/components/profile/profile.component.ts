@@ -9,16 +9,32 @@ import { FormBuilder } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
 
-  customer: any = [];
+  customer: any;
+
+  custId: any;
 
   constructor(private customerService: CustomerService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.customer = this.customerService.getCustomer(12);
-    console.log(this.customer)
+    //this.customer = this.customerService.getCustomer(12);
+    //console.log(this.customer)
     /*.subscribe( customer => this.customer = customer, 
       error => console.log(`****API error***`)
     );*/
+
+    /*const custIdJson = localStorage.getItem('id');
+    this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
+*/
+    this.custId = "112";
+   
+    const cust_id = { cust_id:this.custId };
+    console.log(cust_id);
+    this.customerService.getCustomer(this.custId).subscribe((data: any) => {
+      this.customer = data[0];
+      console.log(data);
+    }, error => console.log(error));
+    
+    //console.log(this.customer);
   }
 
   updateForm = this.fb.group({
@@ -26,24 +42,22 @@ export class ProfileComponent implements OnInit {
     lastname: ['']
   });
 
-  updateCustomer(){
-    this.customerService.updateCustomer(this.updateForm.value).subscribe();
-    console.log("Submit");
+  updateCustomer() {
+    this.customerService.updateCustomer(this.updateForm.value)
+    .subscribe(data => console.log(data), error => console.log(error));
+    console.log(this.updateForm.value);
     this.customer.firstname = this.updateForm.value.firstname;
     this.customer.lastname = this.updateForm.value.lastname;
     console.log('-----');
   }
 
-  btnCancel(){
-    //have to refress page here
-    console.log("Cancel has been pressed");
-  }
+ 
 
-  deleteAccount(){
+  deleteAccount() {
     this.customerService.deleteUser(12);
   }
 
-  logOut(){
+  logOut() {
     console.log("log user out");
   }
 }

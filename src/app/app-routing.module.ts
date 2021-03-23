@@ -23,6 +23,8 @@ import { PaymentComponent } from "./components/payment/payment.component";
 import { ViewcustomerComponent } from './components/viewcustomer/viewcustomer.component';
 import { AdminloginComponent } from "./components/adminlogin/adminlogin.component";
 
+import { CanActivateCustomerGuard } from "./guards/can-activate-customer.guard";
+
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'giftboxform', component: GiftBoxFormComponent },
@@ -37,11 +39,11 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'wish', component: WishlistComponent },
 
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [CanActivateCustomerGuard]},
+  { path: 'profile', component: ProfileComponent, canActivate: [CanActivateCustomerGuard] },
   { path: 'customer', component: ViewcustomerComponent },
-  { path: 'order', component: OrderComponent },
-  { path: 'payment', component: PaymentComponent },
+  { path: 'order', component: OrderComponent, canActivate: [CanActivateCustomerGuard] },
+  { path: 'payment', component: PaymentComponent, canActivate: [CanActivateCustomerGuard] },
   {path: 'adminlogin', component: AdminloginComponent},
   
   { path: '**', component: PageNotFoundComponent },

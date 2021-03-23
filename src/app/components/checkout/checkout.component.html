@@ -95,11 +95,14 @@
 
               Category: {{item.category}}  
               <br>
-              Price: R{{item.price}}
+              Price: R{{item.item_price}}.00
+              <br>
+              Size: {{item.size}}
             </p>
 
+           
           </td>
-          <td align="center">{{item.desc}}</td>
+          <td align="center">{{item.item_description}}</td>
           <td align="center">
             <form action="/action_page.php">
             
@@ -126,7 +129,7 @@
 
     <br><br>
 
-    <h3>Total Price: R{{price}}</h3>
+    <h3>Total Price: R{{price}}.00</h3>
 
     <br><br>
   </div>

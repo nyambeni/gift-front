@@ -8,17 +8,6 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./viewcustomer.component.scss']
 })
 export class ViewcustomerComponent implements OnInit {
-  elements: any = [
-    { name: "Loy", lname: "Netshiozwi", email: "netsh@gmail.com", },
-    { name: "Loy", lname: "Netshiozwi", email: "netsh@gmail.com", },
-    { name: "Monica", lname: "Geller", email: "geller@Yahoo.com", },
-    { name: "Chantelle", lname: "Miller", email: "mabena@gmail.com", },
-    { name: "Sam", lname: "Willows", email: "willows@gmail.com", },
-    { name: "Jack", lname: "Sparrow", email: "sparrow@gmail.com", },
-    { name: "Sarah", lname: "Mahlangu", email: "sarah@gmail.com", },
-    { name: "Sipho", lname: "Zulu", email: "zulu@gmail.com", },
-  ]
-
 
   headElements = ['First Name', 'Last Name', 'Email Address'];
   totalPrice: number = 0;
@@ -29,7 +18,7 @@ export class ViewcustomerComponent implements OnInit {
   customers: any = [];
 
   ngOnInit(): void {
-
+    //Get all the customers
     this.as.viewCustomer().subscribe(data => {
       console.log(data);
 
@@ -44,6 +33,8 @@ export class ViewcustomerComponent implements OnInit {
 
 
   }
+
+  //Search a customer
   searchL: any = [];
   table: number = 1;
   amount: number = 0;
@@ -61,9 +52,9 @@ export class ViewcustomerComponent implements OnInit {
     console.log(this.name);
 
     for (let e of this.customers) {
-    
-    this.searchName = (e.firstname?e.firstname:'').toLowerCase();
-    
+
+      this.searchName = (e.firstname ? e.firstname : '').toLowerCase();
+
       if (this.searchName == this.name) {
         this.searchL.push(e);
         this.amount += e.totalPrice;
@@ -86,15 +77,15 @@ export class ViewcustomerComponent implements OnInit {
     //Search by surname
     this.name = search.toLowerCase();
 
-    if(search == ""){
+    if (search == "") {
       alert("The is no name entered");
     }
 
     for (let e of this.customers) {
-      this.searchName = (e.lastname?e.lastname:'').toLowerCase();
+      this.searchName = (e.lastname ? e.lastname : '').toLowerCase();
       if (this.searchName == this.name) {
         this.searchL.push(e);
-        
+
       }
     }
 
@@ -120,17 +111,3 @@ export class ViewcustomerComponent implements OnInit {
 
 
 }
-
-/*
-import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-payment',
-  templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.scss']
-})
-export class PaymentComponent implements OnInit {
-
-}
-
-*/

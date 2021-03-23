@@ -27,8 +27,20 @@ export class ShoplandingComponent implements OnInit {
   selectI: number = 0
   availItems: number = 10;
 
-  ngOnInit(): void {
 
+  custId: any;
+
+  custName: any;
+
+  ngOnInit(): void {
+    //Get customer Name
+    //const nameJson = localStorage.getItem('custName');
+    //this.custName = nameJson !== null ? JSON.parse(nameJson) : null;
+    this.custName = localStorage.getItem('custName');
+
+    console.log(this.custName);
+    
+    //Get All The Items
     this.as.viewItems().subscribe(data => {
       console.log(data);
 
@@ -46,6 +58,7 @@ export class ShoplandingComponent implements OnInit {
 
     });
 
+    //Assign a link for images
     for (let e of this.gitfBoxes) {
       this.image = "assets/GiftBoxes/" + e.image + ".png";
       e.image = this.image;
@@ -71,18 +84,7 @@ export class ShoplandingComponent implements OnInit {
   // When the user clicks on the button, scroll to the top of the document
   topFunction() {
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' })
-    // document.body.scrollTop = 0; // For Safari
-    // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-  }
 
-  bottomFunction() {
-    document.body.scrollTop = 10000; // For Safari
-    document.documentElement.scrollTop = 10000; // For Chrome, Firefox, IE and Opera
-  }
-
-  homeFunction() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
   // items in the card
@@ -214,12 +216,19 @@ export class ShoplandingComponent implements OnInit {
   price: number = 0;
   addToCart(item: any, idItm: any) {
 
+    const custIdJson = localStorage.getItem('id');
+    this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
+
+
+    //this.custId = "112";
     if (item.selectI == 0) {
       this.i += 1;
       this.itm = this.i.toString();
-      this.add.push(item);
+
       this.incNum = 1;
       item.selectI = 1;
+      const AddItem = { cust_id: this.custId, image: item.image, item_title: item.title, category: item.category, item_price: item.item_price, item_description: item.item_descri, size: item.size, availItems: this.availItems }
+      this.add.push(AddItem);
     }
 
     this.price += item.price;
@@ -230,7 +239,6 @@ export class ShoplandingComponent implements OnInit {
     console.log(this.add);
   }
 
-  custId: any;
   //Add to wish list
   addToWish(item: any, idItm: any) {
 
@@ -238,8 +246,8 @@ export class ShoplandingComponent implements OnInit {
     const custIdJson = localStorage.getItem('id');
     this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
 
+    //this.custId = "112";
 
-     //this.custId = "112";
     console.log(this.custId);
 
 
@@ -253,11 +261,12 @@ export class ShoplandingComponent implements OnInit {
         this.cs.addwishlist(wishItem).
           subscribe(data => console.log(data));
         console.log(wishItem);
+
         this.w += 1;
         this.wish = this.w.toString();
         this.wishL.push(item);
         this.incNum = 2;
-        item.wish = 1;
+        item.wishI = 1;
       }
 
       //this.cs.addwishlist(wishItem).subscribe((data) => console.log(data));
@@ -269,7 +278,8 @@ export class ShoplandingComponent implements OnInit {
   }
 
   logOut() {
-    alert("Hello");
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 }
 

@@ -15,8 +15,9 @@ export class ViewBoxComponent implements OnInit {
 
   gitfBoxes: any = [];
   image: string = '';
+  
   ngOnInit(): void {
-
+//Get all the items
     this.as.viewItems().subscribe(data => {
       console.log(data);
 
@@ -104,6 +105,8 @@ export class ViewBoxComponent implements OnInit {
     }//end of category
     console.log(this.searchL);
   }
+
+  //View All boxes
   view: number = 0;
   viewAll() {
     this.table = 1;
