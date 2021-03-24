@@ -9,13 +9,41 @@
                     height="50"></a></mdb-navbar-brand>
 
         <!-- Collapsible content -->
+        
+
+            <div style="float: right;  position: absolute;
+                    top: 10px; right: 155px;" class="line">
+                <a class="nav-link">
+                    <div class="btn-group" mdbDropdown>
+                        <div mdbDropdownToggle>
+                            {{custName}}<i class="fas fa-chevron-down icon"></i>
+                        </div>
+
+                        <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+                            <a routerLink="../profile" class="dropdown-item">Profile</a>
+                            <a routerLink="../shop" class="dropdown-item">Shop</a>
+                            <div class="divider dropdown-divider"></div>
+                            <button class="dropdown-item btn-logOut" (click)="logOut()">Log-out</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+        <!-- Collapsible content -->
+
+    </mdb-navbar>
+    <!--/.Navbar-->
+
+    <!--Title-->
+    <div class="title">
+      <div class="container">
         <links>
 
             <!-- Links -->
-            <ul class="navbar-nav ml-auto">
+            <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a routerLink="" class="nav-link waves-light" mdbWavesEffect id="myHome"
-                        title="Go to Home Page">
+                    <a routerLink="" class="nav-link waves-light" mdbWavesEffect id="myHome" title="Go to Home Page">
                         Home
                     </a>
                 </li>
@@ -44,16 +72,8 @@
 
             </ul>
             <!-- Links -->
-        </links>
-        <!-- Collapsible content -->
-
-    </mdb-navbar>
-    <!--/.Navbar-->
-
-    <!--Title-->
-    <div class="title">
-        <h3 align="center">Gift Box</h3>
-        <hr style="color: white; border: 1px solid white; width: 20%;">
+        </links> 
+      </div>
     </div>
     <!--Title-->
 
@@ -84,8 +104,8 @@
                         Quantity: {{item.quantity}}
                         <br>
                         Price: R{{item.totalPrice}}
-                   
-                </p>
+
+                    </p>
                 </div>
                 <!-- Card -->
             </div>

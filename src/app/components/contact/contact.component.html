@@ -124,62 +124,6 @@
     </div>
     <!--Contact Us-->
 
-    <!--Email-->
-    <div class="whoAreWe">
-        <div class="container">
-            <h3 align="center">Get In Touch With Us</h3>
-            <p align="center" style="color: #dda5e7; font-family: cursive;">By Sending Us an Email.</p>
-            <br>
-            <form [formGroup]="formContact" (ngSubmit)="onSubmit()">
-
-                <input type="text" formControlName="fname" placeholder="First Name">
-                <div *ngIf="fname?.invalid && fname?.touched">
-                    <small class="text-danger" *ngIf="fname?.errors?.required"> First Name is
-                        Required</small>
-                    <small class="text-danger" *ngIf="fname?.errors?.minlength">First Name must have more then 3
-                        letters</small>
-                </div>
-
-                <input type="text" formControlName="lname" placeholder="Last Name">
-                <div *ngIf="lname?.invalid && lname?.touched">
-                    <small class="text-danger" *ngIf="fname?.errors?.required">Last Name is
-                        Required</small>
-                    <small class="text-danger" *ngIf="fname?.errors?.minlength">Last Name must have more then 3
-                        letters</small>
-                </div>
-
-                <input type="text" formControlName="email" placeholder="Email">
-                <div *ngIf="email?.invalid && email?.touched">
-                    <small class="text-danger" *ngIf="email?.errors?.required">Email Address is
-                        Required</small>
-                    <small class="text-danger" *ngIf="email?.errors?.minlength">Email Address must have more then 3
-                        letters</small>
-                </div>
-
-                <input type="text" formControlName="subject" placeholder="Subject">
-                <div *ngIf="subject?.invalid && subject?.touched">
-                    <small class="text-danger" *ngIf="subject?.errors?.required">The Subject is
-                        Required</small>
-                    <small class="text-danger" *ngIf="subject?.errors?.minlength">The Subject must have more then 3
-                        letters</small>
-                </div>
-
-
-                <textarea formControlName="message" placeholder="Write something.." style="height:200px"></textarea>
-                <div *ngIf="message?.invalid && message?.touched">
-                    <small class="text-danger" *ngIf="message?.errors?.required">Shouldn't be left empty</small>
-                </div>
-
-
-                <button type="submit" align="center" class="shopBtn">Send
-                </button>
-
-            </form>
-        </div>
-    </div>
-
-
-    <!--Email-->
     <br>
     <br>
 

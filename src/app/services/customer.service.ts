@@ -26,8 +26,8 @@ export class CustomerService {
 
   ///profile/update/
 
-  deleteUser(id: number){
-    return this.http.delete(`${this.url}/${id}`)
+  deleteUser(id: any){
+    return this.http.delete(this.url+"customer/delete/"+id)
   }
 
   logIn(customerData: any){

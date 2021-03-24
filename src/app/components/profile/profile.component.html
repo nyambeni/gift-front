@@ -19,8 +19,8 @@
                  </div>
                  
                  <div class="dropdown-menu dropdown-menu-right dropdown-primary">
-                   <a routerLink="" class="dropdown-item" href="#">Profile</a>
-                   <a routerLink="" class="dropdown-item" href="#">Shop</a>
+                   <a class="dropdown-item">Profile</a>
+                   <a routerLink="../shop" class="dropdown-item" >Shop</a>
                    <div class="divider dropdown-divider"></div>
                    <button class="dropdown-item btn-logOut" (click)="logOut()">Log-out</button>
                  </div>
@@ -83,7 +83,7 @@
                 <!-- Grid row -->
             
                 <div class="md-form my-0">
-                    <input disabled value="{{customer?.emailAddress}}" type="text" id="form6" class="form-control" mdbInput>
+                    <input disabled placeholder="{{customer?.emailAddress}}" type="text" id="form6" class="form-control" mdbInput>
                     <label for="form6">Email Address</label>
                 </div>
 

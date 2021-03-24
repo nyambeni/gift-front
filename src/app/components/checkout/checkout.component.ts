@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CustomerService } from 'src/app/services/customer.service';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -14,13 +16,29 @@ export class CheckoutComponent implements OnInit {
   incNum: number = 0;
   price: number=0;
 
-  constructor(private fb: FormBuilder, private os: OrderService) { }
+  customer: any;
+  custId: any;
+
+  constructor(private fb: FormBuilder, private os: OrderService, private router: Router, private cs: CustomerService) { }
 
   step1: boolean = true;
   step2: boolean = false;
   step3: boolean = false;
 
   ngOnInit(): void {
+    //Get Customer
+    const custIdJson = localStorage.getItem('id');
+    this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
+
+   
+    const cust_id = { cust_id:this.custId };
+    console.log(cust_id);
+    this.cs.getCustomer(this.custId).subscribe((data: any) => {
+      this.customer = data[0];
+      console.log(data);
+    }, error => console.log(error));
+
+
     //Get Items From LocalStorage
     const itemJson = localStorage.getItem('items');
     this.items = itemJson !== null ? JSON.parse(itemJson) : null;
@@ -211,5 +229,10 @@ export class CheckoutComponent implements OnInit {
       this.price -= parseInt(item.item_price);
     }
 
+  }
+
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 }

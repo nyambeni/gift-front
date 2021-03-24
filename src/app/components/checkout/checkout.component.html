@@ -3,23 +3,25 @@
   <div class="container">
 
     <!-- Navbar brand -->
-    <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="/assets/logo.png" alt="" width="20%" height="15%"></a>
+    <mdb-navbar-brand><a class="navbar-brand" ><img src="/assets/logo.png" alt="" width="20%" height="15%"></a>
     </mdb-navbar-brand>
 
     <!-- Collapsible content -->
     <links>
-
+     
       <ul class="navbar-nav ml-auto nav-flex-icons">
         <li class="nav-item">
           <a class="nav-link">
             <div class="btn-group" mdbDropdown>
-              <mdb-icon far icon="user" class="purple-text" mdbDropdownToggle></mdb-icon>
+              <div mdbDropdownToggle>
+               {{customer?.firstname}}<i class="fas fa-chevron-down icon"></i>
+              </div>
+              
               <div class="dropdown-menu dropdown-menu-right dropdown-primary">
-                <a class="dropdown-item" href="#">Profile</a>
-                <a class="dropdown-item" href="#">Home</a>
-                <a class="dropdown-item" href="#">Shop</a>
+                <a routerLink="../profile" class="dropdown-item">Profile</a>
+                <a routerLink="../shop" class="dropdown-item" >Shop</a>
                 <div class="divider dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Log-out</a>
+                <button class="dropdown-item btn-logOut" (click)="logOut()">Log-out</button>
               </div>
             </div>
           </a>
@@ -27,6 +29,7 @@
       </ul>
     </links>
     <!-- Collapsible content -->
+   
   </div>
 </mdb-navbar>
 <!--/.Navbar-->

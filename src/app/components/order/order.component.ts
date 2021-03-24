@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-order',
@@ -26,7 +28,7 @@ export class OrderComponent implements OnInit {
     { image: "assets/ForAdd/5.jpg" },
     { image: "assets/ForAdd/6.jpg" },
   ]
-  constructor(private as: AdminService) {
+  constructor(private router: Router, private as: AdminService, private cs: CustomerService) {
 
   }
 
@@ -40,15 +42,21 @@ export class OrderComponent implements OnInit {
 
   gitfBoxes: any = [];
   image: string = '';
+  custName: any;
 
   ngOnInit(): void {
-    //View Order
-    /*
     const custIdJson = localStorage.getItem('id');
     this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
-        */
 
-    //this.custId = "112";
+   
+    const cust_id = { cust_id:this.custId };
+    console.log(cust_id);
+    this.cs.getCustomer(this.custId).subscribe((data: any) => {
+      this.custName = data[0].firstname;
+      console.log(data[0]);
+    }, error => console.log(error));
+
+ 
     console.log(this.custId);
 
     this.as.getOrder().subscribe(data => {
@@ -124,5 +132,8 @@ export class OrderComponent implements OnInit {
     // document.body.scrollTop = 0; // For Safari
     // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
-
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
 }

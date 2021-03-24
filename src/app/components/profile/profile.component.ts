@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../services/customer.service';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,7 @@ export class ProfileComponent implements OnInit {
 
   custId: any;
 
-  constructor(private customerService: CustomerService, private fb: FormBuilder) { }
+  constructor(private customerService: CustomerService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     //this.customer = this.customerService.getCustomer(12);
@@ -22,10 +23,9 @@ export class ProfileComponent implements OnInit {
       error => console.log(`****API error***`)
     );*/
 
-    /*const custIdJson = localStorage.getItem('id');
+    const custIdJson = localStorage.getItem('id');
     this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
-*/
-    this.custId = "112";
+
    
     const cust_id = { cust_id:this.custId };
     console.log(cust_id);
@@ -51,13 +51,14 @@ export class ProfileComponent implements OnInit {
     console.log('-----');
   }
 
- 
-
   deleteAccount() {
-    this.customerService.deleteUser(12);
+    this.customerService.deleteUser(this.custId)
+    .subscribe(data => console.log(data), error => console.log(error));
+    console.log('Delete Accoutn\\')
   }
 
   logOut() {
-    console.log("log user out");
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 }

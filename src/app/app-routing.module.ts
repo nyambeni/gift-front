@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [CanActivateCustomerGuard] },
   { path: 'customer', component: ViewcustomerComponent },
   { path: 'order', component: OrderComponent, canActivate: [CanActivateCustomerGuard] },
-  { path: 'payment', component: PaymentComponent, canActivate: [CanActivateCustomerGuard] },
+  { path: 'payment', component: PaymentComponent },
   {path: 'adminlogin', component: AdminloginComponent},
   
   { path: '**', component: PageNotFoundComponent },
