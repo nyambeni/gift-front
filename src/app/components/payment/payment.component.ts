@@ -25,6 +25,7 @@ export class PaymentComponent implements OnInit {
 
       for (let o of this.order) {
         o.order_date = o.order_date.split("T");
+        o.streetAddress = "";
         this.orders.push(o);
       }
     });
@@ -35,6 +36,7 @@ export class PaymentComponent implements OnInit {
   //Search Order
   searchL: any = [];
   table: number = 1;
+  totPrice:number=0;
   amount: number = 0;
   name: any;
   searchName: string = "";
@@ -50,7 +52,8 @@ export class PaymentComponent implements OnInit {
       this.searchName = e.firstname.toLowerCase();
       if (this.searchName == this.name) {
         this.searchL.push(e);
-        this.amount += e.totalPrice;
+        this.totPrice = e.quantity*e.totalPrice
+        this.amount += this.totPrice;
       }
     }
 
@@ -81,7 +84,8 @@ export class PaymentComponent implements OnInit {
   totalPrice() {
     this.tP = 2;
     for (let e of this.orders) {
-      this.totalprice = this.totalprice + e.totalPrice;
+      this.totPrice = e.quantity*e.totalPrice
+      this.totalprice = this.totalprice + this.totPrice;
 
     }
   }

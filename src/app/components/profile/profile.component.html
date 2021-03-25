@@ -50,7 +50,7 @@
                 <!-- Grid row -->
 
                 <!--Form -->
-              <form [formGroup]="updateForm" (ngSubmit)="updateCustomer()" class="form">
+              <form [formGroup]="updateForm" (ngSubmit)="updateCustomer(customer?.firstname, customer?.lastname)" class="form">
 
                 <div class="d-flex justify-content-between">
                     <p class="h5 mb-1">Edit your profile</p>

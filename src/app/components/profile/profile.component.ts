@@ -42,7 +42,18 @@ export class ProfileComponent implements OnInit {
     lastname: ['']
   });
 
-  updateCustomer() {
+  updateCustomer(name:any, lname:any) {
+    
+
+    if(this.updateForm.value.firstname == ""){
+      this.updateForm.value.firstname = name;
+    }
+
+    if(this.updateForm.value.lastname == ""){
+      this.updateForm.value.lastname = lname;
+    }
+    
+    console.log(this.updateForm.value.firstname, this.updateForm.value.lastname);
     this.customerService.updateCustomer(this.updateForm.value)
     .subscribe(data => console.log(data), error => console.log(error));
     console.log(this.updateForm.value);

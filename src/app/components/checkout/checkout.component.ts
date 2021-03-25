@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import {FormControl, FormGroup} from "@angular/forms";
 import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -18,6 +19,8 @@ export class CheckoutComponent implements OnInit {
 
   customer: any;
   custId: any;
+
+  alNum:number =0;
 
   constructor(private fb: FormBuilder, private os: OrderService, private router: Router, private cs: CustomerService) { }
 
@@ -57,6 +60,7 @@ export class CheckoutComponent implements OnInit {
     this.price = priceJson !== null ? JSON.parse(priceJson) : null;*/
 
     console.log(this.items);
+
   }
 
   //Remove Item from the selected items
@@ -143,7 +147,7 @@ export class CheckoutComponent implements OnInit {
     console.log(this.billingForm.value);
     document.getElementById("cirle3")!.style.backgroundColor = "rgb(40, 207, 40)";
 
-    for (let item of this.items) {
+  for (let item of this.items) {
 
 
       const order = {
@@ -157,7 +161,8 @@ export class CheckoutComponent implements OnInit {
 
       this.os.sendOrder(order).subscribe((data) => console.log(data), ERR => console.log(ERR));
     }
-    alert("Order Has Been Made");
+    this.alNum = 1;
+    
 
     //call API
     //const order = {}

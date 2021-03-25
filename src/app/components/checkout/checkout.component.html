@@ -3,23 +3,23 @@
   <div class="container">
 
     <!-- Navbar brand -->
-    <mdb-navbar-brand><a class="navbar-brand" ><img src="/assets/logo.png" alt="" width="20%" height="15%"></a>
+    <mdb-navbar-brand><a class="navbar-brand"><img src="/assets/logo.png" alt="" width="20%" height="15%"></a>
     </mdb-navbar-brand>
 
     <!-- Collapsible content -->
     <links>
-     
+
       <ul class="navbar-nav ml-auto nav-flex-icons">
         <li class="nav-item">
           <a class="nav-link">
             <div class="btn-group" mdbDropdown>
               <div mdbDropdownToggle>
-               {{customer?.firstname}}<i class="fas fa-chevron-down icon"></i>
+                {{customer?.firstname}}<i class="fas fa-chevron-down icon"></i>
               </div>
-              
+
               <div class="dropdown-menu dropdown-menu-right dropdown-primary">
                 <a routerLink="../profile" class="dropdown-item">Profile</a>
-                <a routerLink="../shop" class="dropdown-item" >Shop</a>
+                <a routerLink="../shop" class="dropdown-item">Shop</a>
                 <div class="divider dropdown-divider"></div>
                 <button class="dropdown-item btn-logOut" (click)="logOut()">Log-out</button>
               </div>
@@ -29,7 +29,7 @@
       </ul>
     </links>
     <!-- Collapsible content -->
-   
+
   </div>
 </mdb-navbar>
 <!--/.Navbar-->
@@ -96,21 +96,21 @@
 
             <p style="color: #dda5e7; font-family: cursive;">
 
-              Category: {{item.category}}  
+              Category: {{item.category}}
               <br>
               Price: R{{item.item_price}}.00
               <br>
               Size: {{item.size}}
             </p>
 
-           
+
           </td>
           <td align="center">{{item.item_description}}</td>
           <td align="center">
             <form action="/action_page.php">
-            
-              <button class="addQ" (click)="addQ(item)" title="Add">+</button> {{item.numItems}} <button class="subQ" (click)="subQ(item)"
-                *ngIf="item.numItems>1" title="Subtract">-</button>
+
+              <button class="addQ" (click)="addQ(item)" title="Add">+</button> {{item.numItems}} <button class="subQ"
+                (click)="subQ(item)" *ngIf="item.numItems>1" title="Subtract">-</button>
             </form>
           </td>
 
@@ -250,8 +250,34 @@
       </div>
     </div>
 
-    <button type="submit" mdbBtn class="customBtn" color="purple">Confirm Payment</button>
+    <button type="submit" mdbBtn class="customBtn" color="purple" (click)="frame.show()">Confirm Payment</button>
   </form>
   <!--End of Payment form-->
+
+  <!--After Submission-->
+
+  <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold"> Message</h4>
+          
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <p align="center" style="top: 50%; margin-top: 50px;">Order Has Been Made</p>
+
+          </div>
+          
+            <button type="button" class="okBtn" (click)="frame.hide()">OK</button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!--After Submission-->
+
 
 </div>
