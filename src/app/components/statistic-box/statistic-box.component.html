@@ -6,26 +6,25 @@
       <div class="card mt-2">
         <h1>Customers</h1>
         <p class="text-right">
-          <span *ngIf="view==1">{{this.numOfCustomer}}</span>
+          <span *ngIf="view==0">{{this.numOfCustomer}}</span>
         </p>
       </div>
 
       <div class="card mt-2">
         <h1>Orders</h1>
         <p class="text-right">
-          <span *ngIf="view==1">{{this.numOfOrders}}</span>
+          <span *ngIf="view==0">{{this.numOfOrders}}</span>
         </p>
       </div>
 
       <div class="card mt-2">
         <h1>Boxes</h1>
         <p class="text-right">
-          <span *ngIf="view==1">{{this.boxes}}</span>
+          <span *ngIf="view==0">{{this.boxes}}</span>
         </p>
       </div>
 
  </div>
 
- <br><br>
- <button class="btn2" (click)="results()">Generate Results</button>
+ 
   

@@ -269,10 +269,10 @@ padding: 20px;
 }
 
 span{
-
+  font-family: 'Courier New', Courier, monospace;
   padding-left: 2px;
   padding-top: 2px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 900;
   position: absolute;
   
@@ -287,15 +287,15 @@ span{
   border-radius: 100px;
   height: 30px;
   width: 30px;
-  background: #d17edfd0;
+  background-color: #d07edf9d;
   }
 
   
 .spanWish{
-
+font-family: 'Courier New', Courier, monospace;
   padding-left: 3px;
   padding-top: 3px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 900;
   position: absolute;
   
@@ -310,9 +310,9 @@ span{
   border-radius: 100px;
   height: 30px;
   width: 30px;
-  background: #d17edfd0;
+  background-color: #d07edf9d;
   }
-  
+    
   .mainTitle{
     font-size: 80px;
     

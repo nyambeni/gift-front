@@ -15,12 +15,12 @@
              <a class="nav-link">
                <div class="btn-group" mdbDropdown>
                  <div mdbDropdownToggle>
-                  {{customer.firstname}}<i class="fas fa-chevron-down icon"></i>
+                  {{customer?.firstname}}<i class="fas fa-chevron-down icon"></i>
                  </div>
                  
                  <div class="dropdown-menu dropdown-menu-right dropdown-primary">
-                   <a routerLink="" class="dropdown-item" href="#">Profile</a>
-                   <a routerLink="" class="dropdown-item" href="#">Shop</a>
+                   <a class="dropdown-item">Profile</a>
+                   <a routerLink="../shop" class="dropdown-item" >Shop</a>
                    <div class="divider dropdown-divider"></div>
                    <button class="dropdown-item btn-logOut" (click)="logOut()">Log-out</button>
                  </div>
@@ -39,7 +39,7 @@
         <!--Row-->
         <div class="row">
             <div class="col-md-3 profile-menu">
-                <p class="h5">{{customer.firstname}} {{customer.lastname}}</p>
+                <p class="h5">{{customer?.firstname}} {{customer?.lastname}}</p>
                 <a routerLink="../shop" class="nav-link" mdbWavesEffect >Shop</a>
                 <a routerLink="../wish" class="nav-link" mdbWavesEffect >Wish list</a>
                 <a routerLink="../order" class="nav-link" mdbWavesEffect >View order</a>
@@ -50,12 +50,12 @@
                 <!-- Grid row -->
 
                 <!--Form -->
-              <form [formGroup]="updateForm" (ngSubmit)="updateCustomer()" class="form">
+              <form [formGroup]="updateForm" (ngSubmit)="updateCustomer(customer?.firstname, customer?.lastname)" class="form">
 
                 <div class="d-flex justify-content-between">
                     <p class="h5 mb-1">Edit your profile</p>
                     <div>
-                        <button (click)="btnCancel()" type="button" mdbBtn class="customBtn" color="purple">Cancel</button>
+                        <button type="reset" mdbBtn class="customBtn" color="purple">Cancel</button>
                         <button type="submit" mdbBtn class="customBtn" color="purple">Done</button>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                     <div class="col">
                     <!-- Material input -->
                     <div class="md-form mt-0">
-                        <input type="text" mdbInput formControlName="firstname" placeholder="{{customer.firstname}}" id="firstname" class="form-control">
+                        <input type="text" mdbInput formControlName="firstname" placeholder="{{customer?.firstname}}" id="firstname" class="form-control">
                         <label for="firstname">First Name</label>
                       </div>
                     </div>
@@ -74,7 +74,7 @@
                     <div class="col">
                     <!-- Material input -->
                     <div class="md-form mt-0">
-                        <input type="text" id="form6" class="form-control" mdbInput formControlName="lastname" placeholder="{{customer.lastname}}">
+                        <input type="text" id="form6" class="form-control" mdbInput formControlName="lastname" placeholder="{{customer?.lastname}}">
                         <label for="form6">Last Name</label>
                       </div>
                     </div>
@@ -83,7 +83,7 @@
                 <!-- Grid row -->
             
                 <div class="md-form my-0">
-                    <input disabled value="{{customer.emailAddress}}" type="text" id="form6" class="form-control" mdbInput>
+                    <input disabled placeholder="{{customer?.emailAddress}}" type="text" id="form6" class="form-control" mdbInput>
                     <label for="form6">Email Address</label>
                 </div>
 

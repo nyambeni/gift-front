@@ -18,63 +18,68 @@ export class StatisticBoxComponent implements OnInit {
   orders: any = [];
   numOfOrders: number = 0;
 
+  view: number = 0;
+  stop: number = 0;
+  gifts: any = [];
+  boxes: number = 0;
+
   ngOnInit(): void {
 
-
+    //Get all the customers
     this.as.viewCustomer().subscribe(data => {
       console.log(data);
 
       this.customer = data;
 
       for (let c of this.customer) {
+
+        this.numOfCustomer++;
+
         this.customers.push(c);
       }
     });
 
     console.log(this.customers);
 
+    //Get all the Orders
     this.as.getOrder().subscribe(data => {
       console.log(data);
 
       this.order = data;
 
       for (let o of this.order) {
-        o.order_date = o.order_date.split("T");
+        this.numOfOrders++;
         this.orders.push(o);
       }
     });
 
-
-  }
-
-  view: number = 0;
-  stop: number = 0;
-gifts:any = [];
-boxes:number=0;
-  results() {
-    this.view = 1;
-    for (let c of this.customers) {
-      if (this.stop == 0) {
-        this.numOfCustomer++;
-      }
-    }
-
-    for (let c of this.orders) {
-      if (this.stop == 0) {
-        this.numOfOrders++;
-      }
-    }
-    this.stop = 1;
-
+    //View All The Items
     this.as.viewItems().subscribe(data => {
       console.log(data);
 
       this.gifts = data;
 
       for (let c of this.gifts) {
-      this.boxes++;
+        this.boxes++;
       }
 
     });
+
+  }
+
+  //Generate results
+
+  results() {
+    this.view = 1;
+
+
+    for (let c of this.orders) {
+      if (this.stop == 0) {
+
+      }
+    }
+    this.stop = 1;
+
+
   }
 }

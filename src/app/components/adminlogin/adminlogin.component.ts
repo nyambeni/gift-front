@@ -26,17 +26,13 @@ export class AdminloginComponent implements OnInit {
     console.log(this.loginForm.value);
     this.as.adminLogin(this.loginForm.value)
     .subscribe((user:any) => {
-      console.log(user.user);
-      console.log(user.emailAddress.toString());
-      
-      //localStorage.setItem('id', user.user.cust_id.toString());
+     console.log(user);
+     this.router.navigate(['/statisticbox']);
+    }
+    ,(error: any) => {
+      console.log(error);
+      this.isLoginError = true
     });
-    //console.log(data)
-   // localStorage.setItem('userToken', cust.token.toString());
-    
-    //this.router.navigate(['/statisticbox']);
-
-    //this.isLoginError = true; //when getting http error
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
 
 
@@ -9,14 +10,19 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class ViewBoxComponent implements OnInit {
 
-  constructor(private as: AdminService) { }
+  constructor(private as: AdminService, private fb: FormBuilder) { }
 
   gifts: any = [];
 
   gitfBoxes: any = [];
   image: string = '';
-  ngOnInit(): void {
 
+  updateForm = this.fb.group({
+    firstname: [''],
+    lastname: ['']
+  });
+  ngOnInit(): void {
+    //Get all the items
     this.as.viewItems().subscribe(data => {
       console.log(data);
 
@@ -59,7 +65,7 @@ export class ViewBoxComponent implements OnInit {
       this.searchName = (e.title ? e.title : '').toLowerCase();
 
       if (this.searchName == this.name) {
-        
+
         this.searchL.push(e);
 
       }
@@ -84,7 +90,7 @@ export class ViewBoxComponent implements OnInit {
     for (let e of this.gitfBoxes) {
       this.searchName = (e.category ? e.category : '').toLowerCase();
       if (this.searchName == this.name) {
-      
+
         this.searchL.push(e);
 
       }
@@ -104,6 +110,8 @@ export class ViewBoxComponent implements OnInit {
     }//end of category
     console.log(this.searchL);
   }
+
+  //View All boxes
   view: number = 0;
   viewAll() {
     this.table = 1;
@@ -111,11 +119,50 @@ export class ViewBoxComponent implements OnInit {
   }
 
   //Delete a box
-  deleteBox(boxID: any, itemId:any){
+  deleteBox(boxID: any, itemId: any) {
     this.gitfBoxes.splice(boxID, 1);
     console.log(itemId);
     this.as.deleteGiftBox(itemId).subscribe();
   }
   //End of delete box
 
+  //Update a box
+  update: boolean = false;
+  theId: any;
+  viewUpdate(itemID: any) {
+    this.update = true;
+    this.theId = itemID;
+  }
+
+  title: any;
+  category: any;
+  size: any;
+  price: any;
+  updateItem(item: any, itemID: any, title: any, category: any, size: any, price: any) {
+
+      if (title == "") {
+        this.title = item.title;
+      }else{
+        this.title=title;
+      }
+      if (category == "") {
+        this.category = item.category;
+      }else{
+        this.category=category;
+      }
+      if (size == "") {
+        this.size = item.size;
+      }else{
+        this.size=size;
+      }
+      if (price == "") {
+        this.price = item.item_price;
+      }else{
+        this.price=price;
+      }
+
+    const data = { item_id: itemID, title: this.title, category: this.category, item_price: this.price };
+    console.log(data);
+    this.update = false;
+  }
 }

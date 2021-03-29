@@ -2,6 +2,8 @@
 <h3 style="margin-top: 20px; margin-left: 25%;">Orders</h3>
 <p style="color: #dda5e7; font-family: cursive; margin-left: 25%;">Orders that have been made.</p>
 <div class="card">
+
+  <!--View All the Orders-->
   <div *ngIf="this.table==1">
     <table mdbTable>
       <thead>
@@ -14,7 +16,12 @@
           <th scope="row">{{el.firstname}}</th>
           <td>{{el.lastname}}</td>
           <td>{{el.phoneNumber}}</td>
-          <td>{{el.streetAddress}}</td>
+          <td>{{el.streetAddress.toUpperCase()}}
+            <br>{{el.citySuburb.toUpperCase()}}
+            <br>{{el.province.toUpperCase()}}
+            <br>{{el.postalCode.toUpperCase()}}
+          </td>
+
           <td>{{el.item_title}}</td>
           <td>{{el.quantity}}</td>
           <td>{{el.order_date[0]}}</td>
@@ -28,8 +35,9 @@
     </table>
 
   </div>
+  <!--\. View All the Orders-->
 
-
+  <!--View Searched Orders-->
   <div *ngIf="this.table==2">
     <button (click)="viewAll()" class="btn">View All</button>
     <table mdbTable>
@@ -43,7 +51,11 @@
           <th scope="row">{{el.firstname}}</th>
           <td>{{el.lastname}}</td>
           <td>{{el.phoneNumber}}</td>
-          <td>{{el.streetAddress}}</td>
+          <td>{{el.streetAddress}}
+            <br>{{el.citySuburb}}
+            <br>{{el.province}}
+            <br>{{el.postalCode}}
+          </td>
           <td>{{el.item_title}}</td>
           <td>{{el.quantity}}</td>
           <td>{{el.order_date[0]}}</td>
@@ -60,18 +72,21 @@
         R{{this.amount}}.00</p>
     </div>
   </div>
-
+  <!--\. View Searched Orders-->
 </div>
 
+<!--Search-->
 <div *ngIf="this.table==1" style=" margin-left: 60%;">
   <input class="search" type="text" #search placeholder="Search By First Name"> <button (click)="onSearch(search.value)"
     class="btn">Search</button>
 </div>
+<!--\. Search-->
 
+<!--Total-->
 <div *ngIf="this.table==1" style="background-color: #f5ecf7ea;">
   <div *ngIf="this.tP==2">
     <p class="amt">Total Amount: R{{this.totalprice}}.00</p>
   </div>
-  <button *ngIf="this.tP==1" (click)="totalPrice()"  class="btn2">Generate Total Price</button>
-  
+  <button *ngIf="this.tP==1" (click)="totalPrice()" class="btn2">Generate Total Price</button>
+  <!--\. Total-->
 </div>

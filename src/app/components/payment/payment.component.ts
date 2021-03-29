@@ -7,13 +7,6 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
-  elements: any = [
-    { name: "Loy", email: "netsh@gmail.com", number: "0785213265", address: "1308 Block L", id: 'Merry Merry', quantity: 3, tAmount: 150.00, char: 1 },
-    { name: "Loy", email: "netsh@gmail.com", number: "0785213265", address: "1308 Block L", id: 'Pink Happiness', quantity: 1, tAmount: 100.00 },
-    { name: "Monica", email: "geller@Yahoo.com", number: "0812023654", address: "1308 Block H", id: 'Pink Happiness', quantity: 1, tAmount: 100.00 },
-    { name: "Chantelle", email: "mabena@gmail.com", number: "0852136547", address: "1308 Block FF", id: 'Merry Merry', quantity: 2, tAmount: 100.00 },
-  ]
-
 
   headElements = ['Name', 'Last Name', 'Phone Number', 'Address', 'Items', 'Quantity', "Order Date"];
   totalprice: number = 0;
@@ -24,13 +17,15 @@ export class PaymentComponent implements OnInit {
   orders: any = [];
   ngOnInit(): void {
 
+    //Get All the Orders
     this.as.getOrder().subscribe(data => {
       console.log(data);
 
       this.order = data;
 
       for (let o of this.order) {
-        o.order_date=o.order_date.split("T");
+        o.order_date = o.order_date.split("T");
+        o.streetAddress = "";
         this.orders.push(o);
       }
     });
@@ -38,8 +33,10 @@ export class PaymentComponent implements OnInit {
     console.log(this.orders);
   }
 
+  //Search Order
   searchL: any = [];
   table: number = 1;
+  totPrice:number=0;
   amount: number = 0;
   name: any;
   searchName: string = "";
@@ -55,7 +52,8 @@ export class PaymentComponent implements OnInit {
       this.searchName = e.firstname.toLowerCase();
       if (this.searchName == this.name) {
         this.searchL.push(e);
-        this.amount += e.totalPrice;
+        this.totPrice = e.quantity*e.totalPrice
+        this.amount += this.totPrice;
       }
     }
 
@@ -73,18 +71,22 @@ export class PaymentComponent implements OnInit {
       this.table = 2;
     }
   }
+
+  //View All the Orders
   viewAll() {
     this.table = 1;
     this.searchL = [];
     this.amount = 0;
   }
 
+  //Calculate the total amount for all the orders
   tP: number = 1;
   totalPrice() {
     this.tP = 2;
     for (let e of this.orders) {
-      this.totalprice = this.totalprice + e.totalPrice;
-      
+      this.totPrice = e.quantity*e.totalPrice
+      this.totalprice = this.totalprice + this.totPrice;
+
     }
   }
 }

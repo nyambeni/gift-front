@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-order',
@@ -26,7 +28,7 @@ export class OrderComponent implements OnInit {
     { image: "assets/ForAdd/5.jpg" },
     { image: "assets/ForAdd/6.jpg" },
   ]
-  constructor(private as: AdminService) {
+  constructor(private router: Router, private as: AdminService, private cs: CustomerService) {
 
   }
 
@@ -40,15 +42,23 @@ export class OrderComponent implements OnInit {
 
   gitfBoxes: any = [];
   image: string = '';
+  custName: any;
 
   ngOnInit(): void {
-//View Order
+    const custIdJson = localStorage.getItem('id');
+    this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
 
-const custIdJson = localStorage.getItem('id');
-this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
-    
+   
+    const cust_id = { cust_id:this.custId };
+    console.log(cust_id);
+    this.cs.getCustomer(this.custId).subscribe((data: any) => {
+      this.custName = data[0].firstname;
+      console.log(data[0]);
+    }, error => console.log(error));
+
+ 
     console.log(this.custId);
-    //this.custId = "112";
+
     this.as.getOrder().subscribe(data => {
       console.log(data);
 
@@ -62,36 +72,40 @@ this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
 
       }
       for (let i of this.orders) {
+        //this.amt = i.quantity * i.totalPrice;
+
+        i.totalPrice = i.totalPrice*i.quantity;
+        //this.tPrice += this.amt
         this.tPrice += i.totalPrice;
       }
     });
-//End of order
+    //End of order
 
-//View Boxes
-this.as.viewItems().subscribe(data => {
-  console.log(data);
+    //View Boxes
+    this.as.viewItems().subscribe(data => {
+      console.log(data);
 
-  this.gifts = data;
+      this.gifts = data;
 
-  for (let c of this.gifts) {
-    this.image = "assets/GiftBoxes/" + c.image + ".png";
-    c.image = this.image;
+      for (let c of this.gifts) {
+        this.image = "assets/GiftBoxes/" + c.image + ".png";
+        c.image = this.image;
 
-    for(let o of this.orders){
-      if(o.item_title == c.title){
-        const gB = {
-          item_id: c.item_id, category: c.category, image: c.image, item_descri: c.item_descri, item_price: c.item_price, size: c.size, title: c.title, quantity: o.quantity, totalPrice: o.totalPrice
+        for (let o of this.orders) {
+          if (o.item_title == c.title) {
+            const gB = {
+              item_id: c.item_id, category: c.category, image: c.image, item_descri: c.item_descri, item_price: c.item_price, size: c.size, title: c.title, quantity: o.quantity, totalPrice: o.totalPrice
+            }
+
+            this.gitfBoxes.push(gB);
+          }
         }
-    
-        this.gitfBoxes.push(gB);
+
       }
-    }
-   
-  }
 
-});
+    });
 
-//End of Boxes
+    //End of Boxes
 
 
 
@@ -118,10 +132,8 @@ this.as.viewItems().subscribe(data => {
     // document.body.scrollTop = 0; // For Safari
     // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
-  homeFunction() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['']);
   }
-
-
 }
