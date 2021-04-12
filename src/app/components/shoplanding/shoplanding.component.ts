@@ -98,13 +98,6 @@ export class ShoplandingComponent implements OnInit {
   }
 
   // items in the card
-
-  bday: any = [];
-  wed: any = [];
-  bShower: any = [];
-  cMas: any = [];
-  valen: any = [];
-  grad: any = [];
   num: number = 0;
   times: number = 1;
 
@@ -113,112 +106,110 @@ export class ShoplandingComponent implements OnInit {
 
   w: number = 0;
   wish: string = "";
+  boxes: any = [];
+  title:string='';
   //categories
   birthday() {
-
     if (this.times == 2) {
       this.times = 1;
-
-      this.bday = [];
+      this.boxes = [];
     }
     for (let item of this.gitfBoxes) {
       if (item.category == "Birthday" && this.times == 1)
-        this.bday.push(item);
-
+        this.boxes.push(item);
     }
+    this.title = "Birthday";
     this.times = 2;
     this.num = 1;
-    console.log(this.bday);
+    console.log(this.boxes);
   }
 
   wedding() {
-
-
     if (this.times == 2) {
       this.times = 1;
-
-      this.wed = [];
-
+      this.boxes = [];
     }
     for (let item of this.gitfBoxes) {
       if (item.category == "Wedding" && this.times == 1)
-        this.wed.push(item);
+      this.boxes.push(item);
     }
+
+    this.title = "Wedding";
     this.times = 2;
-    this.num = 2;
-    console.log(this.wed);
+    this.num = 1;
+    console.log(this.boxes);
   }
 
   babyShower() {
+
     if (this.times == 2) {
       this.times = 1;
-      this.bShower = [];
-
+      this.boxes = [];
     }
     for (let item of this.gitfBoxes) {
       if (item.category == "Baby Shower" && this.times == 1)
-        this.bShower.push(item);
+      this.boxes.push(item);
     }
+    this.title = "Baby Shower";
     this.times = 2;
-    this.num = 3;
-    console.log(this.bShower);
+    this.num = 1;
+    console.log(this.boxes);
   }
 
   christmas() {
     if (this.times == 2) {
       this.times = 1;
-      this.cMas = [];
-
+      this.boxes = [];
     }
     for (let item of this.gitfBoxes) {
       if (item.category == "Christmas" && this.times == 1)
-        this.cMas.push(item);
+      this.boxes.push(item);
     }
+    this.title = "Christmas";
     this.times = 2;
-    this.num = 4;
-    console.log(this.cMas);
+    this.num = 1;
+    console.log(this.boxes);
   }
 
   valentine() {
     if (this.times == 2) {
       this.times = 1;
-      this.valen = [];
-
+      this.boxes = [];
     }
     for (let item of this.gitfBoxes) {
       if (item.category == "Valentine" && this.times == 1)
-        this.valen.push(item);
+      this.boxes.push(item);
     }
+    this.title = "Valentine";
     this.times = 2;
-    this.num = 5;
-    console.log(this.valen);
+    this.num = 1;
+    console.log(this.boxes);
   }
 
   gradution() {
+    
     if (this.times == 2) {
       this.times = 1;
-      this.grad = [];
+      this.boxes = [];
     }
     for (let item of this.gitfBoxes) {
       if (item.category == "Graduation" && this.times == 1)
-        this.grad.push(item);
+      this.boxes.push(item);
     }
+    this.title = "Graduation";
     this.times = 2;
-    this.num = 6;
-    console.log(this.grad);
+    this.num = 1;
+    console.log(this.boxes);
   }
 
   all() {
+    
+
     if (this.times == 2) {
-      this.times = 1;
-      this.bday = [];
-      this.wed = [];
-      this.bShower = [];
-      this.valen = [];
-      this.grad = [];
-      this.cMas = [];
+      this.boxes = [];
     }
     this.num = 0;
+    console.log(this.boxes);
   }
 
   //items in the card
@@ -254,7 +245,7 @@ export class ShoplandingComponent implements OnInit {
     console.log(this.add);
   }
 
-  
+
   //Add to wish list
   addToWish(item: any, idItm: any) {
 
@@ -279,8 +270,8 @@ export class ShoplandingComponent implements OnInit {
 
         this.cs.addwishlist(wishItem).
           subscribe((data: any) => {
-          this.wishListError = data
-        });
+            this.wishListError = data
+          });
         console.log(wishItem);
         console.log(this.wishListError);
 

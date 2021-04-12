@@ -24,6 +24,7 @@ export class PaymentComponent implements OnInit {
       this.order = data;
 
       for (let o of this.order) {
+        o.totalPrice= o.totalPrice * o.quantity;
         o.order_date = o.order_date.split("T");
         o.streetAddress = "";
         this.orders.push(o);
@@ -51,9 +52,10 @@ export class PaymentComponent implements OnInit {
     for (let e of this.orders) {
       this.searchName = e.firstname.toLowerCase();
       if (this.searchName == this.name) {
+       
+        this.amount += e.totalPrice;
         this.searchL.push(e);
-        this.totPrice = e.quantity*e.totalPrice
-        this.amount += this.totPrice;
+      
       }
     }
 

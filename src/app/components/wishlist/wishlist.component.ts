@@ -80,29 +80,17 @@ export class WishlistComponent implements OnInit {
   // When the user clicks on the button, scroll to the top of the document
   topFunction() {
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' })
-    // document.body.scrollTop = 0; // For Safari
-    // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    
   }
-  bottomFunction() {
-    document.body.scrollTop = 10000; // For Safari
-    document.documentElement.scrollTop = 10000; // For Chrome, Firefox, IE and Opera
-  }
-
-  homeFunction() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-  }
-
 
   //items in the card
   incNum: number = 0;
   price: number = 0;
   addToCart(item: any, idItm: any) {
-  /*
+  
     const custIdJson = localStorage.getItem('id');
     this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
-*/
-this.custId = "112";
+
     if (item.selectI == 0) {
      
       this.i += 1;

@@ -10,24 +10,7 @@ import { CustomerService } from 'src/app/services/customer.service';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-  items: Array<{ image: string, title: string, category: string, price: number, itmSelect: number }> = [
-    { image: "assets/Landing/Box3.png", title: "Merry Merry", category: "Christmas", price: 50, itmSelect: 2 },
-    { image: "assets/Landing/Box2.png", title: "Pink Happiness", category: "Baby Shower", price: 100, itmSelect: 3 },
-    { image: "assets/Landing/Box1.png", title: "Suprise Green", category: "Graduation", price: 120, itmSelect: 2 },
-  ]
 
-  add: Array<{ image: string }> = [
-    { image: "assets/ForAdd/1.jpg" },
-    { image: "assets/ForAdd/2.jpg" },
-    { image: "assets/ForAdd/3.jpg" },
-  ]
-
-  add2: Array<{ image: string }> = [
-
-    { image: "assets/ForAdd/4.jpg" },
-    { image: "assets/ForAdd/5.jpg" },
-    { image: "assets/ForAdd/6.jpg" },
-  ]
   constructor(private router: Router, private as: AdminService, private cs: CustomerService) {
 
   }
@@ -60,6 +43,7 @@ export class OrderComponent implements OnInit {
     console.log(this.custId);
 
     this.as.getOrder().subscribe(data => {
+     
       console.log(data);
 
       this.order = data;
@@ -72,15 +56,15 @@ export class OrderComponent implements OnInit {
 
       }
       for (let i of this.orders) {
-        //this.amt = i.quantity * i.totalPrice;
+        
 
         i.totalPrice = i.totalPrice*i.quantity;
-        //this.tPrice += this.amt
+        
         this.tPrice += i.totalPrice;
       }
     });
     //End of order
-
+console.log(this.orders);
     //View Boxes
     this.as.viewItems().subscribe(data => {
       console.log(data);
@@ -129,8 +113,7 @@ export class OrderComponent implements OnInit {
   // When the user clicks on the button, scroll to the top of the document
   topFunction() {
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' })
-    // document.body.scrollTop = 0; // For Safari
-    // document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+   
   }
   logOut() {
     localStorage.clear();
