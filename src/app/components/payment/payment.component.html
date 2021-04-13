@@ -13,23 +13,28 @@
       </thead>
       <tbody *ngFor="let el of orders">
         <tr mdbTableCol>
-          <th scope="row">{{el.firstname}}</th>
-          <td>{{el.lastname}}</td>
-          <td>{{el.phoneNumber}}</td>
-          <td>{{el.streetAddress.toUpperCase()}}
-            <br>{{el.citySuburb.toUpperCase()}}
-            <br>{{el.province.toUpperCase()}}
-            <br>{{el.postalCode.toUpperCase()}}
-          </td>
+          <th scope="row">{{el.firstname}} {{el.lastname}}</th>
 
+          <td>{{el.phoneNumber}}</td>
+          <td>{{el.email}}</td>
+          <td>{{el.streetAddress}}
+            <br>{{el.citySuburb}}
+            <br>{{el.province}}
+            <br>{{el.postalCode}}
+          </td>
           <td>{{el.item_title}}</td>
           <td>{{el.quantity}}</td>
-          <td>{{el.order_date[0]}}</td>
+          <td>Date:
+            <br> {{el.order_date}}
+          </td>
 
 
         </tr>
         <tr>
-          <td>Total Amount Paid: R{{el.totalPrice}}.00</td>
+
+          <td>Total Amount Paid:
+            <br> R{{el.totalPrice}}.00
+          </td>
         </tr>
       </tbody>
     </table>
@@ -48,9 +53,10 @@
       </thead>
       <tbody *ngFor="let el of searchL">
         <tr mdbTableCol>
-          <th scope="row">{{el.firstname}}</th>
-          <td>{{el.lastname}}</td>
+          <th scope="row">{{el.firstname}} {{el.lastname}}</th>
+
           <td>{{el.phoneNumber}}</td>
+          <td>{{el.email}}</td>
           <td>{{el.streetAddress}}
             <br>{{el.citySuburb}}
             <br>{{el.province}}
@@ -58,11 +64,12 @@
           </td>
           <td>{{el.item_title}}</td>
           <td>{{el.quantity}}</td>
-          <td>{{el.order_date[0]}}</td>
+          <td>{{el.order_date}}</td>
 
 
         </tr>
         <tr>
+
           <td>Total Amount Paid: R{{el.totalPrice}}.00</td>
         </tr>
       </tbody>
@@ -77,16 +84,16 @@
 
 <!--Search-->
 <div *ngIf="this.table==1" style=" margin-left: 60%;">
-  <input class="search" type="text" #search placeholder="Search By First Name"> <button (click)="onSearch(search.value)"
+  <input class="search" type="text" #search placeholder="Search By Email Address"> <button (click)="onSearch(search.value)"
     class="btn">Search</button>
 </div>
 <!--\. Search-->
 
-<!--Total-->
-<div *ngIf="this.table==1" style="background-color: #f5ecf7ea;">
-  <div *ngIf="this.tP==2">
+<!--Total  *ngIf="this.tP==2"-->
+<div style="background-color: #f5ecf7ea;">
+  <div *ngIf="this.table==1">
     <p class="amt">Total Amount: R{{this.totalprice}}.00</p>
   </div>
-  <button *ngIf="this.tP==1" (click)="totalPrice()" class="btn2">Generate Total Price</button>
-  <!--\. Total-->
+
+  <!--\. Total <button *ngIf="this.tP==1" (click)="totalPrice()" class="btn2">Generate Total Price</button>-->
 </div>

@@ -7,7 +7,8 @@ import { HttpClient, HttpErrorResponse} from  '@angular/common/http';
 export class OrderService {
 
  
-  url = "http://localhost:3000/";
+ // url = "http://10.100.14.17:3000/";
+  url = "http://localhost:3000/"; 
 
   constructor(private http: HttpClient) { }
 

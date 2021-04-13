@@ -57,22 +57,24 @@ export class ShoplandingComponent implements OnInit {
       this.gifts = data;
 
       for (let c of this.gifts) {
-        this.image = "assets/GiftBoxes/" + c.image + ".png";
-        c.image = this.image;
+        /*this.image = "assets/GiftBoxes/" + c.image + ".png";
+        c.image = this.image;*/
         const gB = {
           item_id: c.item_id, category: c.category, image: c.image, item_descri: c.item_descri, item_price: c.item_price, size: c.size, title: c.title, numItems: this.numItems, wishI: this.wishI, selectI: this.selectI, availItems: c.avail_item
         }
 
         this.gitfBoxes.push(gB);
+        console.log(gB);
       }
+
 
     });
 
     //Assign a link for images
-    for (let e of this.gitfBoxes) {
-      this.image = "assets/GiftBoxes/" + e.image + ".png";
+    /*for (let e of this.gitfBoxes) {
+      //this.image = "assets/GiftBoxes/" + e.image + ".png";
       e.image = this.image;
-    }
+    }*/
     console.log(this.gitfBoxes);
 
 
@@ -115,7 +117,7 @@ export class ShoplandingComponent implements OnInit {
       this.boxes = [];
     }
     for (let item of this.gitfBoxes) {
-      if (item.category == "Birthday" && this.times == 1)
+      if (item.category == "Birthday" || item.category == "birthday" && this.times == 1)
         this.boxes.push(item);
     }
     this.title = "Birthday";

@@ -35,7 +35,7 @@
 
   <div>
     <label>Add gift box image</label><br />
-    <input type="file" accept="image/*" class="input-file" class="upload">
+    <input type="file" (change)="onFileSelected($event)" class="input-file" class="upload">
   </div>
   
   <div>

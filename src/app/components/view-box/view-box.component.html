@@ -1,6 +1,6 @@
 <app-admin-dashboard></app-admin-dashboard>
-<h3 style="margin-top: 20px; margin-left: 25%;">Boxes</h3>
-<p style="color: #dda5e7; font-family: cursive; margin-left: 25%;">Available Boxes.</p>
+<h3 style="margin-top: 20px; margin-left: 25%;">Items</h3>
+<p style="color: #dda5e7; font-family: cursive; margin-left: 25%;">View and Update Available Boxes.</p>
 <div class="card">
   <!--View Boxes by Text-->
   <div *ngIf="this.table==1">
@@ -11,22 +11,46 @@
         </tr>
       </thead>
       <tbody>
-        <tr mdbTableCol *ngFor="let el of gitfBoxes; index as boxID">
+        <tr mdbTableCol *ngFor="let el of this.gifts; index as boxID">
 
           <td>
-            <input class="input" type="text" #title placeholder="{{el.title}}">
+           <!-- <input class="input" type="text" #title placeholder="{{el.title}}">-->
+            <div class="md-form form-sm">
+              <input mdbInput type="text" id="form1" #title class="form-control form-control-sm">
+              <label for="form1" class=""> {{el.title}}</label>
+            </div>
           </td>
 
           <td>
-            <input class="input" type="text" #category placeholder="{{el.category}}">
+            <!--<input class="input" type="text" #category placeholder="{{el.category}}">-->
+            <div class="md-form form-sm">
+              <input mdbInput type="text" id="form1" #category class="form-control form-control-sm">
+              <label for="form1" class=""> {{el.category}}</label>
+            </div>
           </td>
 
           <td>
-            <input class="input" type="text" #size placeholder="{{el.size}}">
+            <!--<input class="input" type="text" #size placeholder="{{el.size}}">-->
+            <div class="md-form form-sm">
+              <input mdbInput type="text" id="form1"  #size class="form-control form-control-sm">
+              <label for="form1" class=""> {{el.size}}</label>
+            </div>
           </td>
 
           <td>
-            <input class="input" type="text" #price placeholder="R{{el.item_price}}.00">
+           
+            <div class="md-form form-sm">
+              <input mdbInput type="text" id="form1" class="form-control form-control-sm">
+              <label for="form1" class=""> {{el.avail_item}}</label>
+            </div>
+          </td>
+
+          <td>
+            <!--<input class="input" type="text" #price placeholder="R{{el.item_price}}.00">-->
+            <div class="md-form form-sm">
+              <input mdbInput type="text" id="form1" #price class="form-control form-control-sm">
+              <label for="form1" class=""> {{el.item_price}}</label>
+            </div>
           </td>
           <td>
 
@@ -67,7 +91,9 @@
   </div>
   <!--View Boxes by with Image-->
 
+
 </div>
+
 <div *ngIf="this.table==1" style=" margin-left: 50%;">
   <input class="search" type="text" #search placeholder="Search By Title / Category"> <button
     (click)="onSearch(search.value)" class="btn">Search</button>

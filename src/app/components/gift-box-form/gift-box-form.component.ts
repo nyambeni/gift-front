@@ -24,11 +24,36 @@ export class GiftBoxFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
+  selectedFile:any = null;
+  
+  fd = new FormData();
 
-    this.as.sendGiftBox(this.giftBoxForm.value)
+  onFileSelected(event: any){
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+
+    let reader = new FileReader();
+    reader.readAsDataURL(this.selectedFile);
+
+    reader.onload=(ev:any)=>{
+    console.log("Show me the file");
+
+     this.fd.append('picture', this.selectedFile);
+      this.fd.append('title', this.giftBoxForm.value.title); 
+      this.fd.append('category',this.giftBoxForm.value.category);
+      this.fd.append('size', this.giftBoxForm.value.size);
+      this.fd.append('price', this.giftBoxForm.value.price);
+      this.fd.append('quality', this.giftBoxForm.value.quality);
+      this.fd.append('description', 'description');
+ 
+    }
+  }
+    
+  onSubmit() {
+
+    this.as.sendGiftBox(this.fd)
     .subscribe(data => console.log(data), error => console.log(error));
+
   }
   
 
