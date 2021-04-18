@@ -27,6 +27,9 @@ export class AdminloginComponent implements OnInit {
     this.as.adminLogin(this.loginForm.value)
     .subscribe((user:any) => {
      console.log(user);
+      //The below value has to come from api
+     localStorage.setItem('adminId', user.user.cust_id.toString());
+     
      this.router.navigate(['/statisticbox']);
     }
     ,(error: any) => {

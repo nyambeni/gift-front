@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -12,11 +11,12 @@ export class GiftBoxFormComponent implements OnInit {
 
   categories = [ "Birthday", "Wedding", "Graduation", "Baby Shower", "Christmas", "Valentine"];
   giftBoxForm = this.fb.group({
-    title: [''],
-    category: [''],
-    size: [''],
-    price: [''],
-    quantity: ['']
+    title: ['', [Validators.required, Validators.minLength(3)]],
+    category: ['', [Validators.required]],
+    size: ['', [Validators.required]],
+    price: ['', [Validators.required]],
+    quantity: ['', [Validators.required]],
+    validationImage: ['', [Validators.required]]
   });
 
   constructor(private fb: FormBuilder,private as: AdminService) { }

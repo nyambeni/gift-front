@@ -11,10 +11,13 @@ form{
   background-color: #8a71c7!important;
 }
 
+
 ::ng-deep .navbar {
   background-color: #f5ecf7ea;
-    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
     box-shadow: 1px 1px 10px 10px rgba(145, 144, 144, 0.329);
+
 }
 
 nav{
