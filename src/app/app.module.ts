@@ -32,6 +32,7 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { RouterModule } from '@angular/router';
 import { ViewcustomerComponent } from './components/viewcustomer/viewcustomer.component';
 import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
+import { ReportComponent } from './components/report/report.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { AdminloginComponent } from './components/adminlogin/adminlogin.componen
     PageNotFoundComponent,
     ViewcustomerComponent,
     AdminloginComponent,
+    ReportComponent,
     
   ],
   imports: [

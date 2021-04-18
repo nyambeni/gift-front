@@ -25,6 +25,7 @@ import { AdminloginComponent } from "./components/adminlogin/adminlogin.componen
 
 import { CanActivateCustomerGuard } from "./guards/can-activate-customer.guard";
 import { CanActivateAdminGuard } from './guards/can-activate-admin.guard';
+import { ReportComponent } from './components/report/report.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'statisticbox', component: StatisticBoxComponent, canActivate: [CanActivateAdminGuard] },
   { path: 'viewbox', component: ViewBoxComponent, canActivate: [CanActivateAdminGuard]},
   { path: 'admindashboard', component: AdminDashboardComponent, canActivate: [CanActivateAdminGuard] },
+  { path: 'report', component: ReportComponent, canActivate: [CanActivateAdminGuard]},
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

@@ -24,6 +24,18 @@ export class GiftBoxFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get title() { return this.giftBoxForm.get('title')}
+
+  get category() { return this.giftBoxForm.get('category')}
+
+  get size() { return this.giftBoxForm.get('size')}
+
+  get price() { return this.giftBoxForm.get('price')}
+
+  get quantity() { return this.giftBoxForm.get('quantity')}
+
+  get validationImage() { return this.giftBoxForm.get('validationImage')}
+
   onSubmit() {
     // TODO: Use EventEmitter with form value
 
