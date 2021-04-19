@@ -12,6 +12,7 @@ import { CustomerService } from '../../services/customer.service';
 export class LoginComponent implements OnInit {
 
   isLoginError = false;
+  fieldTextType = false;
 
   loginForm = this.fb.group({
     emailAddress: [''],
@@ -22,6 +23,10 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 
   onSubmit(){

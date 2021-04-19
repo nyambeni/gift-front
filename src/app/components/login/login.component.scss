@@ -1,7 +1,5 @@
 .container-fluid{
     height: 100vh;
-   /* background-image: url('../../../assets/login.svg');
-    background-size: cover;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,3 +23,12 @@
     background-color: #8a71c7!important;
 }
 
+.parent{
+    position: relative;
+}
+
+.child{
+    position: absolute;
+    top: 10px;
+    right: 0px;
+}

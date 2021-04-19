@@ -39,7 +39,7 @@ export class ViewBoxComponent implements OnInit {
 
   }
 
-  headElements = ['Title', 'Category', 'Size','Boxes', 'Price', 'Action'];
+  headElements = ['Item', 'Title', 'Category', 'Size', 'Boxes', 'Price', 'Action'];
   headI = ['Item', 'Title', 'Category', 'Price',];
 
 
@@ -51,39 +51,6 @@ export class ViewBoxComponent implements OnInit {
 
 
   onSearch(search: any) {
-
-    //Search for by name
-    this.name = search.toLowerCase();
-
-    if (search == "") {
-      alert("The is no name entered");
-    }
-
-
-
-    for (let e of this.gitfBoxes) {
-      this.searchName = (e.title ? e.title : '').toLowerCase();
-
-      if (this.searchName == this.name) {
-
-        this.searchL.push(e);
-
-      }
-    }
-
-    this.name = search.toLowerCase().split(" ");
-    for (let i = 0; i < this.name.length; i++) {
-      this.name[i] = this.name[i][0].toUpperCase() + this.name[i].slice(1);
-    }
-    this.name.join(" ");
-
-    if (this.searchL == "") {
-      this.table = 1;
-    } else {
-      this.table = 2;
-    }//end of name
-
-
     //Search for by category
     this.name = search.toLowerCase();
 
@@ -116,6 +83,7 @@ export class ViewBoxComponent implements OnInit {
   viewAll() {
     this.table = 1;
     this.searchL = [];
+    this.edit = [];
   }
 
   //Delete a box
@@ -123,8 +91,28 @@ export class ViewBoxComponent implements OnInit {
     this.gitfBoxes.splice(boxID, 1);
     console.log(itemId);
     this.as.deleteGiftBox(itemId).subscribe();
+    location.reload();
   }
   //End of delete box
+
+  //Edit
+  edit: any = [];
+  onEdit(title: any) {
+
+
+    for (let e of this.gitfBoxes) {
+
+      if (title == e.title) {
+
+        this.edit.push(e);
+
+      }
+    }
+    this.table = 3;
+
+  }
+  //End of Edit
+
 
   //Update a box
   update: boolean = false;
@@ -138,35 +126,42 @@ export class ViewBoxComponent implements OnInit {
   category: any;
   size: any;
   price: any;
-  updateItem(item: any, itemID: any, title: any, category: any, size: any, price: any) {
+  available: any;
+  updateItem(item: any, itemID: any, title: any, category: any, size: any, price: any, avail_item: any) {
 
-      if (title == "" || title == undefined) {
-        this.title = item.title;
-      }else{
-        this.title=title;
-      }
-      if (category == "" || title == undefined) {
-        this.category = item.category;
-      }else{
-        this.category=category;
-      }
-      if (size == "" || title == undefined) {
-        this.size = item.size;
-      }else{
-        this.size=size;
-      }
-      if (price == "" || title == undefined) {
-        this.price = item.item_price;
-      }else{
-        this.price=price;
-      }
+    if (title == "" || title == undefined) {
+      this.title = item.title;
+    } else {
+      this.title = title;
+    }
+    if (category == "" || title == undefined) {
+      this.category = item.category;
+    } else {
+      this.category = category;
+    }
+    if (size == "" || title == undefined) {
+      this.size = item.size;
+    } else {
+      this.size = size;
+    }
+    if (price == "" || title == undefined) {
+      this.price = item.item_price;
+    } else {
+      this.price = price;
+    }
 
-    const data = { item_id: itemID, title: this.title, category: this.category, item_price: this.price, size: this.size };
+    if (avail_item == "" || title == undefined) {
+      this.available = item.avail_item;
+    } else {
+      this.available = avail_item;
+    }
+
+    const data = { item_id: itemID, title: this.title, category: this.category, item_price: this.price, size: this.size, avail_item: this.available };
     console.log(data);
     this.update = false;
 
     this.as.updateItem(data, itemID)
-    .subscribe(data => console.log(data), error => console.log(error));
+      .subscribe(data => console.log(data), error => console.log(error));
     location.reload();
     alert("Item Updated");
   }

@@ -13,6 +13,7 @@ export class AdminloginComponent implements OnInit {
   constructor( private as: AdminService, private fb: FormBuilder, private router: Router) { }
 
   isLoginError: boolean = false;
+  fieldTextType = false;
 
   loginForm = this.fb.group({
     emailAddress: [''],
@@ -22,11 +23,19 @@ export class AdminloginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
+
+
   onSubmit(){
     console.log(this.loginForm.value);
     this.as.adminLogin(this.loginForm.value)
     .subscribe((user:any) => {
      console.log(user);
+      //The below value has to come from api
+     localStorage.setItem('adminId', user.user.cust_id.toString());
+     
      this.router.navigate(['/statisticbox']);
     }
     ,(error: any) => {

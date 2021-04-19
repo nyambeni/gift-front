@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+
+import { FormBuilder, Validators } from '@angular/forms';
+
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -12,17 +13,36 @@ export class GiftBoxFormComponent implements OnInit {
 
   categories = [ "Birthday", "Wedding", "Graduation", "Baby Shower", "Christmas", "Valentine"];
   giftBoxForm = this.fb.group({
-    title: [''],
-    category: [''],
-    size: [''],
-    price: [''],
-    quantity: ['']
+    title: ['', [Validators.required, Validators.minLength(3)]],
+    category: ['', [Validators.required]],
+    size: ['', [Validators.required]],
+    price: ['', [Validators.required]],
+    quantity: ['', [Validators.required]],
+    validationImage: ['', [Validators.required]],
+    description: ['', [Validators.required]]
   });
+
+ 
 
   constructor(private fb: FormBuilder,private as: AdminService) { }
 
   ngOnInit(): void {
   }
+
+  get title() { return this.giftBoxForm.get('title')}
+
+  get category() { return this.giftBoxForm.get('category')}
+
+  get size() { return this.giftBoxForm.get('size')}
+
+  get price() { return this.giftBoxForm.get('price')}
+
+  get quantity() { return this.giftBoxForm.get('quantity')}
+
+  get description() { return this.giftBoxForm.get('description')}
+
+  get validationImage() { return this.giftBoxForm.get('validationImage')}
+
 
   selectedFile:any = null;
   
@@ -43,8 +63,8 @@ export class GiftBoxFormComponent implements OnInit {
       this.fd.append('category',this.giftBoxForm.value.category);
       this.fd.append('size', this.giftBoxForm.value.size);
       this.fd.append('price', this.giftBoxForm.value.price);
-      this.fd.append('quality', this.giftBoxForm.value.quality);
-      this.fd.append('description', 'description');
+      this.fd.append('quantity', this.giftBoxForm.value.quantity);
+      this.fd.append('description', this.giftBoxForm.value.description);
  
     }
   }
@@ -53,7 +73,9 @@ export class GiftBoxFormComponent implements OnInit {
 
     this.as.sendGiftBox(this.fd)
     .subscribe(data => console.log(data), error => console.log(error));
+    location.reload();
 
+    alert("Added");
   }
   
 

@@ -177,7 +177,7 @@
 
                                     <!-- Card img -->
                                     <img [src]="item.image" alt="Card image cap" width="250" height="250"
-                                        style="padding-top: 30px;">
+                                        style="padding-top: 30px;" (click)="basicModal.show()">
                                     <a>
                                         <div class="mask"></div>
                                     </a>
@@ -198,6 +198,32 @@
                                 </mdb-card>
                                 <!-- Card -->
                             </div>
+
+                            <!--Popup-->
+
+                            <div mdbModal #basicModal="mdbModal" class="modal fade bottom" tabindex="-1" role="dialog"
+                                aria-labelledby="myBasicModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                    <div class="modal-content" style="margin-top: 10%;">
+                                        <div class="modal-header">
+                                            <button type="button" class="close pull-right" aria-label="Close"
+                                                (click)="basicModal.hide()">
+                                                <i class="far fa-times-circle"></i>
+                                            </button>
+                                            <h4 class="modal-title w-100" id="myModalLabel">{{item.title}}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img [src]="item.image" width="250" height="250">
+
+                                            <br><br>
+                                            Description: {{item.item_descri}}
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Popup-->
                         </div>
                     </div>
                 </div>
@@ -220,7 +246,7 @@
 
                                     <!-- Card img -->
                                     <img [src]="box.image" alt="Card image cap" width="250" height="250"
-                                        style="padding-top: 30px;">
+                                        style="padding-top: 30px;" (click)="basicModal.show()">
                                     <a>
                                         <div class="mask"></div>
                                     </a>
@@ -253,6 +279,33 @@
                                 </mdb-card>
                                 <!-- Card -->
                             </div>
+
+
+                            <!--Popup-->
+
+                            <div mdbModal #basicModal="mdbModal" class="modal fade bottom" tabindex="-1" role="dialog"
+                                aria-labelledby="myBasicModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                    <div class="modal-content" style="margin-top: 10%;">
+                                        <div class="modal-header">
+                                            <button type="button" class="close pull-right" aria-label="Close"
+                                                (click)="basicModal.hide()">
+                                                <p>x</p>
+                                            </button>
+                                            <h4 class="modal-title w-100" id="myModalLabel">{{box.title}}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img [src]="box.image" width="250" height="250">
+
+                                            <br><br>
+                                            Description: {{box.item_descri}}
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Popup-->
                         </div>
                     </div>
                 </div>
@@ -311,7 +364,7 @@
 
             <br>
 
-         
+
 
         </div>
         <div class="tAndC">

@@ -14,12 +14,20 @@
                 <label for="username">Username</label>
             </div>
         
-            <div class="md-form">
+            <div class="md-form mb-0 parent">
                 <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
-                <input mdbInput type="password" class="form-control" id="password" formControlName="password">
+                <input mdbInput [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="password" formControlName="password">
                 <label for="password"> Password </label>
+                <mdb-icon far (click)="toggleFieldTextType()" class="child" 
+                    [ngClass]="{
+                    'fa-eye-slash': !fieldTextType,
+                    'fa-eye': fieldTextType
+                    }" >
+                </mdb-icon>
+
             </div>
-            <p class="prefix"><small>Forgot Password? </small></p>
+
+            <p class="prefix mt-3"><small>Forgot Password? </small></p>
             <div class="md-form mb-2">
                 <button mdbBtn type="submit" color="purple" class="customBtn form-control ">Login</button>
             </div>

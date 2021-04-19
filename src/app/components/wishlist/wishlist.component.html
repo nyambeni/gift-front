@@ -13,6 +13,25 @@
 
             <!-- Links -->
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <div style="float: right;  position: absolute;
+                    top: 10px; right: 100px;" class="line" *ngIf="custId != null">
+                    <a class="nav-link">
+                        <div class="btn-group" mdbDropdown>
+                            <div mdbDropdownToggle>
+                                {{custName}}<i class="fas fa-chevron-down icon"></i>
+                            </div>
+
+                            <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+                                <a routerLink="../profile" class="dropdown-item">Profile</a>
+                                <a routerLink="../shop" class="dropdown-item">Shop</a>
+                                <div class="divider dropdown-divider"></div>
+                                <button class="dropdown-item btn-logOut" (click)="logOut()">Log-out</button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                </li>
 
                 <li class="nav-item">
                     <a routerLink="../checkout" class="nav-link waves-light" mdbWavesEffect title="Cart">

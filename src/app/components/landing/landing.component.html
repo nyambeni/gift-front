@@ -15,7 +15,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link waves-light" mdbWavesEffect style="text-decoration: underline; color: #dd69f1d8;"
-                     id="myHome" title="Go to Home Page">
+                        id="myHome" title="Go to Home Page">
                         Home<span class="sr-only">(current)</span>
                     </a>
                 </li>
@@ -24,7 +24,7 @@
                         Shop
                     </a>
                 </li>
-             
+
                 <li class="nav-item">
                     <a routerLink="../about" class="nav-link waves-light" mdbWavesEffect title="Go to About">
                         About Us
@@ -53,8 +53,7 @@
     <!--Title-->
 
     <!--SlideShow-->
-
-    <mdb-carousel [animation]="'slide'">
+    <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
         <mdb-carousel-item>
             <img class="d-block w-100" src="/assets/Slide/Box2.png" alt="First slide">
         </mdb-carousel-item>
@@ -68,6 +67,7 @@
             <img class="d-block w-100" src="/assets/Slide/Box8.png" alt="Third slide">
         </mdb-carousel-item>
     </mdb-carousel>
+    
     <!--SlideShow-->
 
     <!--Features-->
@@ -90,7 +90,7 @@
                     <h4>{{item.title}}</h4>
 
                     <p style="color: #dda5e7; font-family: cursive;">Category: {{item.category}} <br>
-                        </p>
+                    </p>
                 </div>
                 <!-- Card -->
             </div>

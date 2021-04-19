@@ -25,7 +25,7 @@ export class WishlistComponent implements OnInit {
   items: any = [];
   selectI: number = 0
   availItems: number = 10;
-
+  custName = '';
   custId: any;
   ngOnInit(): void {
 
@@ -51,7 +51,14 @@ export class WishlistComponent implements OnInit {
           }
           this.items.push(gB);
         }
+
+        
       });
+
+      this.cs.getCustomer(this.custId).subscribe((data: any) => {
+        this.custName = data[0]?.firstname;
+        console.log(data[0]);
+      }, error => console.log(error));
 
       console.log(this.items);
 
@@ -118,4 +125,8 @@ export class WishlistComponent implements OnInit {
     this.cs.deleteWish(deletItm).subscribe();
   }
 
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
 }

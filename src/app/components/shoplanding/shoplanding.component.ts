@@ -28,6 +28,12 @@ export class ShoplandingComponent implements OnInit {
   selectI: number = 0
   availItems: number = 10;
 
+  i: number = 0;
+  itm: string = "0";
+
+  w: number = 0;
+  wish: string = "0";
+
 
   custId: any;
 
@@ -77,7 +83,18 @@ export class ShoplandingComponent implements OnInit {
     }*/
     console.log(this.gitfBoxes);
 
+    /*const itemJson = localStorage.getItem('items');
+    this.add = itemJson !== null ? JSON.parse(itemJson) : null;
 
+    for (let a of this.add) {
+      this.i += 1;
+      this.itm = this.i.toString();
+    }
+
+    for (let w of this.wishL) {
+      this.w += 1;
+      this.wish = this.w.toString();
+    }*/
   }
 
 
@@ -103,13 +120,9 @@ export class ShoplandingComponent implements OnInit {
   num: number = 0;
   times: number = 1;
 
-  i: number = 0;
-  itm: string = "";
 
-  w: number = 0;
-  wish: string = "";
   boxes: any = [];
-  title:string='';
+  title: string = '';
   //categories
   birthday() {
     if (this.times == 2) {
@@ -133,7 +146,7 @@ export class ShoplandingComponent implements OnInit {
     }
     for (let item of this.gitfBoxes) {
       if (item.category == "Wedding" && this.times == 1)
-      this.boxes.push(item);
+        this.boxes.push(item);
     }
 
     this.title = "Wedding";
@@ -150,7 +163,7 @@ export class ShoplandingComponent implements OnInit {
     }
     for (let item of this.gitfBoxes) {
       if (item.category == "Baby Shower" && this.times == 1)
-      this.boxes.push(item);
+        this.boxes.push(item);
     }
     this.title = "Baby Shower";
     this.times = 2;
@@ -165,7 +178,7 @@ export class ShoplandingComponent implements OnInit {
     }
     for (let item of this.gitfBoxes) {
       if (item.category == "Christmas" && this.times == 1)
-      this.boxes.push(item);
+        this.boxes.push(item);
     }
     this.title = "Christmas";
     this.times = 2;
@@ -180,7 +193,7 @@ export class ShoplandingComponent implements OnInit {
     }
     for (let item of this.gitfBoxes) {
       if (item.category == "Valentine" && this.times == 1)
-      this.boxes.push(item);
+        this.boxes.push(item);
     }
     this.title = "Valentine";
     this.times = 2;
@@ -189,14 +202,14 @@ export class ShoplandingComponent implements OnInit {
   }
 
   gradution() {
-    
+
     if (this.times == 2) {
       this.times = 1;
       this.boxes = [];
     }
     for (let item of this.gitfBoxes) {
       if (item.category == "Graduation" && this.times == 1)
-      this.boxes.push(item);
+        this.boxes.push(item);
     }
     this.title = "Graduation";
     this.times = 2;
@@ -205,7 +218,7 @@ export class ShoplandingComponent implements OnInit {
   }
 
   all() {
-    
+
 
     if (this.times == 2) {
       this.boxes = [];

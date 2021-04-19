@@ -1,0 +1,30 @@
+<app-admin-dashboard></app-admin-dashboard>
+<div class="card p-2">
+    <div class="d-flex justify-content-between">
+        <h3 class="mt-2">Monthly Report</h3>
+        <button mdbBtn class="customBtn" (click)="downloadPDF()">Download</button>
+    </div>
+
+    <div id="page">
+        <p>January 2010</p>
+        <p><b class="highlight-text">Customers who made purchase</b></p>
+        <p><b>Total</b></p>
+        <p>------------------------------------------------------------------------------------</p>
+        <p><b class="highlight-text">Customers who added to wishlist</b></p>
+        <p><b>Total</b></p>
+        <p>------------------------------------------------------------------------------------</p>
+        <p><b>Total Sales: </b>R 65 300.00</p>
+        <p><b>Total Order: </b>2 000</p>
+    </div>
+
+    <!--
+    <h5>Name: {{testing[num].name}}</h5>
+
+    <br>
+    <p>{{testing[num].text}}</p>
+
+    <button (click)="prev()" *ngIf="num2 >= 2">Previous</button>
+    <p>{{num2}}</p>
+    <button (click)="next()" *ngIf="num2 < tNum">Next</button>
+    -->
+</div>

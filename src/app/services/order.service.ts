@@ -15,4 +15,12 @@ export class OrderService {
   sendOrder(orderData: any ){
     return this.http.post(this.url+"customer/order", orderData);
   }
+
+  updateItem(quantity: any, title: any){
+    const item ={
+      qty: quantity,
+      title
+    };
+    return this.http.post(this.url+"customer/updates/item", item);
+  }
 }

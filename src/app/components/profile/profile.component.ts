@@ -56,19 +56,18 @@ export class ProfileComponent implements OnInit {
     console.log(this.updateForm.value.firstname, this.updateForm.value.lastname);
     this.customerService.updateCustomer(this.updateForm.value)
     .subscribe(data => console.log(data), error => console.log(error));
-    
     console.log(this.updateForm.value);
     this.customer.firstname = this.updateForm.value.firstname;
     this.customer.lastname = this.updateForm.value.lastname;
     console.log('-----');
-
-    location.reload();
   }
 
   deleteAccount() {
     this.customerService.deleteUser(this.custId)
     .subscribe(data => console.log(data), error => console.log(error));
-    console.log('Delete Accoutn\\')
+    console.log('Delete Account\\')
+
+    location.reload();
   }
 
   logOut() {

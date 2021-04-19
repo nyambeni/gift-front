@@ -24,31 +24,34 @@ import { ViewcustomerComponent } from './components/viewcustomer/viewcustomer.co
 import { AdminloginComponent } from "./components/adminlogin/adminlogin.component";
 
 import { CanActivateCustomerGuard } from "./guards/can-activate-customer.guard";
+import { CanActivateAdminGuard } from './guards/can-activate-admin.guard';
+import { ReportComponent } from './components/report/report.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
-  { path: 'giftboxform', component: GiftBoxFormComponent },
-  { path: 'statisticbox', component: StatisticBoxComponent },
   { path: 'about', component: AboutusComponent },
   { path: 'shop', component: ShoplandingComponent },
   { path: 'contact', component: ContactComponent },
 
-  { path: 'viewbox', component: ViewBoxComponent },
-  { path: 'admindashboard', component: AdminDashboardComponent },
+  { path: 'adminlogin', component: AdminloginComponent },
+  { path: 'giftboxform', component: GiftBoxFormComponent, canActivate: [CanActivateAdminGuard] },
+  { path: 'statisticbox', component: StatisticBoxComponent, canActivate: [CanActivateAdminGuard] },
+  { path: 'viewbox', component: ViewBoxComponent, canActivate: [CanActivateAdminGuard] },
+  { path: 'admindashboard', component: AdminDashboardComponent, canActivate: [CanActivateAdminGuard] },
+  { path: 'report', component: ReportComponent, /*canActivate: [CanActivateAdminGuard]*/ },
+  { path: 'customer', component: ViewcustomerComponent, canActivate: [CanActivateAdminGuard] },
+  { path: 'payment', component: PaymentComponent, canActivate: [CanActivateAdminGuard] },
+
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'wish', component: WishlistComponent },
-
-  { path: 'checkout', component: CheckoutComponent, canActivate: [CanActivateCustomerGuard]},
+  { path: 'wish', component: WishlistComponent, canActivate: [CanActivateCustomerGuard] },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [CanActivateCustomerGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [CanActivateCustomerGuard] },
-  { path: 'customer', component: ViewcustomerComponent },
-  { path: 'order', component: OrderComponent, canActivate: [CanActivateCustomerGuard] },
-  { path: 'payment', component: PaymentComponent },
-  {path: 'adminlogin', component: AdminloginComponent},
-  
-  { path: '**', component: PageNotFoundComponent },
-  
 
+  { path: 'order', component: OrderComponent, canActivate: [CanActivateCustomerGuard] },
+
+
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
