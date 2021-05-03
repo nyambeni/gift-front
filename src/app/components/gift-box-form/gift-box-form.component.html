@@ -55,7 +55,8 @@
 
   <div>
     <label>Add gift box image</label><br />
-    <input type="file" accept="image/*" class="input-file" class="upload" (change)="onFileSelected($event)" formControlName="validationImage">
+    <input type="file" accept="image/*" class="input-file" class="upload" (change)="onFileSelected($event)"
+      formControlName="validationImage">
   </div>
   <div *ngIf="validationImage?.invalid && (validationImage?.dirty || validationImage?.touched)" class="text-danger">
     <small *ngIf="validationImage?.errors?.required"> *Title is required</small>
@@ -63,6 +64,31 @@
 
   <br>
 
-  <button mdbBtn type="submit" [disabled]='!giftBoxForm.valid' class="customBtn mt-3">Save</button>
+  <button mdbBtn type="submit" [disabled]='!giftBoxForm.valid' class="customBtn mt-3"
+    (click)="frame.show()">Save</button>
+  <!--After Submission-->
+
+  <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold"> Message</h4>
+
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <p align="center" style="top: 50%; margin-top: 50px;">Item is added.</p>
+
+          </div>
+
+          <button type="button" class="okBtn" (click)="frame.hide()" (click)="ok()">OK</button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!--After Submission-->
 
 </form>

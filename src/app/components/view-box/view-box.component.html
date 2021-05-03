@@ -22,9 +22,33 @@
           <td>
 
 
-            <mdb-icon fas icon="trash" class="mr-3" (click)="deleteBox(boxID, el.item_id)"></mdb-icon>
-            <mdb-icon (click)="onEdit(el.title)" fas
-              icon="edit" class="mr-3"></mdb-icon>
+            <mdb-icon fas icon="trash" class="mr-3" (click)="deleteBox(boxID, el.item_id)" title="Delete"
+              (click)="frame.show()"></mdb-icon>
+            <mdb-icon (click)="onEdit(el.title)" fas icon="edit" class="mr-3" title="Edit"></mdb-icon>
+            <!--After Submission-->
+
+            <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+              aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold"> Message</h4>
+
+                  </div>
+                  <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                      <p align="center" style="top: 50%; margin-top: 50px;">Item is deleted.</p>
+
+                    </div>
+
+                    <button type="button" class="okBtn" (click)="frame.hide()" (click)="ok()">OK</button>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!--After Submission-->
 
 
           </td>
@@ -35,61 +59,91 @@
   </div>
   <!--View Boxes by Text-->
 
-  
+
   <!--Edit/Update-->
   <div *ngIf="this.table==3">
     <button (click)="viewAll()" class="btn">View All</button>
     <table mdbTable>
       <thead>
         <tr>
-          <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+          <th *ngFor="let head of headElement" scope="col">{{head}} </th>
         </tr>
       </thead>
       <tbody>
         <tr mdbTableCol *ngFor="let el of edit">
-          <th scope="row"><img [src]="el.image" alt="" width="250" height="250"></th>
-          
-          <td>
-            <!-- <input class="input" type="text" #title placeholder="{{el.title}}">-->
-             <div class="md-form form-sm">
-               <input mdbInput type="text" id="form1" #title class="form-control form-control-sm">
-               <label for="form1" class=""> {{el.title}}</label>
-             </div>
-           </td>
- 
-           <td>
-             <!--<input class="input" type="text" #category placeholder="{{el.category}}">-->
-             <div class="md-form form-sm">
-               <input mdbInput type="text" id="form1" #category class="form-control form-control-sm">
-               <label for="form1" class=""> {{el.category}}</label>
-             </div>
-           </td>
- 
-           <td>
-             <!--<input class="input" type="text" #size placeholder="{{el.size}}">-->
-             <div class="md-form form-sm">
-               <input mdbInput type="text" id="form1"  #size class="form-control form-control-sm">
-               <label for="form1" class=""> {{el.size}}</label>
-             </div>
-           </td>
- 
-           <td>
-            
-             <div class="md-form form-sm">
-               <input mdbInput type="text" id="form1" #avail_item class="form-control form-control-sm">
-               <label for="form1" class=""> {{el.avail_item}}</label>
-             </div>
-           </td>
- 
-           <td>
-             <!--<input class="input" type="text" #price placeholder="R{{el.item_price}}.00">-->
-             <div class="md-form form-sm">
-               <input mdbInput type="text" id="form1" #price class="form-control form-control-sm">
-               <label for="form1" class=""> {{el.item_price}}</label>
-             </div>
-           </td>
+          <th scope="row"><img [src]="el.image" alt="" width="250" height="250">
+            <br><br>
+            <h6>Title:</h6>
+            <div class="md-form form-sm">
+              <input mdbInput type="text" id="form1" #title class="form-control form-control-sm">
+              <label for="form1" class=""> {{el.title}}</label>
+            </div>
+          </th>
 
-           <td><button (click)="updateItem(el, el.item_id, title.value, category.value, size.value, price.value, avail_item.value)" class="btn">Update</button></td>
+          <td>
+            <!--<input class="input" type="text" #category placeholder="{{el.category}}">-->
+            <div class="md-form form-sm">
+              <input mdbInput type="text" id="form1" #category class="form-control form-control-sm">
+              <label for="form1" class=""> {{el.category}}</label>
+            </div>
+          </td>
+
+          <td>
+            <!--<input class="input" type="text" #size placeholder="{{el.size}}">-->
+            <div class="md-form form-sm">
+              <input mdbInput type="text" id="form1" #size class="form-control form-control-sm">
+              <label for="form1" class=""> {{el.size}}</label>
+            </div>
+          </td>
+
+          <td>
+
+            <div class="md-form form-sm">
+              <input mdbInput type="text" id="form1" #avail_item class="form-control form-control-sm">
+              <label for="form1" class=""> {{el.avail_item}}</label>
+            </div>
+          </td>
+
+          <td>
+            <!--<input class="input" type="text" #price placeholder="R{{el.item_price}}.00">-->
+            <div class="md-form form-sm">
+              <input mdbInput type="text" id="form1" #price class="form-control form-control-sm">
+              <label for="form1" class=""> {{el.item_price}}</label>
+            </div>
+          </td>
+
+          <td>
+            <mdb-icon fas icon="edit"
+              (click)="updateItem(el, el.item_id, title.value, category.value, size.value, price.value, avail_item.value)"
+              title="Update" (click)="frame.show()"></mdb-icon>
+
+            <!--After Submission-->
+            <div>
+              <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header text-center">
+                      <h4 class="modal-title w-100 font-weight-bold"> Message</h4>
+
+                    </div>
+                    <div class="modal-body mx-3">
+                      <div class="md-form mb-5">
+                        <p align="center" style="top: 50%; margin-top: 50px;">Updated</p>
+
+                      </div>
+
+                      <button type="button" class="okBtn" (click)="frame.hide()" (click)="ok()">OK</button>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--After Submission-->
+
+          </td>
         </tr>
       </tbody>
     </table>
@@ -123,6 +177,6 @@
 </div>
 
 <div *ngIf="this.table==1" style=" margin-left: 50%;">
-  <input class="search" type="text" #search placeholder="Search By Category"> <button
-    (click)="onSearch(search.value)" class="btn">Search</button>
+  <input class="search" type="text" #search placeholder="Search By Category"> <button (click)="onSearch(search.value)"
+    class="btn">Search</button>
 </div>

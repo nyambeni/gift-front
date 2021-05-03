@@ -7,6 +7,10 @@
     background-color:  #f5ecf7ea;
     border: none; 
     padding: 10px !important;
+    border-radius: 0.2em !important;
+    text-align: center !important;
+    box-shadow: 1px 1px 10px 1px rgba(161, 161, 161, 0.658) !important;
+    width: 200px;
 }
 
 
@@ -30,4 +34,14 @@
     background-color: #f7ddfd;
     background-color: #f4c5ffea;
 
+}
+
+.title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 18%;
+    font-size: 50px; 
+    background-color:  #f5ecf7ea;
+    padding: 20px;
+    box-shadow: 1px 1px 10px 1px rgba(161, 161, 161, 0.658);
 }

@@ -115,7 +115,7 @@ export class ViewcustomerComponent implements OnInit {
   searchName: string = "";
 
   onSearch(search: any) {
-    this.name = search.toLowerCase();
+    search = (search ? search : '').toLowerCase();
 
     if (search == "") {
       alert("The is no email address entered");
@@ -123,12 +123,9 @@ export class ViewcustomerComponent implements OnInit {
 
     for (let e of this.customers) {
       //this.searchName = e.email.toLowerCase();
-      this.searchName = (e.email ? e.email : '').toLowerCase();
-      if (this.searchName == this.name) {
-
-        this.amount += e.totalPrice;
+      this.searchName = (e.emailAddress ? e.emailAddress : '').toLowerCase();
+      if (search == this.searchName) {
         this.searchL.push(e);
-
       }
     }
 
@@ -140,7 +137,7 @@ export class ViewcustomerComponent implements OnInit {
 
     if (this.searchL == "") {
 
-      alert(this.name + " name does not exists in the table");
+      alert(search + " name does not exists in the table");
       this.table = 1;
     } else {
       this.table = 2;

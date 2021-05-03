@@ -73,10 +73,12 @@ export class GiftBoxFormComponent implements OnInit {
 
     this.as.sendGiftBox(this.fd)
     .subscribe(data => console.log(data), error => console.log(error));
-    location.reload();
+    
 
-    alert("Added");
+   
   }
   
-
+  ok(){
+    location.reload();
+  }
 }

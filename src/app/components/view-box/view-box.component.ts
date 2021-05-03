@@ -23,10 +23,10 @@ export class ViewBoxComponent implements OnInit {
   });
   ngOnInit(): void {
     //Get all the items
-    this.as.viewItems().subscribe(data => {
+    this.as.viewItems().subscribe((data:any) => {
       console.log(data);
 
-      this.gifts = data;
+      this.gifts = data.reverse();
 
       for (let c of this.gifts) {
         /*this.image = "assets/GiftBoxes/" + c.image + ".png";
@@ -35,11 +35,14 @@ export class ViewBoxComponent implements OnInit {
       }
 
     });
+
+    
     console.log(this.gitfBoxes);
 
   }
 
   headElements = ['Item', 'Title', 'Category', 'Size', 'Boxes', 'Price', 'Action'];
+  headElement = ['Item',  'Category', 'Size', 'Boxes', 'Price', 'Action'];
   headI = ['Item', 'Title', 'Category', 'Price',];
 
 
@@ -91,7 +94,7 @@ export class ViewBoxComponent implements OnInit {
     this.gitfBoxes.splice(boxID, 1);
     console.log(itemId);
     this.as.deleteGiftBox(itemId).subscribe();
-    location.reload();
+    
   }
   //End of delete box
 
@@ -162,7 +165,10 @@ export class ViewBoxComponent implements OnInit {
 
     this.as.updateItem(data, itemID)
       .subscribe(data => console.log(data), error => console.log(error));
+ 
+  }
+
+  ok(){
     location.reload();
-    alert("Item Updated");
   }
 }

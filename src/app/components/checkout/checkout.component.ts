@@ -240,4 +240,9 @@ export class CheckoutComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['']);
   }
+
+  
+  ok(){
+    location.reload();
+  }
 }

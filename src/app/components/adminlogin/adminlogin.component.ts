@@ -34,7 +34,7 @@ export class AdminloginComponent implements OnInit {
     .subscribe((user:any) => {
      console.log(user);
       //The below value has to come from api
-     localStorage.setItem('adminId', user.user.cust_id.toString());
+     localStorage.setItem('adminId', 't');
      
      this.router.navigate(['/statisticbox']);
     }
