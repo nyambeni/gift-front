@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse} from  '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,48 +11,63 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
-  addCustomer(customerData: any ){
-    return this.http.post(this.url+"register/register", customerData);
+  addCustomer(customerData: any) {
+    return this.http.post(this.url + "register/register", customerData);
   }
 
-  getCustomer(id: any){
-   // return {firstname: "Isaac", lastname: "Malebana", emailAddress: "isaac@gmail.com"};
-    return this.http.get(this.url+"customer/profile/"+id);
-  } 
+  getCustomer(id: any) {
+    // return {firstname: "Isaac", lastname: "Malebana", emailAddress: "isaac@gmail.com"};
+    return this.http.get(this.url + "customer/profile/" + id);
+  }
 
-  updateCustomer(customerData: any){
+  updateCustomer(customerData: any) {
     const id = this.userId();
-    return this.http.put(this.url+"customer/profile/update/"+id, customerData);
+    return this.http.put(this.url + "customer/profile/update/" + id, customerData);
   }
 
   ///profile/update/
 
-  deleteUser(id: any){
-    return this.http.delete(this.url+"customer/delete/"+id)
+  deleteUser(id: any) {
+    return this.http.delete(this.url + "customer/delete/" + id)
   }
 
-  logIn(customerData: any){
-    return this.http.post(this.url+"login/customer", customerData);
+  logIn(customerData: any) {
+    return this.http.post(this.url + "login/customer", customerData);
   }
 
-  userId(){
+  userId() {
     return Number(localStorage.getItem('id'));
   }
 
-  addwishlist(customerData: any ){
-    return this.http.post(this.url+"customer/addwishlist", customerData);
-  }
-  
-  viewWishList(id: any){
-    return this.http.get(this.url+"customer/viewWishlist/"+id)
+  addwishlist(customerData: any) {
+    return this.http.post(this.url + "customer/addwishlist", customerData);
   }
 
-  deleteWish(id: any){
-    return this.http.delete(this.url+"customer/deletewishlist/"+id)
+  viewWishList(id: any) {
+    return this.http.get(this.url + "customer/viewWishlist/" + id)
   }
 
-  getItemsByCate(category: any){
-    return this.http.get(this.url+"customer/viewWishlist/"+category)
+  deleteWish(id: any) {
+    return this.http.delete(this.url + "customer/deletewishlist/" + id)
   }
-  
+
+  getItemsByCate(category: any) {
+    return this.http.get(this.url + "customer/viewWishlist/" + category)
+  }
+
+  updateItemQuantity(details:any) {
+    return this.http.put(this.url + "customer/updates/item/",details);
+  }
+
+  addToCart(item:any){
+    return this.http.post(this.url + "customer/addcart/", item)
+  }
+
+  viewCart(id: any){
+    return this.http.get(this.url + "customer/viewcart/" + id)
+  }
+
+  deleteFromCart(id:any){
+    return this.http.delete(this.url + "customer/deletecart/" + id)
+  }
 }

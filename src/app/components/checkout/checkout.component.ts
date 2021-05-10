@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import {FormControl, FormGroup} from "@angular/forms";
+import { FormControl, FormGroup } from "@angular/forms";
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/services/admin.service';
 import { CustomerService } from 'src/app/services/customer.service';
 import { OrderService } from 'src/app/services/order.service';
 
@@ -15,14 +16,22 @@ export class CheckoutComponent implements OnInit {
   items: any = [];
   num: number = 0;
   incNum: number = 0;
-  price: number=0;
+  price: any = 0;
 
   customer: any;
   custId: any;
 
-  alNum:number =0;
+  alNum: number = 0;
 
-  constructor(private fb: FormBuilder, private os: OrderService, private router: Router, private cs: CustomerService) { }
+  cart: any = [];
+  cartItems: any = [];
+
+  gifts: any = [];
+  gitfBoxes: any = [];
+
+  numItems: number = 1;
+
+  constructor(private fb: FormBuilder, private os: OrderService, private router: Router, private cs: CustomerService, private as: AdminService) { }
 
   step1: boolean = true;
   step2: boolean = false;
@@ -33,8 +42,8 @@ export class CheckoutComponent implements OnInit {
     const custIdJson = localStorage.getItem('id');
     this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
 
-   
-    const cust_id = { cust_id:this.custId };
+
+    const cust_id = { cust_id: this.custId };
     console.log(cust_id);
     this.cs.getCustomer(this.custId).subscribe((data: any) => {
       this.customer = data[0];
@@ -43,54 +52,91 @@ export class CheckoutComponent implements OnInit {
 
 
     //Get Items From LocalStorage
-    const itemJson = localStorage.getItem('items');
-    this.items = itemJson !== null ? JSON.parse(itemJson) : null;
+    /* 
+     for (let i of this.items) {
+       i.numItems = 1;
+       this.price += parseInt(i.item_price);
+       console.log(this.price);
+     } 
+     console.log(this.items);*/
 
-    if (this.items == null) {
-      this.num = 1;
-    }
+    //Get Items from cart
+    this.cs.viewCart(this.custId).subscribe((data: any) => {
+      this.cart = data.data;
+      console.log(data.data);
 
-    for (let i of this.items) {
-      i.numItems = 1;
-      this.price += parseInt(i.item_price);
-      console.log(this.price);
-    }
+      for (let c of this.cart) {
+        this.cartItems.push(c);
+      }
 
-    /*const priceJson = localStorage.getItem('price');
-    this.price = priceJson !== null ? JSON.parse(priceJson) : null;*/
+    }, error => console.log(error));
+    console.log(this.cartItems);
 
-    console.log(this.items);
+    //get all items
+    this.as.viewItems().subscribe((data: any) => {
+      console.log(data);
+
+      this.gifts = data;
+
+      for (let g of this.gifts) {
+        for (let c of this.cartItems) {
+          if (c.title == g.title) {
+
+            const gB = {
+              cust_id: this.custId, category: g.category, image: g.image, item_description: g.item_descri,
+              item_price: g.item_price, size: g.size, title: g.title, numItems: this.numItems, availItems: g.avail_item,
+              cart_id: c.cart_id, item_id: g.item_id
+            }
+            this.gitfBoxes.push(gB);
+
+            this.price += parseInt(g.item_price);
+            console.log(this.price);
+          }
+        }
+      }
+    });
+    //items
+    console.log(this.gitfBoxes);
 
   }
 
   //Remove Item from the selected items
   priceToDelete: number = 0;
   onDelete(deletItm: any, itmPrice: number, titl: any, numItems: any) {
-    this.items.splice(deletItm, 1);
+    this.gitfBoxes.splice(deletItm, 1);
     this.priceToDelete = itmPrice * numItems;
     console.log(this.priceToDelete);
     this.price -= this.priceToDelete;
     console.log(this.price);
 
-    for (let item of this.items) {
+    this.cs.deleteFromCart(deletItm).subscribe();
+    for (let item of this.gitfBoxes) {
       if (titl == item.title) {
         item.numItems--;
         console.log(item);
       }
     }
 
-    console.log(this.items.length);
-    console.log(this.items);
+    console.log(this.gitfBoxes.length);
+    console.log(this.gitfBoxes);
+
+    location.reload()
   }
 
   //Cancel Order
   cancelOrder() {
-    this.items = [];
+    this.gitfBoxes = [];
     console.log(this.items);
     this.price = 0;
+
+    for (let g of this.gitfBoxes) {
+      this.cs.deleteFromCart(g.cart_id).subscribe();
+    }
+
+    this.router.navigate(['']);
   }
 
-//Shipping form
+  //Shipping form
   shippingForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     phoneNumber: ['', [Validators.required, Validators.minLength(3)]],
@@ -141,17 +187,18 @@ export class CheckoutComponent implements OnInit {
     //call api to send info
   }
 
+  subtract: number = 0;
 
   onBillingFormSubmit() {
     console.log("**** Billing Form");
     console.log(this.billingForm.value);
     document.getElementById("cirle3")!.style.backgroundColor = "rgb(40, 207, 40)";
 
-  for (let item of this.items) {
+    for (let item of this.gitfBoxes) {
 
 
       const order = {
-        cust_id: localStorage.getItem('id'), item_title: item. item_title, quantity: item.numItems, totalPrice: item.item_price
+        cust_id: localStorage.getItem('id'), item_title: item.title, quantity: item.numItems, totalPrice: item.item_price
         , phoneNumber: this.shippingForm.value.phoneNumber, name: this.shippingForm.value.name,
         citySuburb: this.shippingForm.value.citySuburb, postalCode: this.shippingForm.value.postalCode,
         province: this.shippingForm.value.province, streetAddress: this.shippingForm.value.streetAddress
@@ -159,11 +206,23 @@ export class CheckoutComponent implements OnInit {
       console.log(this.shippingForm.value.streetAddress);
       console.log("call api")
 
-      this.os.sendOrder(order).subscribe((data) => console.log(data), ERR => console.log(ERR));
+       this.os.sendOrder(order).subscribe((data) => console.log(data), ERR => console.log(ERR));
+ 
+      console.log(item.availItems);
+      this.subtract = Number(item.availItems) - Number(item.numItems);
+      console.log(this.subtract);
     }
     this.alNum = 1;
-    
 
+   /*for (let i of this.gitfBoxes) {
+     const details = {item_id:i.item_id, avail_item:i.avail_item}
+      this.cs.updateItemQuantity(details)
+        .subscribe(data => console.log(data), error => console.log(error));
+    }*/
+
+    for (let g of this.gitfBoxes) {
+      this.cs.deleteFromCart(g.cart_id).subscribe();
+    }
     //call API
     //const order = {}
     //this.os.sendOrder
@@ -195,7 +254,7 @@ export class CheckoutComponent implements OnInit {
 
   subt(itemId: any, item: any) {
 
-    item.availItems--;
+    //item.availItems--;
     item.numItems++;
 
     if (item.availItems <= 0) {
@@ -209,8 +268,9 @@ export class CheckoutComponent implements OnInit {
 
   }
 
-//Add Quantity
+  //Add Quantity
   addQ(item: any) {
+    item.numItems = parseInt(item.numItems);
     if (item.numItems < item.availItems) {
       item.numItems++;
       console.log(item.numItems);
@@ -239,10 +299,14 @@ export class CheckoutComponent implements OnInit {
   logOut() {
     localStorage.clear();
     this.router.navigate(['']);
+    for (let g of this.gitfBoxes) {
+      this.cs.deleteFromCart(g.cart_id).subscribe();
+    }
   }
 
-  
-  ok(){
-    location.reload();
+  message: string = '';
+  ok() {
+   // location.reload();
+    this.message = "Purchase made.";
   }
 }

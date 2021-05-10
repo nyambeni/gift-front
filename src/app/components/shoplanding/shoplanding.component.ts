@@ -15,6 +15,7 @@ export class ShoplandingComponent implements OnInit {
   add: any = [];
   wishL: any = [];
   wishListError = '';
+  cartError: any = '';
 
 
   constructor(private router: Router, private cs: CustomerService, private as: AdminService) { }
@@ -24,27 +25,23 @@ export class ShoplandingComponent implements OnInit {
   gitfBoxes: any = [];
   image: string = '';
   numItems: number = 0;
-  wishI: number = 0
-  selectI: number = 0
-  availItems: number = 10;
-
-  i: number = 0;
-  itm: string = "0";
-
-  w: number = 0;
-  wish: string = "0";
-
+  wishI: number = 0;
+  selectI: number = 0;
 
   custId: any;
 
   custName = '';
+  cart: any = [];
+  cartItems: any = [];
+  public innerWidth: any;
 
   ngOnInit(): void {
 
+    this.innerWidth = window.innerWidth;
+
+    console.log(this.innerWidth);
     const custIdJson = localStorage.getItem('id');
     this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
-
-    // this.custId = "112";
 
     const cust_id = { cust_id: this.custId };
     console.log(cust_id);
@@ -63,10 +60,11 @@ export class ShoplandingComponent implements OnInit {
       this.gifts = data;
 
       for (let c of this.gifts) {
-        /*this.image = "assets/GiftBoxes/" + c.image + ".png";
-        c.image = this.image;*/
+        
         const gB = {
-          item_id: c.item_id, category: c.category, image: c.image, item_descri: c.item_descri, item_price: c.item_price, size: c.size, title: c.title, numItems: this.numItems, wishI: this.wishI, selectI: this.selectI, availItems: c.avail_item
+          item_id: c.item_id, category: c.category, image: c.image, item_descri: c.item_descri, item_price: c.item_price,
+          size: c.size, title: c.title, numItems: this.numItems, wishI: this.wishI, selectI: this.selectI,
+          availItems: c.avail_item
         }
 
         this.gitfBoxes.push(gB);
@@ -76,25 +74,27 @@ export class ShoplandingComponent implements OnInit {
 
     });
 
-    //Assign a link for images
-    /*for (let e of this.gitfBoxes) {
-      //this.image = "assets/GiftBoxes/" + e.image + ".png";
-      e.image = this.image;
-    }*/
     console.log(this.gitfBoxes);
 
-    /*const itemJson = localStorage.getItem('items');
-    this.add = itemJson !== null ? JSON.parse(itemJson) : null;
+    //Get Items from cart
+    this.cs.viewCart(this.custId).subscribe((data: any) => {
+      this.cart = data.data;
+      console.log(data.data);
 
-    for (let a of this.add) {
-      this.i += 1;
-      this.itm = this.i.toString();
-    }
+      if (this.cart == '') {
+        this.itm = "0";
+        this.wish = "0";
 
-    for (let w of this.wishL) {
-      this.w += 1;
-      this.wish = this.w.toString();
-    }*/
+      }
+      for (let c of this.cart) {
+        this.cartItems.push(c);
+        this.i += 1;
+        this.itm = this.i.toString();
+        this.wish = "0";
+      }
+
+    }, error => console.log(error));
+    console.log(this.cartItems);
   }
 
 
@@ -120,7 +120,11 @@ export class ShoplandingComponent implements OnInit {
   num: number = 0;
   times: number = 1;
 
+  i: number = 0;
+  itm: string = "";
 
+  w: number = 0;
+  wish: string = "";
   boxes: any = [];
   title: string = '';
   //categories
@@ -247,17 +251,28 @@ export class ShoplandingComponent implements OnInit {
 
         this.incNum = 1;
         item.selectI = 1;
-        const AddItem = { cust_id: this.custId, image: item.image, item_title: item.title, category: item.category, item_price: item.item_price, item_description: item.item_descri, size: item.size, availItems: this.availItems }
+        const AddItem = {
+          cust_id: this.custId, image: item.image, item_title: item.title,
+          category: item.category, item_price: item.item_price, item_description: item.item_descri,
+          size: item.size, availItems: item.availItems
+        }
         this.add.push(AddItem);
+
+        const addCart = {
+          title: item.title, price: item.item_price, cust_id: this.custId, description: item.item_descri, size: item.size,
+          images: item.image
+        };
+
+        this.cs.addToCart(addCart).
+          subscribe((data: any) => {
+            this.cartError = data
+          });
       }
 
-      this.price += item.price;
+    
     }
 
-    localStorage.setItem('price', JSON.stringify(this.price));
-
-    localStorage.setItem('items', JSON.stringify(this.add));
-    console.log(this.add);
+    
   }
 
 
@@ -296,17 +311,15 @@ export class ShoplandingComponent implements OnInit {
         this.incNum = 2;
         item.wishI = 1;
       }
-
-      //this.cs.addwishlist(wishItem).subscribe((data) => console.log(data));
-
-      // localStorage.setItem('wish', JSON.stringify(this.wishL));
-
       console.log(this.wishL);
     }
   }
 
   logOut() {
     localStorage.clear();
+    for (let g of this.gitfBoxes) {
+      this.cs.deleteFromCart(g.cart_id).subscribe();
+    }
     this.router.navigate(['']);
   }
 }

@@ -10,16 +10,16 @@ import { Router } from '@angular/router';
 })
 export class AdminloginComponent implements OnInit {
 
-  constructor( private as: AdminService, private fb: FormBuilder, private router: Router) { }
+  constructor(private as: AdminService, private fb: FormBuilder, private router: Router) { }
 
   isLoginError: boolean = false;
   fieldTextType = false;
 
   loginForm = this.fb.group({
-    emailAddress: [''],
+    username: [''],
     password: [''],
   })
-  
+
   ngOnInit(): void {
   }
 
@@ -27,21 +27,19 @@ export class AdminloginComponent implements OnInit {
     this.fieldTextType = !this.fieldTextType;
   }
 
-
-  onSubmit(){
+  onSubmit() {
     console.log(this.loginForm.value);
     this.as.adminLogin(this.loginForm.value)
-    .subscribe((user:any) => {
-     console.log(user);
-      //The below value has to come from api
-     localStorage.setItem('adminId', 't');
-     
-     this.router.navigate(['/statisticbox']);
-    }
-    ,(error: any) => {
-      console.log(error);
-      this.isLoginError = true
-    });
+      .subscribe((user: any) => {
+
+        localStorage.setItem('adminId', user.user.admin_id.toString());
+        console.log(user);
+        this.router.navigate(['/statisticbox']);
+      }
+        , (error: any) => {
+          console.log(error);
+          this.isLoginError = true
+        });
   }
 
 }

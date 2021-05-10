@@ -34,7 +34,6 @@ export class ViewcustomerComponent implements OnInit {
 
   }
 
-  /*
   //Search a customer
   searchL: any = [];
   table: number = 1;
@@ -102,48 +101,8 @@ export class ViewcustomerComponent implements OnInit {
       this.table = 1;
     } else {
       this.table = 2;
-    }//end of surname*
+    }//end of surname*/
   }
-  */
-
-  //Search Order
-  searchL: any = [];
-  table: number = 1;
-  totPrice: number = 0;
-  amount: number = 0;
-  name: any;
-  searchName: string = "";
-
-  onSearch(search: any) {
-    search = (search ? search : '').toLowerCase();
-
-    if (search == "") {
-      alert("The is no email address entered");
-    }
-
-    for (let e of this.customers) {
-      //this.searchName = e.email.toLowerCase();
-      this.searchName = (e.emailAddress ? e.emailAddress : '').toLowerCase();
-      if (search == this.searchName) {
-        this.searchL.push(e);
-      }
-    }
-
-    //this.name = search.toLowerCase().split(" ");
-    /*for (let i = 0; i < this.name.length; i++) {
-      this.name[i] = this.name[i][0].toUpperCase() + this.name[i].slice(1);
-    }
-    this.name.join(" ");*/
-
-    if (this.searchL == "") {
-
-      alert(search + " name does not exists in the table");
-      this.table = 1;
-    } else {
-      this.table = 2;
-    }
-  }
-
   viewAll() {
     this.table = 1;
     this.searchL = [];

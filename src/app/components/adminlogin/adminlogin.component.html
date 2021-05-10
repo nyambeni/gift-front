@@ -10,14 +10,14 @@
             </small>
             <div class="md-form mt-2">
                 <mdb-icon fas icon="user" class="prefix"></mdb-icon>
-                <input mdbInput type="text" class="form-control" id="username" formControlName="emailAddress">
+                <input mdbInput type="text" class="form-control" id="username" formControlName="username">
                 <label for="username">Username</label>
             </div>
 
             <div class="md-form">
                 <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
-                <input mdbInput class="form-control" [type]="fieldTextType ? 'text' : 'password'"
-                    id="password" formControlName="password">
+                <input mdbInput [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="password"
+                    formControlName="password">
                 <label for="password"> Password </label>
                 <mdb-icon far (click)="toggleFieldTextType()" class="child" [ngClass]="{
                     'fa-eye-slash': !fieldTextType,

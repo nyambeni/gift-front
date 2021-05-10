@@ -3,7 +3,7 @@
   <div class="container">
 
     <!-- Navbar brand -->
-    <mdb-navbar-brand><a class="navbar-brand"><img src="/assets/logo.png" alt="" width="20%" height="15%"></a>
+    <mdb-navbar-brand><a class="navbar-brand"><img routerLink="../shop" src="/assets/logo.png" alt="" width="20%" height="15%"></a>
     </mdb-navbar-brand>
 
     <!-- Collapsible content -->
@@ -88,7 +88,7 @@
         <th>Remove Item</th>
       </thead>
 
-      <tbody *ngFor="let item of items; index as userno">
+      <tbody *ngFor="let item of gitfBoxes; index as userno">
         <tr>
           <td>
             <img [src]="item.image" alt="Card image cap" width="250" height="250" style="padding-top: 30px;"
@@ -117,7 +117,7 @@
           </td>
 
           <td align="center">
-            <button type="button" class="click" (click)="onDelete(userno, item.price, item.title, item.numItems)"><i
+            <button type="button" class="click" (click)="onDelete(item.cart_id, item.price, item.title, item.numItems)"><i
                 class="fa fa-ban" aria-hidden="true"></i> Delete
             </button>
           </td>
@@ -128,7 +128,7 @@
     </table>
 
     <br><br>
-    <button routerLink="../shop" type="button" class="clicked" (click)="cancelOrder()">
+    <button type="button" class="clicked" (click)="cancelOrder()">
       <i class="fa fa-ban" aria-hidden="true"></i> Cancel Order
     </button>
 
@@ -141,7 +141,10 @@
   <!-- /.Items -->
 
 
-  <p class="text-center" *ngIf="step2 || step3">Total price for your order: R{{price}} </p>
+  <p class="text-center" *ngIf="step2 || step3">Total price for your order: R{{price}} 
+    <br>
+    {{message}}
+  </p>
   <!--Shipping form-->
   <form [formGroup]="shippingForm" (ngSubmit)="onShippingFormSubmit()" class="shipping-form" *ngIf="step2">
 

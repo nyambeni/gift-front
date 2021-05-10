@@ -31,19 +31,19 @@ export class OrderComponent implements OnInit {
     const custIdJson = localStorage.getItem('id');
     this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
 
-   
-    const cust_id = { cust_id:this.custId };
+
+    const cust_id = { cust_id: this.custId };
     console.log(cust_id);
     this.cs.getCustomer(this.custId).subscribe((data: any) => {
       this.custName = data[0].firstname;
       console.log(data[0]);
     }, error => console.log(error));
 
- 
+
     console.log(this.custId);
 
     this.as.getOrder().subscribe(data => {
-     
+
       console.log(data);
 
       this.order = data;
@@ -56,15 +56,15 @@ export class OrderComponent implements OnInit {
 
       }
       for (let i of this.orders) {
-        
 
-        i.totalPrice = i.totalPrice*i.quantity;
-        
+
+        i.totalPrice = i.totalPrice * i.quantity;
+
         this.tPrice += i.totalPrice;
       }
     });
     //End of order
-console.log(this.orders);
+    console.log(this.orders);
     //View Boxes
     this.as.viewItems().subscribe(data => {
       console.log(data);
@@ -72,7 +72,7 @@ console.log(this.orders);
       this.gifts = data;
 
       for (let c of this.gifts) {
- 
+
         for (let o of this.orders) {
           if (o.item_title == c.title) {
             const gB = {
@@ -111,7 +111,7 @@ console.log(this.orders);
   // When the user clicks on the button, scroll to the top of the document
   topFunction() {
     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' })
-   
+
   }
   logOut() {
     localStorage.clear();

@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }
-
+  
   onSubmit(){
     console.log(this.loginForm.value);
     this.customerService.logIn(this.loginForm.value)

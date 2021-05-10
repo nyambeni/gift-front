@@ -65,9 +65,7 @@ export class ProfileComponent implements OnInit {
   deleteAccount() {
     this.customerService.deleteUser(this.custId)
     .subscribe(data => console.log(data), error => console.log(error));
-    console.log('Delete Account\\')
-
-    location.reload();
+    console.log('Delete Accoutn\\')
   }
 
   logOut() {
