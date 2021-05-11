@@ -185,6 +185,10 @@ export class CheckoutComponent implements OnInit {
     document.getElementById("cirle2")!.style.backgroundColor = "rgb(40, 207, 40)";
     this.stepThree();
     //call api to send info
+    console.log("Three has been pressed");
+    this.step1 = false;
+    this.step2 = false;
+    this.step3 = true;
   }
 
   subtract: number = 0;
@@ -206,19 +210,21 @@ export class CheckoutComponent implements OnInit {
       console.log(this.shippingForm.value.streetAddress);
       console.log("call api")
 
-       this.os.sendOrder(order).subscribe((data) => console.log(data), ERR => console.log(ERR));
+      // this.os.sendOrder(order).subscribe((data) => console.log(data), ERR => console.log(ERR));
  
       console.log(item.availItems);
       this.subtract = Number(item.availItems) - Number(item.numItems);
+      item.availItems=this.subtract.toString();
       console.log(this.subtract);
     }
     this.alNum = 1;
 
-   /*for (let i of this.gitfBoxes) {
-     const details = {item_id:i.item_id, avail_item:i.avail_item}
-      this.cs.updateItemQuantity(details)
+   for (let i of this.gitfBoxes) {
+     const details = {item_id:i.item_id, avail_item:i.availItems}
+     console.log(i.availItems)
+     this.cs.updateItemQuantity(details)
         .subscribe(data => console.log(data), error => console.log(error));
-    }*/
+    }
 
     for (let g of this.gitfBoxes) {
       this.cs.deleteFromCart(g.cart_id).subscribe();
@@ -246,10 +252,10 @@ export class CheckoutComponent implements OnInit {
 
   //Make step3 visible and hidde others
   stepThree() {
-    console.log("Three has been pressed");
+   /* console.log("Three has been pressed");
     this.step1 = false;
     this.step2 = false;
-    this.step3 = true;
+    this.step3 = true;*/
   }
 
   subt(itemId: any, item: any) {

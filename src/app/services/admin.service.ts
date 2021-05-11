@@ -35,7 +35,6 @@ export class AdminService {
     return this.http.post(this.url+"login/admin", adminData);
   }
 
-
   viewItems(){
     return this.http.get(this.url+"admin/viewItems");
   }
@@ -44,4 +43,11 @@ export class AdminService {
     return this.http.put(this.url+"admin/update/items/"+id, itemData);
   }
   
+  customerMonthlyReport(month: any){
+    return this.http.get(this.url+"admin/customer/"+month);
+  }
+
+  orderMonthlyReport(month: any){
+    return this.http.get(this.url+"admin/order/"+month);
+  }
 }

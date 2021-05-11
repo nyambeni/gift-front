@@ -179,4 +179,12 @@ available:any;
     this.cs.deleteWish(deletItm).subscribe();
   }
 
+  logOut() {
+    localStorage.clear();
+    for (let g of this.gitfBoxes) {
+      this.cs.deleteFromCart(g.cart_id).subscribe();
+    }
+    this.router.navigate(['']);
+  }
+
 }

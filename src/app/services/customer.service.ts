@@ -56,7 +56,9 @@ export class CustomerService {
   }
 
   updateItemQuantity(details:any) {
-    return this.http.put(this.url + "customer/updates/item/",details);
+    console.log(details.item_id);
+    console.log(details);
+    return this.http.put(this.url + "customer/updates/" + details.item_id, details);
   }
 
   addToCart(item:any){

@@ -40,7 +40,11 @@ export class PaymentComponent implements OnInit {
           this.email = this.customer.emailAddress;
           this.emailAdd =this.email;
           console.log(this.emailAdd);
-          const datas = { cust_id: o.cust_id, firstname: o.firstname, email: this.emailAdd, item_title: o.item_title, lastname: o.lastname, order_date: o.order_date[0], order_id: o.order_id, phoneNumber: o.phoneNumber, postalCode: o.postalCode, province: o.province.toUpperCase(), quantity: o.quantity, streetAddress: o.streetAddress.toUpperCase(), totalPrice: o.totalPrice };
+          const datas = { cust_id: o.cust_id, firstname: o.firstname, email: this.emailAdd, 
+            item_title: o.item_title, lastname: o.lastname, order_date: o.order_date[0],
+             order_id: o.order_id, phoneNumber: o.phoneNumber, postalCode: o.postalCode,
+              province: o.province.toUpperCase(), quantity: o.quantity, 
+              streetAddress: o.streetAddress.toUpperCase(), totalPrice: o.totalPrice };
           this.orders.push(datas);
           this.totalprice += o.totalPrice;
         }, error => console.log(error));
