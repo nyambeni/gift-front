@@ -210,7 +210,7 @@ export class CheckoutComponent implements OnInit {
       console.log(this.shippingForm.value.streetAddress);
       console.log("call api")
 
-      // this.os.sendOrder(order).subscribe((data) => console.log(data), ERR => console.log(ERR));
+      this.os.sendOrder(order).subscribe((data) => console.log(data), ERR => console.log(ERR));
  
       console.log(item.availItems);
       this.subtract = Number(item.availItems) - Number(item.numItems);
@@ -312,7 +312,7 @@ export class CheckoutComponent implements OnInit {
 
   message: string = '';
   ok() {
-   // location.reload();
+    location.reload();
     this.message = "Purchase made.";
   }
 }

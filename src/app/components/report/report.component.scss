@@ -7,6 +7,12 @@
 .highlight-text{
     background-color: #aaa5a5;
     padding: 3px;
+    width: 100vh;
+}
+
+.total{
+   
+    font-size: 20px;
 }
 
 #page{
@@ -17,11 +23,19 @@
 
 .highlight-text{
     background-color: #aaa5a5;
-    padding: 3px;
+    padding: 10px;
+    
+    width: auto;
+    box-shadow: 0px 0px 8px 5px rgba(145, 144, 144, 0.329);
 }
 
 #page{
     padding: 30px 10px;
+}
+
+table{
+    box-shadow: 0px 0px 8px 5px rgba(145, 144, 144, 0.329);
+    width: 100%;
 }
 
 table, th, td {
@@ -33,4 +47,16 @@ table, th, td {
 
     th, td {
         border-bottom: 1px solid gray;
+        border-top: 1px solid gray;
+    }
+
+    td{
+        width: 20%;
+        height: 20%;
+        }
+        tr:nth-child(even) {
+            background-color: #f5ecf7ea;
+        }
+    form{
+        margin-right: 20px;
     }

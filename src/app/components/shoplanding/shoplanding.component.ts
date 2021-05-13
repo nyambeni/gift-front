@@ -33,6 +33,8 @@ export class ShoplandingComponent implements OnInit {
   custName = '';
   cart: any = [];
   cartItems: any = [];
+
+  wishItems: any = [];
   public innerWidth: any;
 
   ngOnInit(): void {
@@ -60,7 +62,7 @@ export class ShoplandingComponent implements OnInit {
       this.gifts = data;
 
       for (let c of this.gifts) {
-        
+
         const gB = {
           item_id: c.item_id, category: c.category, image: c.image, item_descri: c.item_descri, item_price: c.item_price,
           size: c.size, title: c.title, numItems: this.numItems, wishI: this.wishI, selectI: this.selectI,
@@ -83,18 +85,34 @@ export class ShoplandingComponent implements OnInit {
 
       if (this.cart == '') {
         this.itm = "0";
-        this.wish = "0";
 
       }
       for (let c of this.cart) {
         this.cartItems.push(c);
         this.i += 1;
         this.itm = this.i.toString();
-        this.wish = "0";
       }
 
     }, error => console.log(error));
     console.log(this.cartItems);
+
+    //Get items inside wishlist
+    this.cs.viewWishList(this.custId).subscribe((data: any) => {
+      console.log(data);
+
+      this.wishItems = data;
+      console.log(this.wishItems);
+
+      if (this.wishItems == '') {
+        this.wish = "0";
+
+      }
+      for (let i of this.wishItems) {
+        this.w += 1;
+        this.wish = this.w.toString();
+      }
+    });
+
   }
 
 
@@ -269,10 +287,10 @@ export class ShoplandingComponent implements OnInit {
           });
       }
 
-    
+
     }
 
-    
+
   }
 
 

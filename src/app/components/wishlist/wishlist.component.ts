@@ -15,6 +15,9 @@ export class WishlistComponent implements OnInit {
   i: number = 0;
   itm: string = "";
 
+  cart: any = [];
+  cartItems: any = [];
+
   add: any = [];
 
   constructor(private cs: CustomerService, private router: Router, private as: AdminService) { }
@@ -101,6 +104,25 @@ export class WishlistComponent implements OnInit {
       
 
       console.log(this.wishlist);
+
+      //Get Items from cart
+    this.cs.viewCart(this.custId).subscribe((data: any) => {
+      this.cart = data.data;
+      console.log(data.data);
+
+      if (this.cart == '') {
+        this.itm = "0";
+    
+      }
+      for (let c of this.cart) {
+        this.cartItems.push(c);
+        this.i += 1;
+        this.itm = this.i.toString();
+       
+      }
+
+    }, error => console.log(error));
+    console.log(this.cartItems);
       
     }
   }

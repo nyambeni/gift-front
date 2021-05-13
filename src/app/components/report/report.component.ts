@@ -20,7 +20,7 @@ export class ReportComponent implements OnInit {
     "July", "August", "September", "October", "November", "December"];
 
   headElements = ['First Name', 'Last Name', 'Email Address', 'Date'];
-  headElements2 = ['Name', 'Phone Number', 'Address', 'Items', 'Quantity', "Order Date"];
+  headElements2 = ['Name', 'Phone Number', 'Address', 'Items', 'Quantity'];
   constructor(private adminService: AdminService, private fb: FormBuilder) { }
 
   reportForm = this.fb.group({

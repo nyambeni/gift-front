@@ -21,6 +21,7 @@ export class AdminloginComponent implements OnInit {
   })
 
   ngOnInit(): void {
+    localStorage.clear();
   }
 
   toggleFieldTextType() {

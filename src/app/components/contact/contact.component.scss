@@ -178,6 +178,13 @@
     background-image: url("/assets/Slide/Box2.png");
     background-size: cover;
     height: 100vh;
+  
+    background-position: center;
+    
+    background-attachment: fixed;
+    text-align: center;
+   
+    background-attachment: fixed;
   }
 
   * {box-sizing: border-box;}
