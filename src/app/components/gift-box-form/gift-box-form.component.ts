@@ -16,8 +16,8 @@ export class GiftBoxFormComponent implements OnInit {
     title: ['', [Validators.required, Validators.minLength(3)]],
     category: ['', [Validators.required]],
     size: ['', [Validators.required]],
-    price: ['', [Validators.required]],
-    quantity: ['', [Validators.required]],
+    price: ['', [Validators.required, Validators.pattern('[0-9]*')]],
+    quantity: ['', [Validators.required, Validators.pattern('[0-9]*')]],
     validationImage: ['', [Validators.required]],
     description: ['', [Validators.required]]
   });
