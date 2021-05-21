@@ -28,9 +28,31 @@ export class OrderComponent implements OnInit {
   custName: any;
 
   ngOnInit(): void {
+
     const custIdJson = localStorage.getItem('id');
     this.custId = custIdJson !== null ? JSON.parse(custIdJson) : null;
 
+    this.as.getOrderById(this.custId).subscribe(data => {
+
+      console.log(data);
+
+      this.order = data;
+
+      for (let o of this.order) {
+        o.order_date = o.order_date.split("T");
+       
+          this.orders.push(o);
+        
+
+      }
+      for (let i of this.orders) {
+
+
+        i.totalPrice = i.totalPrice * i.quantity;
+
+        this.tPrice += i.totalPrice;
+      }
+    });
 
     const cust_id = { cust_id: this.custId };
     console.log(cust_id);
@@ -42,7 +64,7 @@ export class OrderComponent implements OnInit {
 
     console.log(this.custId);
 
-    this.as.getOrder().subscribe(data => {
+    /*this.as.getOrder().subscribe(data => {
 
       console.log(data);
 
@@ -63,7 +85,7 @@ export class OrderComponent implements OnInit {
         this.tPrice += i.totalPrice;
       }
     });
-    //End of order
+    //End of order*/
     console.log(this.orders);
     //View Boxes
     this.as.viewItems().subscribe(data => {
@@ -76,7 +98,9 @@ export class OrderComponent implements OnInit {
         for (let o of this.orders) {
           if (o.item_title == c.title) {
             const gB = {
-              item_id: c.item_id, category: c.category, image: c.image, item_descri: c.item_descri, item_price: c.item_price, size: c.size, title: c.title, quantity: o.quantity, totalPrice: o.totalPrice
+              item_id: c.item_id, category: c.category, image: c.image, item_descri: c.item_descri,
+               item_price: c.item_price, size: c.size, title: c.title, quantity: o.quantity, 
+               totalPrice: o.totalPrice, order_date: o.order_date[0]
             }
 
             this.gitfBoxes.push(gB);

@@ -26,7 +26,7 @@ export class LandingComponent implements OnInit {
     { image: "assets/ForAdd/6.jpg" },
   ]
   constructor() { 
-    localStorage.clear();
+    //localStorage.clear();
   }
 
 

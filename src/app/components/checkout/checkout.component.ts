@@ -232,6 +232,7 @@ export class CheckoutComponent implements OnInit {
     //call API
     //const order = {}
     //this.os.sendOrder
+    
   }
 
   //Make step1 visible and hidde others
@@ -312,7 +313,7 @@ export class CheckoutComponent implements OnInit {
 
   message: string = '';
   ok() {
-    location.reload();
-    this.message = "Purchase made.";
+    //location.reload();
+    this.router.navigate(['/order']);
   }
 }

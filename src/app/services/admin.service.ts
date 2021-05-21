@@ -18,6 +18,10 @@ export class AdminService {
   getOrder(){
     return this.http.get(this.url+"admin/payments");
   }
+
+  getOrderById(id: any){
+    return this.http.get(this.url+"admin/payment" + id);
+  }
 /*
   viewBox(){
     return this.http.get(this.url+"admin/allcustomer");
